@@ -38,6 +38,7 @@ namespace Db_proj
         {
             // here we reload the employees db 
             dataGridView1.Rows.Clear();
+
             foreach( Worker it in current)
             {
                 dataGridView1.Rows.Add(it.ssid.ToString(), it.name, it.type, it.IsFree, it.CurrentTask, it.cType);

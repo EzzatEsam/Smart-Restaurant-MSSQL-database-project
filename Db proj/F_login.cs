@@ -27,9 +27,10 @@ namespace Db_proj
         {
             textBox2.Text = "Password";
             textBox1.Text = "";
+            label1.Text = "";
             textBox2.PasswordChar = '\0';
-            textBox2.ForeColor = Color.Black;
-            textBox1.ForeColor = Color.Gray;
+            textBox2.ForeColor = Color.Gray;
+            textBox1.ForeColor = Color.Black;
             button1.Enabled = false;
             login_check = false;
             pass_check = false;
@@ -52,7 +53,7 @@ namespace Db_proj
                     this.Hide();
                     break;
                 case "waiter":
-                    Form nextWaiter = new WaiterStart();
+                    Form nextWaiter = new WaiterStart(this);
                     nextWaiter.Show();
                     this.Hide();
                     break;
