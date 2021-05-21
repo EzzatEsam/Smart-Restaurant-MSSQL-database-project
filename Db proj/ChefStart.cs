@@ -35,9 +35,10 @@ namespace Db_proj
                 }
                 Orders.Add(temp);
 
-                UpdateList();
-            }   
-            
+                
+            }
+            UpdateList();
+
 
         }
         public void UpdateList()
@@ -45,12 +46,13 @@ namespace Db_proj
             // update orders from db
 
             //
-            panel1.Controls.Clear();
-
             foreach (Control item in panel1.Controls)
             {
                 item.Dispose();
             }
+            panel1.Controls.Clear();
+
+            
             for (int i = 0; i < Orders.Count; i++)
             {
                 Order item = Orders[i];
@@ -77,11 +79,12 @@ namespace Db_proj
         }
         public void Expand(Order it)
         {
-            panel1.Controls.Clear();
             foreach (Control item in panel1.Controls)
             {
                 item.Dispose();
             }
+            panel1.Controls.Clear();
+           
             OrderBig ord = new OrderBig(this, it);
             panel1.Controls.Add(ord);
 
@@ -94,6 +97,7 @@ namespace Db_proj
         {
 
         }
+        
         private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
 
