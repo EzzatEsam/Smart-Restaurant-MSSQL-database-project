@@ -12,11 +12,11 @@ namespace Db_proj
 {
     public partial class pg_1 : UserControl
     {
-        Form MainForm;
-        public pg_1(Form f)
+        AdminStart f;
+        public pg_1(AdminStart f)
         {
             InitializeComponent();
-            MainForm = f;
+            this.f = f;
         }
 
         private void button3_Click(object sender, EventArgs e)
