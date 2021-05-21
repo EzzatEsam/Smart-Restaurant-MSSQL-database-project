@@ -46,17 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ad pg 2.cs">
+    <Compile Include="additem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ad pg 2.Designer.cs">
-      <DependentUpon>ad pg 2.cs</DependentUpon>
+    <Compile Include="additem.Designer.cs">
+      <DependentUpon>additem.cs</DependentUpon>
     </Compile>
-    <Compile Include="ad pg3.cs">
+    <Compile Include="AddWorker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ad pg3.Designer.cs">
-      <DependentUpon>ad pg3.cs</DependentUpon>
+    <Compile Include="AddWorker.Designer.cs">
+      <DependentUpon>AddWorker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="deffs.cs" />
+    <Compile Include="WorkersList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorkersList.Designer.cs">
+      <DependentUpon>WorkersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MenuList.Designer.cs">
+      <DependentUpon>MenuList.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminStart.cs">
       <SubType>Form</SubType>
@@ -90,11 +103,17 @@
     <Compile Include="WaiterStart.Designer.cs">
       <DependentUpon>WaiterStart.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ad pg 2.resx">
-      <DependentUpon>ad pg 2.cs</DependentUpon>
+    <EmbeddedResource Include="additem.resx">
+      <DependentUpon>additem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ad pg3.resx">
-      <DependentUpon>ad pg3.cs</DependentUpon>
+    <EmbeddedResource Include="AddWorker.resx">
+      <DependentUpon>AddWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkersList.resx">
+      <DependentUpon>WorkersList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuList.resx">
+      <DependentUpon>MenuList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminStart.resx">
       <DependentUpon>AdminStart.cs</DependentUpon>
