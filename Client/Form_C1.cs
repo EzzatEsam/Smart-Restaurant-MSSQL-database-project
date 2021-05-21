@@ -7,15 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Client
 {
-    public partial class Form1 : Form
+    public partial class Form_C1 : Form
     {
-        public Form1()
+        public Form_C1()
         {
             InitializeComponent();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == string.Empty)
+            {
+            MessageBox.Show("Error, Please enter a name.");
+            }
+            else
+            {
+                    Form_C2 start = new Form_C2(textBox1.Text);
+                    start.Show();
+                    this.Hide();
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
