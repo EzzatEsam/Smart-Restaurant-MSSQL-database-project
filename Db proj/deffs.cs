@@ -20,6 +20,14 @@ namespace Db_proj
         CLIENTCONTACT,
         NONE
     }
+    public enum RequestType
+    {
+        INQUIRY , CHECKOUT
+    }
+    public enum RequestStatus
+    {
+        PENDING ,ONIT ,DONE
+    }
     public class MenuItem
     {
         public int number; public string name; public string category; public float price;
@@ -38,6 +46,15 @@ namespace Db_proj
         public TimeSpan OrderTime;
         public List<MenuItem> Items = new List<MenuItem>() ;
         
+    }
+    public class ContactRequest
+    {
+        public int ContactNumber;
+        public int TableNumber;
+        public TimeSpan ContactTime;
+        public RequestType ContactType;
+        public RequestStatus ContactStatus;
+        public int OrderNumber=-1;
     }
     public class Worker
     {

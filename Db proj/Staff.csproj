@@ -58,6 +58,12 @@
     <Compile Include="AddWorker.Designer.cs">
       <DependentUpon>AddWorker.cs</DependentUpon>
     </Compile>
+    <Compile Include="check.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="check.Designer.cs">
+      <DependentUpon>check.cs</DependentUpon>
+    </Compile>
     <Compile Include="deffs.cs" />
     <Compile Include="OrderBig.cs">
       <SubType>UserControl</SubType>
@@ -70,6 +76,18 @@
     </Compile>
     <Compile Include="OrderSmol.Designer.cs">
       <DependentUpon>OrderSmol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSmolWaiter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OrderSmolWaiter.Designer.cs">
+      <DependentUpon>OrderSmolWaiter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestSmol.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RequestSmol.Designer.cs">
+      <DependentUpon>RequestSmol.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkersList.cs">
       <SubType>UserControl</SubType>
@@ -121,11 +139,23 @@
     <EmbeddedResource Include="AddWorker.resx">
       <DependentUpon>AddWorker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="check.resx">
+      <DependentUpon>check.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OrderBig.resx">
       <DependentUpon>OrderBig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderSmol.resx">
       <DependentUpon>OrderSmol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderSmolWaiter.resx">
+      <DependentUpon>OrderSmolWaiter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestSmol.resx">
+      <DependentUpon>RequestSmol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaiterStart.resx">
+      <DependentUpon>WaiterStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkersList.resx">
       <DependentUpon>WorkersList.cs</DependentUpon>
