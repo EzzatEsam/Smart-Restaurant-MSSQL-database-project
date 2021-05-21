@@ -61,9 +61,9 @@ namespace Client
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form_C9 chechout = new Form_C9();
-            chechout.Show();
-            this.Hide();
+            //Form_C9 chechout = new Form_C9(Form_C2.);
+            //chechout.Show();
+            //this.Hide();
         }
     }
 }
