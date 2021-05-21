@@ -14,5 +14,12 @@ namespace Client
         {
             InitializeComponent();
         }
+
+       
+
+        private void Form_C6_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
