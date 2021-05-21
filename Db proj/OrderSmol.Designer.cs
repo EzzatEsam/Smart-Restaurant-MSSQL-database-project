@@ -37,12 +37,14 @@ namespace Db_proj
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(372, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Expand";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
@@ -60,7 +62,7 @@ namespace Db_proj
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(87, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Contents :";
             // 
@@ -77,12 +79,13 @@ namespace Db_proj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "OrderSmol";
-            this.Size = new System.Drawing.Size(467, 35);
+            this.Size = new System.Drawing.Size(465, 33);
             this.Load += new System.EventHandler(this.OrderSmol_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

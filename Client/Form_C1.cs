@@ -35,7 +35,7 @@ namespace Client
                 StartS = true;
 
 
-            for (int i = 0; i < textBox1.Text.Length; i++)
+            for (int i = 0; i < textBox1.Text.Length-1; i++)
             {
                 if (textBox1.Text[i] == ' ' && textBox1.Text[i + 1] == ' ')
                 {
