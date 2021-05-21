@@ -59,6 +59,18 @@
       <DependentUpon>AddWorker.cs</DependentUpon>
     </Compile>
     <Compile Include="deffs.cs" />
+    <Compile Include="OrderBig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OrderBig.Designer.cs">
+      <DependentUpon>OrderBig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSmol.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OrderSmol.Designer.cs">
+      <DependentUpon>OrderSmol.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkersList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +120,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddWorker.resx">
       <DependentUpon>AddWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderBig.resx">
+      <DependentUpon>OrderBig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderSmol.resx">
+      <DependentUpon>OrderSmol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkersList.resx">
       <DependentUpon>WorkersList.cs</DependentUpon>

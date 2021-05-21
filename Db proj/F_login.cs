@@ -47,7 +47,7 @@ namespace Db_proj
                     this.Hide();
                     break;
                 case "chef":
-                    Form nextChef = new ChefStart();
+                    Form nextChef = new ChefStart(this);
                     nextChef.Show();
                     this.Hide();
                     break;

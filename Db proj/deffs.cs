@@ -31,6 +31,14 @@ namespace Db_proj
             this.price = price;
         }
     }
+    public class Order
+    {
+        public int OrderID, ClientID,TableNo;
+        public Order_status Status;
+        public TimeSpan OrderTime;
+        public List<MenuItem> Items = new List<MenuItem>() ;
+        
+    }
     public class Worker
     {
         public int ssid;public string name; public Emp_type type; public bool IsFree; public int CurrentTask; public Task cType;
