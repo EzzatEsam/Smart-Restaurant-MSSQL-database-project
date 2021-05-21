@@ -56,9 +56,8 @@ namespace Client
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            //Form_C2 back = new Form_C2();
-            //start.Show();
-            //this.Hide();
+            back.Show();
+            this. Hide();
         }
 
         private void label2_Click(object sender, EventArgs e)
