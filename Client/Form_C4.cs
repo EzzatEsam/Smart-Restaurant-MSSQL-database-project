@@ -11,9 +11,11 @@ namespace Client
     public partial class Form_C4 : Form
     {
         string name;
-        public Form_C4(string newname)
+        Form_C5 make;
+        public Form_C4(string newname, Form_C5 newmake)
         {
             name = newname;
+            make = newmake;
             InitializeComponent();
             label1.Text = "Hello " + name + ", Make another order?";
         }
@@ -56,14 +58,22 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            make.Show();
+            this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //Form_C9 chechout = new Form_C9(Form_C2.);
-            //chechout.Show();
-            //this.Hide();
+            Form_C9 chechout = new Form_C9(name);
+            chechout.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form_C6 chechout = new Form_C6(this);
+            chechout.Show();
+            this.Hide();
         }
     }
 }

@@ -11,9 +11,11 @@ namespace Client
     public partial class Form_C6 : Form
     {
         List<Order> Orders = new List<Order>();
-        public Form_C6()
+        Form_C4 back;
+        public Form_C6(Form_C4 newback)
         {
             InitializeComponent();
+            back = newback;
             for (int i = 0; i < 20; i++)
             {
                 Order temp = new Order();
@@ -60,8 +62,7 @@ namespace Client
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Form_C4 chechout = new Form_C4("Sdd");
-            chechout.Show();
+            back.Show();
             this.Hide();
         }
 
@@ -72,9 +73,9 @@ namespace Client
 
        
 
-        private void Form_C6_Load(object sender, EventArgs e)
-        {
+        //private void Form_C6_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }

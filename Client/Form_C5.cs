@@ -38,9 +38,13 @@ namespace Client
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form_C6 confirm = new Form_C6();
-            confirm.Show();
-            this.Hide();
+            if (Shopping.Count == 0)
+                return;
+                   
+                Form_C4 confirm = new Form_C4(back.name, this);
+                confirm.Show();
+                this.Hide();
+            
         }
         public void UpdateList()
         {

@@ -84,7 +84,7 @@ namespace Client
             this.Text = "Form_C6";
             this.ResumeLayout(false);
 
-            this.Load += new System.EventHandler(this.Form_C6_Load);
+           // this.Load += new System.EventHandler(this.Form_C6_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
