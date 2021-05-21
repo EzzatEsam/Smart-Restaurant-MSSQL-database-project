@@ -35,7 +35,8 @@ namespace Client
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // button1
@@ -103,19 +104,28 @@ namespace Client
             this.textBox1.Size = new System.Drawing.Size(33, 23);
             this.textBox1.TabIndex = 5;
             // 
-            // textBox2
+            // panel1
             // 
-            this.textBox2.Location = new System.Drawing.Point(31, 356);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(535, 23);
-            this.textBox2.TabIndex = 6;
+            this.panel1.AutoScroll = true;
+            this.panel1.Location = new System.Drawing.Point(31, 79);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(660, 242);
+            this.panel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(31, 341);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(548, 59);
+            this.panel2.TabIndex = 7;
             // 
             // Form_C5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 450);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -139,6 +149,7 @@ namespace Client
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
