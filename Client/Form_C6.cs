@@ -64,7 +64,17 @@ namespace Client
             chechout.Show();
             this.Hide();
         }
+        public void Expand(Order it)
+        {
+            foreach (Control item in panel1.Controls)
+            {
+                item.Dispose();
+            }
+            panel1.Controls.Clear();
+            OrderExpanded temp = new OrderExpanded(this, it);
+            panel1.Controls.Add(temp);
 
+        }
         private void Form_C6_Load(object sender, EventArgs e)
         {
 

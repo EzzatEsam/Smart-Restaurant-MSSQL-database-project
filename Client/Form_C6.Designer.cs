@@ -59,9 +59,9 @@ namespace Client
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Location = new System.Drawing.Point(41, 36);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(623, 247);
+            this.panel1.Size = new System.Drawing.Size(666, 284);
             this.panel1.TabIndex = 5;
             // 
             // Form_C6
