@@ -36,7 +36,8 @@ namespace Client
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            button2.Text = "Pending";
+            button2.BackColor = System.Drawing.Color.Red;
         }
 
         private void button1_Click(object sender, EventArgs e)

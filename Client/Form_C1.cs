@@ -25,11 +25,11 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool containN=false;
-            if (textBox1.Text.Any(char.IsDigit))
-                containN = true;
+            bool containL=false;
+            if (textBox1.Text.All(char.IsLetter))
+                containL = true;
 
-            if (textBox1.Text == string.Empty || containN )
+            if (textBox1.Text == string.Empty || !containL )
             {
             MessageBox.Show("Error, Please enter a valid name.");
             }
