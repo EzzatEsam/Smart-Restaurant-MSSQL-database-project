@@ -10,7 +10,8 @@ namespace Client
 {
     public partial class Form_C2 : Form
     {
-        string name;
+        public string name;
+
         public Form_C2(string newname)
         {
             name = newname;

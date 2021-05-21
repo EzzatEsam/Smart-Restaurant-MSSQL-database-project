@@ -45,5 +45,10 @@ namespace Client
                 sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

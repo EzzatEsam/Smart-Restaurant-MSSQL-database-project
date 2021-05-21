@@ -29,6 +29,11 @@ namespace Client
         /// </summary>
         private void InitializeComponent()
         {
+            this.SuspendLayout();
+            // 
+            // Form_C6
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -68,6 +73,8 @@ namespace Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "Form_C6";
             this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -75,7 +82,9 @@ namespace Client
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_C6";
             this.Text = "Form_C6";
-            this.Load += new System.EventHandler(this.Form_C6_Load);
+            this.ResumeLayout(false);
+
+           // this.Load += new System.EventHandler(this.Form_C6_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
