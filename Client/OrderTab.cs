@@ -42,5 +42,15 @@ namespace Client
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            main.Expand(current);
+        }
+
+        private void OrderTab_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
