@@ -35,32 +35,41 @@ namespace Db_proj
             // 
             // Workersbtn
             // 
-            this.Workersbtn.Location = new System.Drawing.Point(133, 102);
+            this.Workersbtn.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Workersbtn.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Workersbtn.Location = new System.Drawing.Point(222, 157);
+            this.Workersbtn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Workersbtn.Name = "Workersbtn";
-            this.Workersbtn.Size = new System.Drawing.Size(145, 23);
+            this.Workersbtn.Size = new System.Drawing.Size(250, 88);
             this.Workersbtn.TabIndex = 0;
             this.Workersbtn.Text = "View workers list";
-            this.Workersbtn.UseVisualStyleBackColor = true;
+            this.Workersbtn.UseVisualStyleBackColor = false;
             this.Workersbtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // m_bttn
             // 
-            this.m_bttn.Location = new System.Drawing.Point(133, 160);
+            this.m_bttn.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.m_bttn.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m_bttn.Location = new System.Drawing.Point(222, 299);
+            this.m_bttn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.m_bttn.Name = "m_bttn";
-            this.m_bttn.Size = new System.Drawing.Size(145, 23);
+            this.m_bttn.Size = new System.Drawing.Size(250, 88);
             this.m_bttn.TabIndex = 1;
             this.m_bttn.Text = "View menu";
-            this.m_bttn.UseVisualStyleBackColor = true;
+            this.m_bttn.UseVisualStyleBackColor = false;
             this.m_bttn.Click += new System.EventHandler(this.m_bttn_Click);
             // 
             // pg_1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.m_bttn);
             this.Controls.Add(this.Workersbtn);
+            this.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "pg_1";
-            this.Size = new System.Drawing.Size(422, 291);
+            this.Size = new System.Drawing.Size(703, 515);
             this.ResumeLayout(false);
 
         }

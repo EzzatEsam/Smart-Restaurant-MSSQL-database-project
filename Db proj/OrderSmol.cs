@@ -48,5 +48,10 @@ namespace Db_proj
         {
             main.Expand(current);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

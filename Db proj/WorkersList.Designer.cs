@@ -54,7 +54,7 @@ namespace Db_proj
             this.E_stats,
             this.tsk,
             this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(23, 57);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 86);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(610, 150);
@@ -98,32 +98,41 @@ namespace Db_proj
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 242);
+            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(27, 268);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(80, 46);
             this.button1.TabIndex = 1;
             this.button1.Text = "Previous";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(273, 242);
+            this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(234, 268);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(84, 46);
             this.button2.TabIndex = 2;
             this.button2.Text = "Add Worker";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(398, 242);
+            this.button3.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.Location = new System.Drawing.Point(430, 268);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 23);
+            this.button3.Size = new System.Drawing.Size(80, 46);
             this.button3.TabIndex = 3;
             this.button3.Text = "Delete Selected";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // WorkersList
@@ -135,7 +144,7 @@ namespace Db_proj
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "WorkersList";
-            this.Size = new System.Drawing.Size(662, 303);
+            this.Size = new System.Drawing.Size(662, 333);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

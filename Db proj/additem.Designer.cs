@@ -45,19 +45,22 @@ namespace Db_proj
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(40, 292);
+            this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(21, 292);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(98, 37);
             this.button2.TabIndex = 27;
             this.button2.Text = "Back";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(275, 191);
+            this.label6.Location = new System.Drawing.Point(362, 191);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 26;
@@ -67,7 +70,7 @@ namespace Db_proj
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(275, 126);
+            this.label5.Location = new System.Drawing.Point(362, 126);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 25;
@@ -77,7 +80,7 @@ namespace Db_proj
             // 
             this.Namelabel.AutoSize = true;
             this.Namelabel.ForeColor = System.Drawing.Color.Red;
-            this.Namelabel.Location = new System.Drawing.Point(275, 50);
+            this.Namelabel.Location = new System.Drawing.Point(362, 54);
             this.Namelabel.Name = "Namelabel";
             this.Namelabel.Size = new System.Drawing.Size(35, 13);
             this.Namelabel.TabIndex = 24;
@@ -97,7 +100,7 @@ namespace Db_proj
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(79, 164);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 22;
             this.label4.Text = "Price";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -107,7 +110,7 @@ namespace Db_proj
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(79, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 21;
             this.label3.Text = "Category";
             // 
@@ -116,25 +119,28 @@ namespace Db_proj
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(79, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 19;
             this.label1.Text = "Item name";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(138, 260);
+            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(162, 226);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(101, 35);
             this.button1.TabIndex = 18;
-            this.button1.Text = "Add Emplyee";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Add Item";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(82, 191);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(187, 20);
+            this.textBox3.Size = new System.Drawing.Size(274, 20);
             this.textBox3.TabIndex = 16;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
@@ -142,7 +148,7 @@ namespace Db_proj
             // 
             this.textBox2.Location = new System.Drawing.Point(82, 123);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(187, 20);
+            this.textBox2.Size = new System.Drawing.Size(274, 20);
             this.textBox2.TabIndex = 15;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -150,7 +156,7 @@ namespace Db_proj
             // 
             this.textBox1.Location = new System.Drawing.Point(82, 47);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 20);
+            this.textBox1.Size = new System.Drawing.Size(274, 20);
             this.textBox1.TabIndex = 14;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -171,7 +177,7 @@ namespace Db_proj
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "additem";
-            this.Size = new System.Drawing.Size(350, 346);
+            this.Size = new System.Drawing.Size(428, 346);
             this.Load += new System.EventHandler(this.additem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

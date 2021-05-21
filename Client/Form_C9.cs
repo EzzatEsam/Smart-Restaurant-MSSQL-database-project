@@ -10,11 +10,13 @@ namespace Client
 {
     public partial class Form_C9 : Form
     {
-        public Form_C9()
+        string name;
+        public Form_C9(string newname)
         {
+            name = newname;
             InitializeComponent();
+            label1.Text = "Nice to have you " + name ;
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -22,7 +24,26 @@ namespace Client
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.Columns.Add("Item", "Price");
+          
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_C9_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            int sum = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            {
+                sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
+            }
         }
     }
 }

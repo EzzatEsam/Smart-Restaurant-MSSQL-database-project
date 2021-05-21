@@ -29,6 +29,11 @@ namespace Db_proj
         /// </summary>
         private void InitializeComponent()
         {
+            this.SuspendLayout();
+            // 
+            // WaiterStart
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -84,6 +89,9 @@ namespace Db_proj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "WaiterStart";
             this.ClientSize = new System.Drawing.Size(828, 384);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -92,6 +100,8 @@ namespace Db_proj
             this.Controls.Add(this.label1);
             this.Name = "WaiterStart";
             this.Text = "WaiterStart";
+            this.ResumeLayout(false);
+
             this.Load += new System.EventHandler(this.WaiterStart_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
