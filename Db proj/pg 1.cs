@@ -12,11 +12,11 @@ namespace Db_proj
 {
     public partial class pg_1 : UserControl
     {
-        AdminStart f;
+        AdminStart main;
         public pg_1(AdminStart f)
         {
             InitializeComponent();
-            this.f = f;
+            this.main = f;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -26,7 +26,14 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            main.Goto(NextsAdmin.WORKERSLIST);
+        }
 
+        private void m_bttn_Click(object sender, EventArgs e)
+        {
+           
+            main.Goto(NextsAdmin.MENULIST);
         }
     }
 }

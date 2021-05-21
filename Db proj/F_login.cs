@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Db_proj
 {
+
     public partial class F_login : Form
     {
-        Form nextAdmin , nextChef , nextWaiter;
         bool login_check, pass_check;
         public F_login()
         {
@@ -23,6 +23,17 @@ namespace Db_proj
             textBox1.ForeColor = Color.Gray;
             button1.Enabled = false;
         }
+        public void Reset()
+        {
+            textBox2.Text = "Password";
+            textBox1.Text = "";
+            textBox2.PasswordChar = '\0';
+            textBox2.ForeColor = Color.Black;
+            textBox1.ForeColor = Color.Gray;
+            button1.Enabled = false;
+            login_check = false;
+            pass_check = false;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -31,17 +42,17 @@ namespace Db_proj
             switch (textBox1.Text)
             {
                 case "admin":
-                    nextAdmin = new AdminStart();
+                    Form nextAdmin = new AdminStart(this);
                     nextAdmin.Show();
                     this.Hide();
                     break;
                 case "chef":
-                    nextChef = new ChefStart();
+                    Form nextChef = new ChefStart();
                     nextChef.Show();
                     this.Hide();
                     break;
                 case "waiter":
-                    nextWaiter = new WaiterStart();
+                    Form nextWaiter = new WaiterStart();
                     nextWaiter.Show();
                     this.Hide();
                     break;
@@ -68,10 +79,6 @@ namespace Db_proj
                 textBox2.ForeColor = Color.Gray;
                 textBox2.Text = "Password";
             }
-        }
-        private void F_login_Load(object sender, EventArgs e)
-        {
-
         }
         void psstxt_enter(object sender , EventArgs e)
         {

@@ -84,7 +84,6 @@ namespace Db_proj
             this.Controls.Add(this.button1);
             this.Name = "F_login";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.F_login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
