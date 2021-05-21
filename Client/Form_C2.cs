@@ -42,7 +42,9 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Form_C5 order = new Form_C5();
+            order.Show();
+            this.Hide();
         }
     }
 }
