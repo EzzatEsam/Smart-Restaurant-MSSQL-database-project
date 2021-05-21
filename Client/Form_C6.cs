@@ -14,5 +14,12 @@ namespace Client
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form_C4 chechout = new Form_C4();
+            chechout.Show();
+            this.Hide();
+        }
     }
 }
