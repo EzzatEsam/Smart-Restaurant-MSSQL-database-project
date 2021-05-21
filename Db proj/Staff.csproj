@@ -157,9 +157,7 @@
     <EmbeddedResource Include="WaiterStart.resx">
       <DependentUpon>WaiterStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WaiterStart.resx">
-      <DependentUpon>WaiterStart.cs</DependentUpon>
-    </EmbeddedResource>
+
     <EmbeddedResource Include="WorkersList.resx">
       <DependentUpon>WorkersList.cs</DependentUpon>
     </EmbeddedResource>
