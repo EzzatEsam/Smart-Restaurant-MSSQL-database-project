@@ -25,11 +25,34 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool containL=false;
-            if (textBox1.Text.All(char.IsLetter))
+            bool containL = false;
+            bool StartS= false;
+            bool spaces= false;
+            if (textBox1.Text.All(c => char.IsWhiteSpace(c) || char.IsLetter(c)))
                 containL = true;
 
-            if (textBox1.Text == string.Empty || !containL )
+            if (textBox1.Text.StartsWith(" "))
+                StartS = true;
+
+
+            for (int i = 0; i < textBox1.Text.Length; i++)
+            {
+                if (textBox1.Text[i] == ' ' && textBox1.Text[i + 1] == ' ')
+                {
+                    spaces = true;
+                    break;
+                }
+                else
+                {
+                    spaces = false;
+                }
+
+            }
+
+            //c => char.IsWhiteSpace(c) || char.IsLetter(c));
+            //if (textBox1.Text.StartsWith(" "))
+
+            if (textBox1.Text == string.Empty || !containL || StartS || spaces )
             {
             MessageBox.Show("Error, Please enter a valid name.");
             }

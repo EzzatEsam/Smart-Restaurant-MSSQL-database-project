@@ -46,6 +46,7 @@ namespace Db_proj
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ChefStart";
             this.Text = "ChefStart";
             this.ResumeLayout(false);
