@@ -80,7 +80,7 @@ namespace Db_proj
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(149, 266);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 34);
+            this.button1.Size = new System.Drawing.Size(111, 34);
             this.button1.TabIndex = 4;
             this.button1.Text = "Take";
             this.button1.UseVisualStyleBackColor = false;

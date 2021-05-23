@@ -122,6 +122,11 @@ namespace Db_proj
         {
             label5.Text = textBox2.Text == "" ? "Error" : "";
             usrError = textBox2.Text == "";
+            if (!textBox2.Text.All(char.IsLetterOrDigit))
+            {
+                label5.Text = "Error";
+                usrError = true;
+            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
