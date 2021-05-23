@@ -35,7 +35,11 @@ namespace Client
             }
             UpdateList();
         }
-
+        public void Reset()
+        {
+            Shopping.Clear();
+            UpdateList();
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             if (Shopping.Count == 0)

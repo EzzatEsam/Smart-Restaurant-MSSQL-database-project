@@ -24,7 +24,7 @@ namespace Client
         {
 
         }
-
+       
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -60,6 +60,7 @@ namespace Client
         {
             make.Show();
             this.Hide();
+            make.Reset();
         }
 
         private void button4_Click(object sender, EventArgs e)

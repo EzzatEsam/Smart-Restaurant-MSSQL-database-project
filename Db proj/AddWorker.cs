@@ -55,7 +55,20 @@ namespace Db_proj
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            NameError = !(textBox1.Text.All(char.IsLetter)) || textBox1.Text== "";
+            NameError = !(textBox1.Text.All(c => char.IsWhiteSpace(c) || char.IsLetter(c))) || textBox1.Text== "";
+            for (int i = 0; i < textBox1.Text.Length - 1; i++)
+            {
+                if (textBox1.Text[i] == ' ' && textBox1.Text[i + 1] == ' ')
+                {
+                    NameError = true;
+                    break;
+                }
+                else
+                {
+                    NameError = false;
+                }
+
+            }
             Namelabel.Text = !NameError ? "" : "Error";
             
         }
