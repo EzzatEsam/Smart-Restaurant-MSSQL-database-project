@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 
 namespace Client
 {
@@ -26,8 +19,8 @@ namespace Client
         private void button1_Click(object sender, EventArgs e)
         {
             bool containL = false;
-            bool StartS= false;
-            bool spaces= false;
+            bool StartS = false;
+            bool spaces = false;
             if (textBox1.Text.All(c => char.IsWhiteSpace(c) || char.IsLetter(c)))
                 containL = true;
 
@@ -35,7 +28,7 @@ namespace Client
                 StartS = true;
 
 
-            for (int i = 0; i < textBox1.Text.Length-1; i++)
+            for (int i = 0; i < textBox1.Text.Length - 1; i++)
             {
                 if (textBox1.Text[i] == ' ' && textBox1.Text[i + 1] == ' ')
                 {
@@ -52,15 +45,15 @@ namespace Client
             //c => char.IsWhiteSpace(c) || char.IsLetter(c));
             //if (textBox1.Text.StartsWith(" "))
 
-            if (textBox1.Text == string.Empty || !containL || StartS || spaces )
+            if (textBox1.Text == string.Empty || !containL || StartS || spaces)
             {
-            MessageBox.Show("Error, Please enter a valid name.");
+                MessageBox.Show("Error, Please enter a valid name.");
             }
             else
             {
-                    Form_C2 start = new Form_C2(textBox1.Text);
-                    start.Show();
-                    this.Hide();
+                Form_C2 start = new Form_C2(textBox1.Text);
+                start.Show();
+                this.Hide();
             }
         }
 
@@ -69,6 +62,6 @@ namespace Client
 
         }
 
-       
+
     }
 }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Client
@@ -15,7 +10,8 @@ namespace Client
         {
             name = newname;
             InitializeComponent();
-            label1.Text = "Nice to have you " + name ;
+            this.ControlBox = false;
+            label1.Text = "Nice to have you " + name;
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -24,7 +20,7 @@ namespace Client
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-          
+
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Db_proj
@@ -71,7 +65,7 @@ namespace Db_proj
                 login_check = false;
             button1.Enabled = login_check && pass_check;
 
-        }  
+        }
         void textBox2_Leave(object sender, EventArgs e)
         {
             if (textBox2.Text.Length == 0)
@@ -81,7 +75,7 @@ namespace Db_proj
                 textBox2.Text = "Password";
             }
         }
-        void psstxt_enter(object sender , EventArgs e)
+        void psstxt_enter(object sender, EventArgs e)
         {
             if (textBox2.Text == "Password")
             {
@@ -89,7 +83,7 @@ namespace Db_proj
                 textBox2.ForeColor = Color.Black;
                 textBox2.Text = "";
             }
-            
+
 
         }
         private void textBox1_Enter_1(object sender, EventArgs e)
@@ -103,7 +97,7 @@ namespace Db_proj
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             {
-                if (textBox2.Text != "Password" && textBox2.Text !="")
+                if (textBox2.Text != "Password" && textBox2.Text != "")
                     pass_check = true;
                 else
                     pass_check = false;

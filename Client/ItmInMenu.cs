@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Client
 {
     public partial class ItmInMenu : UserControl
     {
+
         Form_C5 main;
         MenuItem current;
         public ItmInMenu(Form_C5 main, MenuItem current)
@@ -19,7 +15,7 @@ namespace Client
             this.current = current;
             label1.Text = "#" + current.number.ToString();
             label2.Text = current.name;
-            label3.Text = current.rating.ToString() +"/5" ;
+            label3.Text = current.rating.ToString() + "/5";
             label4.Text = current.price.ToString() + "LE";
 
 

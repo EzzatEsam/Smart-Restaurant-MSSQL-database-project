@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Db_proj
@@ -14,32 +8,32 @@ namespace Db_proj
     {
 
         AdminStart main;
-        
+
         bool NameError, usrError, passError;
-        public AddWorker(AdminStart main )
+        public AddWorker(AdminStart main)
         {
             InitializeComponent();
             this.main = main;
-           
+
             comboBox1.DataSource = Enum.GetValues(typeof(Emp_type));
             Namelabel.Text = "";
             label5.Text = "";
             label6.Text = "";
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
             if (NameError || passError || usrError)
             {
                 ErrorLabel.Text = "Error";
-                
+
             }
-            else 
+            else
             {
                 Worker it = new Worker(-1, textBox1.Text, (Emp_type)comboBox1.SelectedItem, true, -1, Task.NONE);
-                ErrorLabel.Text = main.AddEmployee(it,textBox2.Text,textBox3.Text) ? "" : "Error";
+                ErrorLabel.Text = main.AddEmployee(it, textBox2.Text, textBox3.Text) ? "" : "Error";
             }
         }
 
@@ -55,7 +49,7 @@ namespace Db_proj
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            NameError = !(textBox1.Text.All(c => char.IsWhiteSpace(c) || char.IsLetter(c))) || textBox1.Text== "";
+            NameError = !(textBox1.Text.All(c => char.IsWhiteSpace(c) || char.IsLetter(c))) || textBox1.Text == "";
             for (int i = 0; i < textBox1.Text.Length - 1; i++)
             {
                 if (textBox1.Text[i] == ' ' && textBox1.Text[i + 1] == ' ')
@@ -70,7 +64,7 @@ namespace Db_proj
 
             }
             Namelabel.Text = !NameError ? "" : "Error";
-            
+
         }
 
         private void label5_Click(object sender, EventArgs e)

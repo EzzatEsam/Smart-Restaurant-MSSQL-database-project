@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Db_proj
@@ -20,6 +15,7 @@ namespace Db_proj
         public WaiterStart(F_login main)
         {
             InitializeComponent();
+            this.ControlBox = false;
             this.main = main;
 
             // temp test for data
@@ -28,13 +24,13 @@ namespace Db_proj
                 ContactRequest temp = new ContactRequest();
                 temp.ContactNumber = i;
                 temp.TableNumber = 14;
-                
+
                 temp.ContactStatus = RequestStatus.PENDING;
                 temp.ContactTime = new TimeSpan(20, 15, 0);
 
                 Reqs.Add(temp);
 
-                
+
             }
             //
 
@@ -55,7 +51,7 @@ namespace Db_proj
                 //
                 ContactRequest temp2 = new ContactRequest();
                 temp2.ContactNumber = i;
-                temp2.ContactTime =  new TimeSpan(20, 15, 0);
+                temp2.ContactTime = new TimeSpan(20, 15, 0);
                 temp2.ContactType = ((float)i % 2f == 0) ? RequestType.CHECKOUT : RequestType.INQUIRY;
                 temp2.TableNumber = 14;
                 temp2.ContactStatus = RequestStatus.PENDING;
@@ -109,9 +105,9 @@ namespace Db_proj
             panel3.BringToFront();
             check temp = new check(it, this);
             panel3.Controls.Add(temp);
-            
 
-            
+
+
 
         }
         public void UpdateList()
@@ -149,7 +145,7 @@ namespace Db_proj
                 ContactRequest item = Reqs[i];
                 RequestSmol it = new RequestSmol(item, this);
                 panel2.Controls.Add(it);
-                it.Location = new Point(5, 20 + i * VInterval*3);
+                it.Location = new Point(5, 20 + i * VInterval * 3);
             }
         }
 

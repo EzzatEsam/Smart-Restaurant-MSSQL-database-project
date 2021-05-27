@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Db_proj
@@ -14,15 +8,15 @@ namespace Db_proj
     {
         ChefStart main;
         Order CurrentOrder;
-        int VInterval=40 ,HInterval = 200;
+        int VInterval = 40, HInterval = 200;
         bool taken = false;
-        public OrderBig(ChefStart main,Order CurrentOrder)
+        public OrderBig(ChefStart main, Order CurrentOrder)
         {
             InitializeComponent();
             this.main = main;
             this.CurrentOrder = CurrentOrder;
             UpdateList();
-          
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -51,13 +45,13 @@ namespace Db_proj
                 if (taken)
                 {
                     CheckBox temp2 = new CheckBox();
-                    
+
                     panel1.Controls.Add(temp2);
-                    temp2.Location = new Point(20+ HInterval, 20 + i * VInterval);
+                    temp2.Location = new Point(20 + HInterval, 20 + i * VInterval);
                 }
             }
             label2.Text = "Time :" + CurrentOrder.OrderTime.ToString();
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -80,7 +74,7 @@ namespace Db_proj
                 main.SetReady(CurrentOrder);
                 main.UpdateList();
             }
-            
+
         }
     }
 }

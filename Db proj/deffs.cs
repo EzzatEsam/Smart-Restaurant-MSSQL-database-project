@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Drawing;
 namespace Db_proj
 {
     public enum Emp_type
     {
-        CHEF ,WAITER 
+        CHEF, WAITER
     }
     public enum Order_status
     {
-        PENDING, READY , DELIVERED
+        PENDING, READY, DELIVERED
     }
     public enum Task
     {
@@ -22,16 +19,17 @@ namespace Db_proj
     }
     public enum RequestType
     {
-        INQUIRY , CHECKOUT
+        INQUIRY, CHECKOUT
     }
     public enum RequestStatus
     {
-        PENDING ,ONIT ,DONE
+        PENDING, ONIT, DONE
     }
     public class MenuItem
     {
         public int number; public string name; public string category; public float price;
-        public MenuItem(int number , string name ,string category ,float price)
+        public Bitmap Image;
+        public MenuItem(int number, string name, string category, float price)
         {
             this.number = number;
             this.name = name;
@@ -41,11 +39,11 @@ namespace Db_proj
     }
     public class Order
     {
-        public int OrderID, ClientID,TableNo;
+        public int OrderID, ClientID, TableNo;
         public Order_status Status;
         public TimeSpan OrderTime;
-        public List<MenuItem> Items = new List<MenuItem>() ;
-        
+        public List<MenuItem> Items = new List<MenuItem>();
+
     }
     public class ContactRequest
     {
@@ -54,12 +52,12 @@ namespace Db_proj
         public TimeSpan ContactTime;
         public RequestType ContactType;
         public RequestStatus ContactStatus;
-        public int OrderNumber=-1;
+        public int OrderNumber = -1;
     }
     public class Worker
     {
-        public int ssid;public string name; public Emp_type type; public bool IsFree; public int CurrentTask; public Task cType;
-        public Worker(int ssid , string name ,Emp_type type ,bool IsFree ,int current ,Task tskTYpe )
+        public int ssid; public string name; public Emp_type type; public bool IsFree; public int CurrentTask; public Task cType;
+        public Worker(int ssid, string name, Emp_type type, bool IsFree, int current, Task tskTYpe)
         {
             this.ssid = ssid;
             this.name = name;

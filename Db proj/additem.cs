@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
+using System.Drawing;
 namespace Db_proj
 {
     public partial class additem : UserControl
     {
-        bool NameError ,CatError,PriceError;
+        bool NameError, CatError, PriceError;
         AdminStart main;
         public additem(AdminStart main)
         {
@@ -59,7 +54,7 @@ namespace Db_proj
             }
             else
             {
-                MenuItem it = new MenuItem(-1, textBox1.Text, textBox2.Text,float.Parse( textBox3.Text));
+                MenuItem it = new MenuItem(-1, textBox1.Text, textBox2.Text, float.Parse(textBox3.Text));
                 ErrorLabel.Text = main.AddToMenu(it) ? "" : "Error";
             }
         }
@@ -74,16 +69,29 @@ namespace Db_proj
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            // image filters  
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                // display image in picture box  
+                pictureBox1.Image = new Bitmap(open.FileName); 
+                
+            }
+        }
+
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             float test;
-            PriceError = !float.TryParse(textBox3.Text,out test) || textBox3.Text == "" || test <=0 ;
+            PriceError = !float.TryParse(textBox3.Text, out test) || textBox3.Text == "" || test <= 0;
             label6.Text = !PriceError ? "" : "Error";
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            CatError = !(textBox2.Text.All(char.IsLetter)) || textBox2.Text == "" ;
+            CatError = !(textBox2.Text.All(char.IsLetter)) || textBox2.Text == "";
             label5.Text = !CatError ? "" : "Error";
         }
     }

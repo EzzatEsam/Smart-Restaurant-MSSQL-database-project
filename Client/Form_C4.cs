@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Client
@@ -16,6 +11,7 @@ namespace Client
         {
             name = newname;
             make = newmake;
+            this.ControlBox = false;
             InitializeComponent();
             label1.Text = "Hello " + name + ", Make another order?";
         }
@@ -24,7 +20,7 @@ namespace Client
         {
 
         }
-       
+
         private void label2_Click(object sender, EventArgs e)
         {
 

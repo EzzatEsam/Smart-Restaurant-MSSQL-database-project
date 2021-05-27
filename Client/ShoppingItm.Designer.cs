@@ -36,7 +36,7 @@ namespace Client
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 21);
+            this.label1.Location = new System.Drawing.Point(14, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 0;
@@ -44,7 +44,7 @@ namespace Client
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(107, 17);
+            this.button1.Location = new System.Drawing.Point(107, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(28, 23);
             this.button1.TabIndex = 1;
@@ -59,7 +59,7 @@ namespace Client
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "ShoppingItm";
-            this.Size = new System.Drawing.Size(151, 54);
+            this.Size = new System.Drawing.Size(151, 35);
             this.Load += new System.EventHandler(this.ShoppingItm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

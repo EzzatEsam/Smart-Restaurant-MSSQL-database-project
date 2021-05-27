@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Db_proj
@@ -15,7 +8,7 @@ namespace Db_proj
         Order current;
         ChefStart main;
         int labelmaxsize = 50;
-        public OrderSmol(Order current , ChefStart c)
+        public OrderSmol(Order current, ChefStart c)
         {
             InitializeComponent();
             this.current = current;
@@ -36,7 +29,7 @@ namespace Db_proj
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void OrderSmol_Load(object sender, EventArgs e)

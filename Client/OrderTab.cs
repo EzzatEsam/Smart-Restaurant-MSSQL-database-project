@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Client
@@ -25,17 +20,17 @@ namespace Client
             {
                 MenuItem it = current.Items[i];
                 label2.Text += it.name + ",";
-                if (label2.Text.Length >max)
+                if (label2.Text.Length > max)
                 {
                     label2.Text += "..";
                     break;
                 }
-                
+
 
             }
             label2.Text += ")";
             label3.Text = "Time :" + current.OrderTime.ToString();
-            label4.Text = "Status:" + current.Status.ToString(); 
+            label4.Text = "Status:" + current.Status.ToString();
         }
 
         private void OrderTab_Load(object sender, EventArgs e)

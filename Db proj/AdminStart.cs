@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Db_proj
 {
     public enum NextsAdmin
     {
-        ADMINENTER, WORKERSLIST  ,WORKERADD ,MENULIST  ,MENUADD
+        ADMINENTER, WORKERSLIST, WORKERADD, MENULIST, MENUADD
     }
     public partial class AdminStart : Form
     {
@@ -22,23 +15,24 @@ namespace Db_proj
         public AdminStart(F_login it)
         {
             InitializeComponent();
+            this.ControlBox = false;
             current = new pg_1(this);
             currentstate = NextsAdmin.ADMINENTER;
             this.Controls.Add(current);
             current.Show();
             main = it;
         }
-        public bool AddEmployee( Worker it, string Usr , string Pass)
+        public bool AddEmployee(Worker it, string Usr, string Pass)
         {
             // here we add new employee to db and check if it can be added
             return false;
         }
-        public bool DeleteEmplyee( int ID)
+        public bool DeleteEmplyee(int ID)
         {
             //delete an employee with given ID from DB
             return false;
         }
-        public bool AddToMenu(MenuItem it )
+        public bool AddToMenu(MenuItem it)
         {
             // here we add new item to db and check if it can be added
             return false;
@@ -65,10 +59,10 @@ namespace Db_proj
                 case NextsAdmin.MENULIST:
                     temp = new MenuList(this);
                     break;
-              
+
                 case NextsAdmin.MENUADD:
                     temp = new additem(this);
-                   break;
+                    break;
                 default:
                     temp = new pg_1(this);
                     break;
@@ -78,7 +72,7 @@ namespace Db_proj
             current.Dispose();
             current = temp;
             currentstate = it;
-            this.Controls.Add(current); 
+            this.Controls.Add(current);
         }
 
 

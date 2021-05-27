@@ -86,13 +86,14 @@ namespace Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ItmInMenu";
-            this.Size = new System.Drawing.Size(480, 45);
+            this.Size = new System.Drawing.Size(478, 43);
             this.ResumeLayout(false);
             this.PerformLayout();
 
