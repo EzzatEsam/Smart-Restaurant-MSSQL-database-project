@@ -6,9 +6,14 @@ namespace Client
 {
     public partial class Form_C1 : Form
     {
+        Controller contobj;
         public Form_C1()
         {
             InitializeComponent();
+        }
+        private void Form_C1_Load (object sender, EventArgs e)
+        {
+            contobj = new Controller();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -49,8 +54,13 @@ namespace Client
             {
                 MessageBox.Show("Error, Please enter a valid name.");
             }
+            else if (textBox2.Text == string.Empty || !textBox2.Text.All(C=> char.IsDigit(C)) || StartS || spaces)
+            {
+                MessageBox.Show("Error, Please enter a valid table number.");
+            }
             else
             {
+
                 Form_C2 start = new Form_C2(textBox1.Text);
                 start.Show();
                 this.Hide();
@@ -62,6 +72,9 @@ namespace Client
 
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
