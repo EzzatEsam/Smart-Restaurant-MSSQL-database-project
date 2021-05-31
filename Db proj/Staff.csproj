@@ -64,7 +64,10 @@
     <Compile Include="check.Designer.cs">
       <DependentUpon>check.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBControlller.cs" />
+    <Compile Include="DBManager.cs" />
     <Compile Include="deffs.cs" />
+    <Compile Include="FormOrganiser.cs" />
     <Compile Include="OrderBig.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,7 +160,6 @@
     <EmbeddedResource Include="WaiterStart.resx">
       <DependentUpon>WaiterStart.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="WorkersList.resx">
       <DependentUpon>WorkersList.cs</DependentUpon>
     </EmbeddedResource>

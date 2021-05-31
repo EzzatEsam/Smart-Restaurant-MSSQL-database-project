@@ -145,6 +145,7 @@ namespace Db_proj
             this.Controls.Add(this.dataGridView1);
             this.Name = "WorkersList";
             this.Size = new System.Drawing.Size(662, 333);
+            this.Load += new System.EventHandler(this.WorkersList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

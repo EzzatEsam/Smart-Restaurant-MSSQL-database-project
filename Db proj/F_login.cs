@@ -8,7 +8,8 @@ namespace Db_proj
     public partial class F_login : Form
     {
         bool login_check, pass_check;
-        public F_login()
+        FormOrganiser main;
+        public F_login(FormOrganiser main)
         {
             InitializeComponent();
             textBox2.Text = "Password";
@@ -16,6 +17,7 @@ namespace Db_proj
             textBox2.ForeColor = Color.Gray;
             textBox1.ForeColor = Color.Gray;
             button1.Enabled = false;
+            this.main = main;
         }
         public void Reset()
         {
@@ -34,28 +36,9 @@ namespace Db_proj
         {
             // here we send the login details to db and go to the next form according to the type of the returned account user
             // right no we just go with "chef" "admin" "waiter"
-            switch (textBox1.Text)
-            {
-                case "admin":
-                    Form nextAdmin = new AdminStart(this);
-                    nextAdmin.Show();
-                    this.Hide();
-                    break;
-                case "chef":
-                    Form nextChef = new ChefStart(this);
-                    nextChef.Show();
-                    this.Hide();
-                    break;
-                case "waiter":
-                    Form nextWaiter = new WaiterStart(this);
-                    nextWaiter.Show();
-                    this.Hide();
-                    break;
-                default:
-                    label1.Text = "Wrong combination";
-                    label1.ForeColor = Color.Red;
-                    break;
-            }
+            main.Controller.Login(textBox1.Text, textBox2.Text);
+            label1.Text = "Wrong combination";
+            label1.ForeColor = Color.Red;
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

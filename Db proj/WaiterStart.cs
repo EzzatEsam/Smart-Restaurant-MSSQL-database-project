@@ -7,12 +7,12 @@ namespace Db_proj
 {
     public partial class WaiterStart : Form
     {
-        F_login main;
+        FormOrganiser main;
         List<Order> Orders = new List<Order>();
         List<ContactRequest> Reqs = new List<ContactRequest>();
         int VInterval = 40;
         bool IsBusy = false;
-        public WaiterStart(F_login main)
+        public WaiterStart(FormOrganiser main)
         {
             InitializeComponent();
             this.ControlBox = false;
@@ -69,9 +69,7 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.Show();
-            main.Reset();
-            this.Dispose();
+            main.GoTo(0);
         }
         public void SetDelivered(Order it)
         {

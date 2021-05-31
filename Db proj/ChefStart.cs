@@ -7,10 +7,10 @@ namespace Db_proj
 {
     public partial class ChefStart : Form
     {
-        F_login main;
+        FormOrganiser main;
         List<Order> Orders = new List<Order>();
         int VInterval = 40;
-        public ChefStart(F_login main)
+        public ChefStart(FormOrganiser main)
         {
             InitializeComponent();
             this.ControlBox = false;
@@ -69,9 +69,7 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.Show();
-            main.Reset();
-            this.Dispose();
+            main.GoTo(0);
         }
         public void Expand(Order it)
         {

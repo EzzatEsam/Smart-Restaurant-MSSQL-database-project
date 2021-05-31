@@ -9,10 +9,10 @@ namespace Db_proj
     }
     public partial class AdminStart : Form
     {
-        F_login main;
+        public FormOrganiser main;
         UserControl current;
         NextsAdmin currentstate;
-        public AdminStart(F_login it)
+        public AdminStart(FormOrganiser it)
         {
             InitializeComponent();
             this.ControlBox = false;
@@ -78,9 +78,7 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.Show();
-            main.Reset();
-            this.Dispose();
+            main.GoTo(0);
         }
     }
 }
