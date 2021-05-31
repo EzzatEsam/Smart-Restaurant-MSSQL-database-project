@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 namespace Client
 {
+    public static class DBStrings
+    {
+        public static string ConnectionString = @"Data Source=.;Initial Catalog=RESTDB;Integrated Security=True";
+        public static string LoginCommand = "TryLogin";
+        public static string GetAllEmpsCommand = "GetAllEmps";
+    }
     public enum Emp_type
     {
         CHEF, WAITER
