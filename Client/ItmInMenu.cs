@@ -25,5 +25,9 @@ namespace Client
         {
             main.AddToShopping(current);
         }
+
+        private void ItmInMenu_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

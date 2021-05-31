@@ -48,7 +48,7 @@ namespace Client
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 16);
+            this.label2.Location = new System.Drawing.Point(117, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 1;
@@ -57,7 +57,7 @@ namespace Client
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(203, 16);
+            this.label3.Location = new System.Drawing.Point(225, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 15);
             this.label3.TabIndex = 2;
@@ -66,7 +66,7 @@ namespace Client
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(319, 16);
+            this.label4.Location = new System.Drawing.Point(336, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 15);
             this.label4.TabIndex = 3;
@@ -74,12 +74,14 @@ namespace Client
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(386, 12);
+            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(456, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ItmInMenu
@@ -93,7 +95,8 @@ namespace Client
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ItmInMenu";
-            this.Size = new System.Drawing.Size(478, 43);
+            this.Size = new System.Drawing.Size(587, 43);
+            this.Load += new System.EventHandler(this.ItmInMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
