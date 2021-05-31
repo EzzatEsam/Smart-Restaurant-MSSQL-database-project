@@ -67,4 +67,10 @@ namespace Db_proj
             cType = tskTYpe;
         }
     }
+    public static class DBStrings
+    {
+        public static string ConnectionString = @"Data Source=.;Initial Catalog=RESTDB;Integrated Security=True";
+        public static string LoginCommand = "TryLogin";
+        public static string GetAllEmpsCommand = "GetAllEmps";
+    }
 }

@@ -13,7 +13,10 @@ namespace Db_proj
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new F_login());
+            FormOrganiser Organiser = new FormOrganiser();
+            F_login StartForm = new F_login(Organiser);
+            Organiser.Start = StartForm;
+            Application.Run(StartForm);
         }
     }
 }

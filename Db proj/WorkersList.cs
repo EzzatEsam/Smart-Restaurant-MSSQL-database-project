@@ -9,13 +9,13 @@ namespace Db_proj
         NextsAdmin back = NextsAdmin.ADMINENTER;
         // we get the workers list from db in the constructor
         // right now we just creat a demo list
-        Worker[] current =
-        {
-                new Worker(12,"Ahmed", Emp_type.CHEF,false,444, Task.ORDER ),
-                new Worker(13, "Ahmed", Emp_type.CHEF, true, -1, Task.NONE),
-                new Worker(14, "Hazem", Emp_type.WAITER, false, 532, Task.ORDER),
-                new Worker(15, "Khaled", Emp_type.WAITER, false, 133, Task.CLIENTCONTACT)
-        };
+        //Worker[] current =
+        //{
+        //        new Worker(12,"Ahmed", Emp_type.CHEF,false,444, Task.ORDER ),
+        //        new Worker(13, "Ahmed", Emp_type.CHEF, true, -1, Task.NONE),
+        //        new Worker(14, "Hazem", Emp_type.WAITER, false, 532, Task.ORDER),
+        //        new Worker(15, "Khaled", Emp_type.WAITER, false, 133, Task.CLIENTCONTACT)
+        //};
         public WorkersList(AdminStart main)
         {
             InitializeComponent();
@@ -33,10 +33,11 @@ namespace Db_proj
             // here we reload the employees db 
             dataGridView1.Rows.Clear();
 
-            foreach (Worker it in current)
-            {
-                dataGridView1.Rows.Add(it.ssid.ToString(), it.name, it.type, it.IsFree, it.CurrentTask, it.cType);
-            }
+            //foreach (Worker it in current)
+            //{
+            //    dataGridView1.Rows.Add(it.ssid.ToString(), it.name, it.type, it.IsFree, it.CurrentTask, it.cType);
+            //}
+            dataGridView1.DataSource = main.main.Controller.GetAllEmployees();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -49,6 +50,11 @@ namespace Db_proj
             int ssid = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             main.DeleteEmplyee(ssid);
             UpdateList();
+        }
+
+        private void WorkersList_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
