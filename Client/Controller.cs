@@ -23,7 +23,7 @@ namespace Client
             string query = "spchecktable";
             var output1 = dm.ExecuteNonQuery(query, dict);
             return (int)output1;
-            
+            // wtf is wrong with you ?
         }
 
     }
