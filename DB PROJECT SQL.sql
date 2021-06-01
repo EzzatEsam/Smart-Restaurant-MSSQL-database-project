@@ -4,7 +4,6 @@ GO
 IF DB_ID('RESTDB') IS NOT NULL 
 begin
 DROP database RESTDB;
-
 end
 -----------------
 Create database RESTDB;
@@ -166,7 +165,8 @@ INSERT INTO CHEF(USERNAME,CHname ) VALUES
 ('Ahmed' ,'Ahmed Ali Hussein')
 ,('Hazem4','Hazem Abd-Alrahman')
 ,('Marwan','Marawn Mohsen');
-INSERT INTO Waiter (USERNAME,WNAME) VALUES ('Abdo14','Abd-Alrahman Emad Elsayed'),
+INSERT INTO Waiter (USERNAME,WNAME) VALUES
+('Abdo14','Abd-Alrahman Emad Elsayed'),
 ('OmarGamal','Omar Gamal Mohamed');
 insert into MENUITEMS(INAME , CATEGORY ,PRICE) values
 ('Chicken shawarma' ,'Sandwitches' ,25),
