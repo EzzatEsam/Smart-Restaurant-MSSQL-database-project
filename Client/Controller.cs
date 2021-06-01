@@ -21,8 +21,8 @@ namespace Client
         {
             var dict = new Dictionary<string, object>() { { "@TNUMBER", tablenumber } };
             string query = "spchecktable";
-            //var output1 = dm.ExecuteNonQuery(query, dict);
-            return (int) dm.ExecuteScalar(query, dict);
+            var output1 = dm.ExecuteNonQuery(query, dict);
+            return (int)output1;
             
         }
 

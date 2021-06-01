@@ -10,10 +10,11 @@ namespace Client
         public Form_C1()
         {
             InitializeComponent();
+            c1 = new Controller();
         }
         private void Form_C1_Load (object sender, EventArgs e)
         {
-            c1= new Controller();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
