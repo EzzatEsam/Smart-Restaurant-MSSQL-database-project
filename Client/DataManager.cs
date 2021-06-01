@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public class DBManager
+    public class DataManager
     {
         string DB_Connection_String = DBStrings.ConnectionString;
         SqlConnection myConnection;
 
-        public DBManager()
+        public DataManager()
         {
             myConnection = new SqlConnection(DB_Connection_String);
             try

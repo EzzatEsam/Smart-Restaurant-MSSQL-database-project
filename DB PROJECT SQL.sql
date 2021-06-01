@@ -131,6 +131,29 @@ union select WID ,WNAME ,ISFREE ,C_RESPONSE  from WAITER
 ;
 end
 go
+create proc spchecktable
+@TNUMBER int
+as 
+begin
+select count(TNUMBER) from TABLE_ where TNUMBER=@TNUMBER;
+end
+go
+create proc spchecktablestatus
+@TNUMBER int
+as 
+begin
+select count(TNUMBER) from TABLE_ where TNUMBER=@TNUMBER and IsOCCUPIED=0;
+end
+go 
+create proc spinsertClient
+@TNUMBER int,
+@Cname varchar(200)
+as 
+begin
+insert into Client (TNUMBER, Cname)
+values (@TNUMBER, @Cname)
+end
+go
 -- Data samples
 
 INSERT into ACCOUNT(USERNAME ,PASSWORD_, TYPE_) VALUES ('admin' ,'admin',0)   -- the admin
@@ -167,6 +190,7 @@ insert into MENUITEMS(INAME , CATEGORY ,PRICE) values
 ('Sprite' ,'Juices' ,10),
 ('Extra Bread' ,'Extra' ,5),
 ('Extra Fries' ,'Extra' ,5);
+
 
 
 

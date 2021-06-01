@@ -29,11 +29,6 @@ namespace Client
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Form_C6
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -64,17 +59,15 @@ namespace Client
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(666, 284);
+            this.panel1.Size = new System.Drawing.Size(666, 294);
             this.panel1.TabIndex = 5;
             // 
             // Form_C6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form_C6";
             this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -82,9 +75,6 @@ namespace Client
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_C6";
             this.Text = "Form_C6";
-            this.ResumeLayout(false);
-
-           // this.Load += new System.EventHandler(this.Form_C6_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

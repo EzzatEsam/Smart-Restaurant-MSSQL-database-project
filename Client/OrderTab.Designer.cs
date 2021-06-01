@@ -78,25 +78,29 @@ namespace Client
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(485, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "Expand";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // OrderTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.Name = "OrderTab";
-            this.Size = new System.Drawing.Size(595, 49);
+            this.Size = new System.Drawing.Size(593, 47);
             this.Load += new System.EventHandler(this.OrderTab_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
