@@ -26,6 +26,7 @@ namespace Db_proj
                         
                         if(Current !=null)
                         Current.Dispose();
+                        Start.Reset();
                         Start.Show();
                         break;
                     }
