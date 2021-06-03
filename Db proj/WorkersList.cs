@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using System.Collections.Generic;
 namespace Db_proj
 {
     public partial class WorkersList : UserControl
     {
         AdminStart main;
         NextsAdmin back = NextsAdmin.ADMINENTER;
-        // we get the workers list from db in the constructor
-        // right now we just creat a demo list
-        //Worker[] current =
-        //{
-        //        new Worker(12,"Ahmed", Emp_type.CHEF,false,444, Task.ORDER ),
-        //        new Worker(13, "Ahmed", Emp_type.CHEF, true, -1, Task.NONE),
-        //        new Worker(14, "Hazem", Emp_type.WAITER, false, 532, Task.ORDER),
-        //        new Worker(15, "Khaled", Emp_type.WAITER, false, 133, Task.CLIENTCONTACT)
-        //};
+        List<Worker> Workers = new List<Worker>();
         public WorkersList(AdminStart main)
         {
             InitializeComponent();
@@ -33,13 +25,7 @@ namespace Db_proj
         public void UpdateList()
         {
             // here we reload the employees db 
-            dataGridView1.Rows.Clear();
-
-            //foreach (Worker it in current)
-            //{
-            //    dataGridView1.Rows.Add(it.ssid.ToString(), it.name, it.type, it.IsFree, it.CurrentTask, it.cType);
-            //}
-            dataGridView1.DataSource = main.organiser.Controller.GetAllEmployees();
+            Workers = main.organiser.Controller.GetAllEmployees();
         }
 
         private void button2_Click(object sender, EventArgs e)

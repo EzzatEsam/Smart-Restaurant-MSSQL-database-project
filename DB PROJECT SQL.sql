@@ -3,6 +3,7 @@ USE master;
 GO
 IF DB_ID('RESTDB') IS NOT NULL 
 begin
+alter database [RESTDB] set single_user with rollback immediate
 DROP database RESTDB;
 end
 -----------------
@@ -22,6 +23,10 @@ TYPE_ smallINT not null,
 check (type_ >=0 and type_ <=2) -- 0 admin  1 chef 2 waiter
 );
 
+Create Table LOGO
+(
+PIC VARBINARY(max)  not null
+)
 
 CREATE TABLE MENUITEMS
 (
@@ -118,6 +123,21 @@ IF (SELECT COUNT(*) FROM ACCOUNT where ACCOUNT.TYPE_ =0) > 1
 begin
 ROLLBACK TRANSACTION
 END
+
+go
+create trigger OnlyOneLogo
+on LOGO
+after insert
+as
+    declare @tableCount int
+    select @tableCount = Count(*)
+    from LOGO
+
+    if @tableCount > 1
+    begin
+        rollback
+    end
+go
 -- Procedures
 go
 CREATE PROCEDURE  TryLogin @username char(20) ,@pass char(20)
@@ -148,6 +168,23 @@ end
 
 
 go
+create procedure UpdateLogo @logo varbinary(max)
+as
+begin
+if (select count(* )from LOGO) >0
+update LOGO set LOGO.PIC = @logo;
+else
+insert into LOGO values (@logo);
+end
+
+go
+create procedure GetLogo
+as
+begin
+select LOGO.PIC from LOGO;
+end
+
+go
 
 create procedure EmpStatus @type smallint , @ID smallint , @free bit
 as
@@ -166,12 +203,7 @@ select Client.CNAME from Client where Client.CID = @num;
 end
 go
 
-create procedure GetClientName @num tinyint
-as
-begin
-select Client.CNAME from Client where Client.CID = @num;
-end
-go
+
 
 create procedure GetWorkerName @type smallint , @ID smallint 
 as
@@ -244,6 +276,23 @@ create procedure AddMenuItem  @name nvarchar(20), @category nvarchar(20) , @pric
 as
 begin
 INSERT into MENUITEMS(INAME ,CATEGORY, PRICE,Picture) VALUES (@name ,@category,@price,@image);
+end
+go
+
+create procedure DeleteMenueItem @num int
+as
+begin
+delete from MENUITEMS where MENUITEMS.ITMNUMBER = @num;
+end
+go
+
+create procedure DeleteFromEmployees @num int , @type tinyint
+as
+begin
+if @type =1
+delete from CHEF where CHEF.CHID = @num;
+else if @type = 2
+delete from WAITER  where WAITER.WID = @num;
 end
 
 

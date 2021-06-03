@@ -17,6 +17,7 @@ namespace Client
             label2.Text = current.name;
             label3.Text = current.rating == -1 ? "UNRATED": current.rating.ToString() + "/5";
             label4.Text = current.price.ToString() + "LE";
+            pictureBox1.Image = current.Image;
 
 
         }

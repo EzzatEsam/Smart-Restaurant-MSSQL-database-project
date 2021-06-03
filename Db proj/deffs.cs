@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Data;
+using System.IO;
+
 namespace Db_proj
 {
     public enum Emp_type
@@ -30,6 +32,7 @@ namespace Db_proj
     {
         public int number; public string name; public string category; public float price;
         public Image Image;
+        public float rating;
         public MenuItem(int number, string name, string category, float price)
         {
             this.number = number;
@@ -59,6 +62,7 @@ namespace Db_proj
     public class Worker
     {
         public int ssid; public string name; public Emp_type type; public bool IsFree; public int CurrentTask; public Task cType;
+        
         public Worker(int ssid, string name, Emp_type type, bool IsFree, int current, Task tskTYpe)
         {
             this.ssid = ssid;
@@ -69,7 +73,7 @@ namespace Db_proj
             cType = tskTYpe;
         }
     }
-    public static class DBStrings
+    public static class DataBaseEssentials
     {
         public static string ConnectionString = @"Data Source=AMRO-LAPTOP\TEW_SQLEXPRESS;Initial Catalog=RESTDB;Integrated Security=True";
         public static string LoginCommand = "TryLogin";
@@ -88,11 +92,40 @@ namespace Db_proj
         public static string SetOrderStatusCommand = "SetOrderStatus";
         public static string SetRequestStatusCommand = "SetRequest";
         public static string GetAllOrderByClientCommand = "GetAllClientOrders";
+        public static string UpdateLogoCommand = "UpdateLogo";
+        public static string GetLogoCommand = "GetLogo";
+        public static string DeleteItemCommand = "DeleteMenueItem";
+        public static string DeleteWorkerCommand = "DeleteFromEmployees";
         public static MenuItem ConvertToMenuItemClass(DataRow it)
         {
+            MenuItem output =new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]));
 
-            return new MenuItem(Convert.ToInt32( it["ITMNUMBER"]), Convert.ToString(it["INAME"]),Convert.ToString(it["CATEGORY"]),(float)Convert.ToDouble(it["PRICE"]));
+            return output;
 
+        }
+
+        public static Worker ConvertToWorkerClass(DataRow it)
+        {
+
+        }
+        public static Image BinaryToImage(byte[] binaryData)
+        {
+            if (binaryData == null)
+            {
+                return null;
+            }
+            MemoryStream ms = new MemoryStream(binaryData);
+            
+            Image img = Image.FromStream(ms);
+            return img;
+
+            //Image rImage = null;
+
+            //using (MemoryStream ms = new MemoryStream(binaryData))
+            //{
+            //    rImage = Image.FromStream(ms);
+            //}
+            //return rImage;
         }
     }
 }

@@ -33,5 +33,10 @@ namespace Db_proj
         {
             main.GoToUsrContrl(NextsAdmin.MODIACCOUNT);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            main.GoToUsrContrl(NextsAdmin.CHANGELOGO);
+        }
     }
 }

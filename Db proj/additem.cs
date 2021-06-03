@@ -81,7 +81,7 @@ namespace Db_proj
             {
                 // display image in picture box  
                 pictureBox1.Image = new Bitmap(open.FileName);
-                filename = open.FileName;
+                //filename = open.FileName;
 
 
             }

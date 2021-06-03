@@ -5,7 +5,8 @@ using System.Text;
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
-
+using System.IO;
+using System.Drawing.Imaging;
 namespace Db_proj
 {
     public class DBControlller
@@ -20,7 +21,7 @@ namespace Db_proj
         {
             DBManager manager = new DBManager();
             var dict = new Dictionary<string, object>() { { "username", user }, { "pass", password } };
-            DataTable output = manager.ExecuteReader(DBStrings.LoginCommand, dict);
+            DataTable output = manager.ExecuteReader(DataBaseEssentials.LoginCommand, dict);
             if (output != null)
             {
                 CurrentID = (int)output.Rows[0][0];
@@ -33,7 +34,7 @@ namespace Db_proj
         public DataTable GetAllEmployees()
         {
             DBManager manager = new DBManager();
-            var output = manager.ExecuteReader(DBStrings.GetAllEmpsCommand, null);
+            var output = manager.ExecuteReader(DataBaseEssentials.GetAllEmpsCommand, null);
             manager.CloseConnection();
             return (DataTable)output;
         }
@@ -41,14 +42,14 @@ namespace Db_proj
         {
             DBManager manager = new DBManager();
             var dict = new Dictionary<string, object>() { { "AccNum", n }, { "UsrName", usr }, { "pass", pass }, { "OldPass", oldpass } };
-            int output = manager.ExecuteNonQuery(DBStrings.UpdateAccountCommand, dict);
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.UpdateAccountCommand, dict);
             manager.CloseConnection();
             return output != 0;
         }
         public DataTable GetAllMenu()
         {
             DBManager manager = new DBManager();
-            var output = manager.ExecuteReader(DBStrings.GetAllMenuCommand, null);
+            var output = manager.ExecuteReader(DataBaseEssentials.GetAllMenuCommand, null);
             manager.CloseConnection();
 
             return (DataTable)output;
@@ -56,17 +57,59 @@ namespace Db_proj
         public bool AddItem(MenuItem it)
         {
             DBManager manager = new DBManager();
-            //var test = (byte[])((new ImageConverter()).ConvertTo(it.Image, typeof(byte[]))) ;
-            var dict = new Dictionary<string, object>() { { "name", it.name}, { "@category", it.category }, { "@price", it.price }, { "@image", it.Image } };
-            int output = manager.ExecuteNonQuery(DBStrings.AddItemCommand, dict);
+            var img = (byte[])((new ImageConverter()).ConvertTo(it.Image, typeof(byte[]))) ;
+            var dict = new Dictionary<string, object>() { { "name", it.name}, { "@category", it.category }, { "@price", it.price }, { "@image", img } };
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.AddItemCommand, dict);
             manager.CloseConnection();
             return output != 0;
+        }
+
+        public bool DeleteItem(int it)
+        {
+            DBManager manager = new DBManager();
+            var dict = new Dictionary<string, object>() { { "@num", it } };
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.DeleteItemCommand, dict);
+            manager.CloseConnection();
+            return output != 0;
+        }
+
+        public bool DeleteWorker(int it ,Emp_type type)
+        {
+            DBManager manager = new DBManager();
+            var dict = new Dictionary<string, object>() { { "@num", it },{ "@type" ,(int) type } };
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.DeleteWorkerCommand, dict);
+            manager.CloseConnection();
+            return output != 0;
+        }
+
+
+        public bool ChangeLogo(Image it)
+        {
+
+            MemoryStream ms = new MemoryStream();
+            it.Save(ms, ImageFormat.Jpeg);
+            byte[] photo_aray = new byte[ms.Length];
+            ms.Position = 0;
+            ms.Read(photo_aray, 0, photo_aray.Length);
+            DBManager manager = new DBManager();
+            //var test = (byte[])((new ImageConverter()).ConvertTo(it, typeof(byte[]))) ;
+            var dict = new Dictionary<string, object>() { { "logo", photo_aray } };
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.UpdateLogoCommand, dict);
+            manager.CloseConnection();
+            return output != 0;
+        }
+        public byte[] GetLogo()
+        {
+            DBManager manager = new DBManager();
+            var output = manager.ExecuteScalar(DataBaseEssentials.GetLogoCommand, null);
+            manager.CloseConnection();
+            return (byte[])output ;
         }
         public bool AddEmp(Worker it,string account ,string pass )
         {
             DBManager manager = new DBManager();
             var dict = new Dictionary<string, object>() { { "@type",( it.type == Emp_type.CHEF )? 1 :2 }, { "@name", it.name }, { "pass", pass }, { "@account", account } };
-            int output = manager.ExecuteNonQuery(DBStrings.AddEmpCommand, dict);
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.AddEmpCommand, dict);
             manager.CloseConnection();
             return output != 0;
         }
@@ -75,7 +118,7 @@ namespace Db_proj
         {
             DBManager manager = new DBManager();
             var dict = new Dictionary<string, object>() { { "@type", (type == Emp_type.CHEF) ? 1 : 2 }, { "@ID",ID }, { "@free", isfree } };
-            int output = manager.ExecuteNonQuery(DBStrings.SetEmpStatsCommand, dict);
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.SetEmpStatsCommand, dict);
             manager.CloseConnection();
             return output != 0;
         }
@@ -84,7 +127,7 @@ namespace Db_proj
             DBManager manager = new DBManager();
             
             var dict = new Dictionary<string, object>() { { "@accid", ID } };
-            var output = manager.ExecuteScalar(DBStrings.GetWokerNameCommand, dict);
+            var output = manager.ExecuteScalar(DataBaseEssentials.GetWokerNameCommand, dict);
             manager.CloseConnection();
             return output.ToString();
         }
@@ -92,7 +135,7 @@ namespace Db_proj
         {
             DBManager manager = new DBManager();
             var dict = new Dictionary<string, object>() { { "@status", (int)stats }, { "@ID", ID }, };
-            int output = manager.ExecuteNonQuery(DBStrings.SetOrderStatusCommand, dict);
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.SetOrderStatusCommand, dict);
             manager.CloseConnection();
             return output != 0;
         }
@@ -100,7 +143,7 @@ namespace Db_proj
         {
             DBManager manager = new DBManager();
             var dict = new Dictionary<string, object>() { { "@status", (int)stats }, { "@ID", ID }, };
-            int output = manager.ExecuteNonQuery(DBStrings.SetRequestStatusCommand, dict);
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.SetRequestStatusCommand, dict);
             manager.CloseConnection();
             return output != 0;
         }
@@ -109,7 +152,7 @@ namespace Db_proj
             DBManager manager = new DBManager();
 
             var dict = new Dictionary<string, object>() { { "@accid", ID } };
-            var output = manager.ExecuteScalar(DBStrings.GetWorkerStatusCommand, dict);
+            var output = manager.ExecuteScalar(DataBaseEssentials.GetWorkerStatusCommand, dict);
             manager.CloseConnection();
             return Convert.ToBoolean( output);
         }
@@ -132,7 +175,7 @@ namespace Db_proj
                     break;
             }
             var dict = new Dictionary<string, object>() { { "@state", StateInt }  };
-            var output = manager.ExecuteReader(DBStrings.GetAllOrdersCommand, dict);
+            var output = manager.ExecuteReader(DataBaseEssentials.GetAllOrdersCommand, dict);
             
 
             List<Order> Orders = new List<Order>();
@@ -161,13 +204,13 @@ namespace Db_proj
                 }
                 NewOrder.TableNo = Convert.ToInt16( output.Rows[i][3]);
                 NewOrder.OrderTime = TimeSpan.Parse( output.Rows[i][4].ToString());
-                DataTable Itms = manager.ExecuteReader(DBStrings.GetItemsInOrderCommand, new Dictionary<string, object>() { { "@ordernum", NewOrder.OrderID } }); 
+                DataTable Itms = manager.ExecuteReader(DataBaseEssentials.GetItemsInOrderCommand, new Dictionary<string, object>() { { "@ordernum", NewOrder.OrderID } }); 
                 NewOrder.Items = new List<MenuItem>();
                 if (Itms !=null)    // check if order has no items in it ... wont come true ... only for debugging
                 {
                     foreach (DataRow item in Itms.Rows)
                     {
-                        NewOrder.Items.Add(DBStrings.ConvertToMenuItemClass(item));
+                        NewOrder.Items.Add(DataBaseEssentials.ConvertToMenuItemClass(item));
                     }
                 }
                 Orders.Add(NewOrder);
@@ -196,7 +239,7 @@ namespace Db_proj
             }
            
             var dict = new Dictionary<string, object>() { { "@state", StateInt } };
-            var output = manager.ExecuteReader(DBStrings.GetAllReqsCommand, dict);
+            var output = manager.ExecuteReader(DataBaseEssentials.GetAllReqsCommand, dict);
 
 
             List<ContactRequest> Requests = new List<ContactRequest>();
@@ -238,7 +281,7 @@ namespace Db_proj
         {
             var WholeMenu = new List<MenuItem>();
             DBManager manager = new DBManager();
-            var output = manager.ExecuteReader(DBStrings.GetAllOrderByClientCommand, new Dictionary<string, object>() { { "@ID",id} });
+            var output = manager.ExecuteReader(DataBaseEssentials.GetAllOrderByClientCommand, new Dictionary<string, object>() { { "@ID",id} });
             if (output == null)
             {
                 manager.CloseConnection();
@@ -247,13 +290,13 @@ namespace Db_proj
             foreach (DataRow item in output.Rows)
             {
                 var test = item["ORDERID"];
-                DataTable Itms = manager.ExecuteReader(DBStrings.GetItemsInOrderCommand, new Dictionary<string, object>() { { "@ordernum", item["ORDERID"] } });
+                DataTable Itms = manager.ExecuteReader(DataBaseEssentials.GetItemsInOrderCommand, new Dictionary<string, object>() { { "@ordernum", item["ORDERID"] } });
 
                 if (Itms != null)    // check if order has no items in it ... wont come true ... only for debugging
                 {
                     foreach (DataRow itm in Itms.Rows)
                     {
-                        WholeMenu.Add(DBStrings.ConvertToMenuItemClass(itm));
+                        WholeMenu.Add(DataBaseEssentials.ConvertToMenuItemClass(itm));
                     }
                 }
             }
@@ -265,7 +308,7 @@ namespace Db_proj
         public string GetClientNameByNum(int n)
         {
             DBManager manager = new DBManager();
-            string output = manager.ExecuteScalar(DBStrings.GetClientNameCommand, new Dictionary<string, object>() { { "@num", n } }).ToString();
+            string output = manager.ExecuteScalar(DataBaseEssentials.GetClientNameCommand, new Dictionary<string, object>() { { "@num", n } }).ToString();
             return output;
         }
 
