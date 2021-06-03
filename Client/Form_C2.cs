@@ -6,13 +6,15 @@ namespace Client
     public partial class Form_C2 : Form
     {
         public string name;
-
-        public Form_C2(string newname)
+        public Form_C1 back;
+        public bool flagCR;
+        public Form_C2(string newname, Form_C1 newback)
         {
             name = newname;
             InitializeComponent();
             this.ControlBox = false;
             label1.Text = "Hello " + name + ", Ready to order.";
+            back = newback;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -33,6 +35,10 @@ namespace Client
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string x = DateTime.Now.ToShortTimeString();
+            DateTime dateTime = DateTime.Parse(x);
+            back.c1.InsertCR(back.cid, back.tablenumber, dateTime, "Contact");
+            flagCR = true;
             button2.Text = "Pending";
             button2.BackColor = System.Drawing.Color.Red;
         }

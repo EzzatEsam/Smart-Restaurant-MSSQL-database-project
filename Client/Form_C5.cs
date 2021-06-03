@@ -7,9 +7,9 @@ namespace Client
 {
     public partial class Form_C5 : Form
     {
-        Form_C2 back;
+        public Form_C2 back;
         List<ShoppingItm> Shopping = new List<ShoppingItm>();
-        List<MenuItem> OurMenu = new List<MenuItem>();
+        List<MenuItem> OurMenu ;
         
         public Form_C5(Form_C2 back)
         {
@@ -17,27 +17,15 @@ namespace Client
             this.ControlBox = false;
             this.back = back;
             // temporary data
-            for (int i = 0; i < 10; i++)
-            {
-                MenuItem temp = new MenuItem(i + 1, "Kebab" + i.ToString(), "Meats", 120f, (float)i / 10 * 5);
-                OurMenu.Add(temp);
-            }
-            for (int i = 0; i < 10; i++)
-            {
-                MenuItem temp = new MenuItem(i + 11, "Tuna" + i.ToString(), "Fish", 120f, (float)i / 10 * 5);
-                OurMenu.Add(temp);
-            }
-            for (int i = 0; i < 10; i++)
-            {
-                MenuItem temp = new MenuItem(i + 21, "Dog" + i.ToString(), "Animals", 120f, (float)i / 10 * 5);
-                OurMenu.Add(temp);
-            }
+            OurMenu = back.back.c1.getmenuitems();
             UpdateList();
         }
         public void Reset()
         {
             Shopping.Clear();
             UpdateList();
+            AddToDrawnItems();
+            
             
         }
         private void button3_Click(object sender, EventArgs e)

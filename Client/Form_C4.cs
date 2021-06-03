@@ -14,6 +14,11 @@ namespace Client
             this.ControlBox = false;
             InitializeComponent();
             label1.Text = "Hello " + name + ", Make another order?";
+            if (newmake.back.flagCR)
+            {
+                button2.Text = "Pending";
+                button2.BackColor = System.Drawing.Color.Red;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -48,6 +53,9 @@ namespace Client
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string x = DateTime.Now.ToShortTimeString();
+            DateTime dateTime = DateTime.Parse(x);
+            make.back.back.c1.InsertCR(make.back.back.cid, make.back.back.tablenumber, dateTime, "Contact");
             button2.Text = "Pending";
             button2.BackColor = System.Drawing.Color.Red;
         }
