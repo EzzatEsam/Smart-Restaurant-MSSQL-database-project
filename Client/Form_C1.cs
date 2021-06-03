@@ -6,7 +6,9 @@ namespace Client
 {
     public partial class Form_C1 : Form
     {
-        Controller c1;
+       public Controller c1;
+        public int cid;
+        public int tablenumber;
         public Form_C1()
         {
             InitializeComponent();
@@ -64,13 +66,23 @@ namespace Client
             {
                 MessageBox.Show("Error, Please re-check your table number.");
             }
+            else if (c1.checktablestatus(int.Parse(textBox2.Text)) == 0)
+            {
+                MessageBox.Show("Error, this table should be occupied.");
+            }
             else
             {
-                
-                c1.insertclient(textBox1.Text, int.Parse(textBox2.Text));
-                Form_C2 start = new Form_C2(textBox1.Text);
+                cid = c1.insertclient(textBox1.Text, int.Parse(textBox2.Text));
+                tablenumber = int.Parse(textBox2.Text);
+                c1.updatetablestatus(int.Parse(textBox2.Text), true);
+                Form_C2 start = new Form_C2(textBox1.Text, this);
                 start.Show();
                 this.Hide();
+
+                //string x = DateTime.Now.ToShortTimeString();
+                ////DateTime x;
+                //DateTime dateTime = DateTime.Parse(x);
+                //Console.WriteLine("The specified date is valid: " + dateTime);
             }
         }
 

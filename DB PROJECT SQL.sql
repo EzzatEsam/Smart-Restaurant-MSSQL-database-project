@@ -149,8 +149,41 @@ create proc spinsertClient
 @Cname varchar(200)
 as 
 begin
-insert into Client (TNUMBER, Cname)
+insert into Client (TNUMBER,CNAME)
 values (@TNUMBER, @Cname)
+SELECT count(*) from  Client
+end
+go
+create proc updatetablestatus
+@TNUMBER int,
+@status bit
+as 
+begin
+update TABLE_ 
+set IsOCCUPIED= @status
+where TNUMBER=@TNUMBER;
+end
+go
+create proc spinsertCR
+@CID INT,
+@TNUMBER INT,
+@TIME time,
+@TYPE varchar(50)
+as
+begin
+insert into CONTACTREQUEST
+values (@CID, @TNUMBER, @TIME, @TYPE)
+end
+go
+create proc spmenuuser
+as
+begin
+select MENUITEMS.ITMNUMBER, MENUITEMS.INAME, AVG(ITEM_RATING.RATE) as AvgRate, MENUITEMS.PRICE
+from MENUITEMS
+join ITEM_RATING
+ON MENUITEMS.ITMNUMBER= ITEM_RATING.ITMNUMBER
+group by MENUITEMS.ITMNUMBER, MENUITEMS.INAME, MENUITEMS.PRICE, MENUITEMS.CATEGORY
+ORDER BY MENUITEMS.CATEGORY ASC
 end
 go
 -- Data samples

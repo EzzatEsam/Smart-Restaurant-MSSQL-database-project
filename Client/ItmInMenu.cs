@@ -29,5 +29,10 @@ namespace Client
         private void ItmInMenu_Load(object sender, EventArgs e)
         {
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
