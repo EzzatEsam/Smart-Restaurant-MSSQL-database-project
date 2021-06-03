@@ -15,6 +15,7 @@ use RESTDB
 
 CREATE TABLE ACCOUNT
 (
+ACCID int unique not null IDENTITY(1,1),
 USERNAME CHAR(100) PRIMARY KEY ,
 PASSWORD_ VARCHAR(20) NOT NULL,
 TYPE_ smallINT not null,
@@ -24,15 +25,15 @@ check (type_ >=0 and type_ <=2) -- 0 admin  1 chef 2 waiter
 
 CREATE TABLE MENUITEMS
 (
-ITMNUMBER INT PRIMARY KEY IDENTITY(1,1),
+ITMNUMBER INT PRIMARY KEY IDENTITY(1,1) ,
 INAME VARCHAR(100) NOT NULL UNIQUE,
 PRICE FLOAT NOT NULL ,
-Picture image,
+Picture  varbinary(max) ,
 CATEGORY VARCHAR(100) NOT NULL,
 );
 CREATE TABLE TABLE_
 (
-TNUMBER INT PRIMARY KEY ,
+TNUMBER INT PRIMARY KEY IDENTITY(1,1) ,
 IsOCCUPIED bit not null default 0,
 );
 create table Client
@@ -46,21 +47,24 @@ FOREIGN KEY (TNUMBER) REFERENCES TABLE_,
 );
 CREATE TABLE CONTACTREQUEST
 (
-NUMBER INT PRIMARY KEY,
+NUMBER INT  IDENTITY(1,1),
 CID INT NOT NULL FOREIGN KEY REFERENCES Client    ON DELETE CASCADE,
 TNUMBER INT NOT NULL FOREIGN KEY REFERENCES TABLE_ ,
 TIME_ TIME,
-TYPE_ VARCHAR(50),
+CHECKOUT bit,
+STATUS_ tinyint not null,  
+PRIMARY KEY(NUMBER),
 );
 
 CREATE TABLE ORDER_
 (
-   ORDERID INT PRIMARY KEY,
+   ORDERID INT  IDENTITY(1,1),
    CID INT FOREIGN KEY REFERENCES CLIENT  ON DELETE CASCADE,
-   STATUS_ CHAR(12),    --pending / ready/ delivered
-   CHECKOUT BIT NOT NULL,     
+   STATUS_ int,    -- 0 pending  1 ready   2  delivered
+   --CHECKOUT BIT NOT NULL,     
    TNUMBER INT FOREIGN KEY REFERENCES TABLE_ ,
    OTIME TIME,
+   PRIMARY KEY(ORDERID),
 );
 
 CREATE TABLE CHEF
@@ -89,15 +93,17 @@ C_RESPONSE INT FOREIGN KEY REFERENCES CONTACTREQUEST ,
 
 CREATE TABLE ORDER_MENUITEMS
 (
-ORDERID INT NOT NULL FOREIGN KEY REFERENCES ORDER_ ON DELETE CASCADE,
-ITEMNUMBER INT NOT NULL FOREIGN KEY REFERENCES MENUITEMS ON DELETE CASCADE ,
+ORDERID INT NOT NULL  ,
+ITEMNUMBER INT NOT NULL FOREIGN KEY REFERENCES MENUITEMS on delete cascade ,
+FOREIGN KEY(ORDERID) REFERENCES ORDER_  ON DELETE CASCADE
+
 );
 
 
 CREATE TABLE ITEM_RATING
 (
 ITMNUMBER INT NOT NULL FOREIGN KEY REFERENCES MENUITEMS ON DELETE CASCADE 
-ON UPDATE CASCADE,
+ON UPDATE CASCADE ,
 RATE SMALLINT NOT NULL,
 CHECK (RATE >0 AND RATE <6),
 CID int NOT NULL FOREIGN KEY REFERENCES Client ON DELETE CASCADE ,
@@ -130,6 +136,148 @@ union select WID ,WNAME ,ISFREE ,C_RESPONSE  from WAITER
 ;
 end
 go
+create procedure AddEmployee @type int , @name nvarchar(20), @account nvarchar(20) , @pass nvarchar(20) 
+as
+begin
+INSERT into ACCOUNT(USERNAME ,PASSWORD_, TYPE_) VALUES (@account ,@pass,@type);
+if @type = 1
+INSERT INTO CHEF(USERNAME,CHname ) VALUES (@account ,@name);
+else if @type = 1
+INSERT INTO WAITER(USERNAME,WNAME ) VALUES (@account ,@name);
+end
+
+
+go
+
+create procedure EmpStatus @type smallint , @ID smallint , @free bit
+as
+begin
+if @type =1
+UPDATE CHEF set ISFREE = @free where CHID = @ID;
+else if @type = 2
+update WAITER set ISFREE =@free where WID = @ID;
+end
+go
+
+create procedure GetClientName @num tinyint
+as
+begin
+select Client.CNAME from Client where Client.CID = @num;
+end
+go
+
+create procedure GetClientName @num tinyint
+as
+begin
+select Client.CNAME from Client where Client.CID = @num;
+end
+go
+
+create procedure GetWorkerName @type smallint , @ID smallint 
+as
+begin
+if @type =1
+select CHEF.CHNAME as Name from CHEF where CHEF.CHID = @ID;
+else if @type = 2
+select WAITER.WNAME as Name from WAITER where WAITER.WID = @ID;
+end
+go
+
+create procedure GetWorkerNameByAccount   @ACCID smallint 
+as
+begin
+
+declare @type as smallint , @Name as varchar(60)
+select @type = ACCOUNT.TYPE_ , @Name = ACCOUNT.USERNAME from ACCOUNT where ACCOUNT.ACCID = @ACCID
+print @type;
+print @name;
+if @type =1
+select CHEF.CHNAME as Name from CHEF where CHEF.USERNAME  = @Name;
+else if @type = 2
+select WAITER.WNAME as Name from WAITER where WAITER.USERNAME = @Name;
+end
+go
+
+create procedure GetOrdersByState @state tinyint
+as	
+begin
+select * from ORDER_ where STATUS_ = @state;
+end
+go
+
+create procedure GetEmployeeStatus @ACCID int
+as
+begin
+declare @type as smallint , @Name as varchar(60)
+select @type = ACCOUNT.TYPE_ , @Name = ACCOUNT.USERNAME from ACCOUNT where ACCOUNT.ACCID = @ACCID
+print @type;
+print @name;
+if @type =1
+select CHEF.ISFREE as ISFREE from CHEF where CHEF.USERNAME  = @Name;
+else if @type = 2
+select WAITER.ISFREE as ISFREE from WAITER where WAITER.USERNAME = @Name;
+end
+go
+
+create procedure SetOrderStatus @status tinyint, @ID int
+as
+begin
+update ORDER_ set STATUS_ = @status where ORDER_.ORDERID = @ID;
+end
+go
+
+create procedure SetRequest @status tinyint, @ID int
+as
+begin
+update CONTACTREQUEST set STATUS_ = @status where CONTACTREQUEST.NUMBER = @ID;
+end
+go
+
+create procedure GetRequestsByState @state tinyint
+as	
+begin
+select * from CONTACTREQUEST where CONTACTREQUEST.STATUS_ = @state;
+end
+go
+
+create procedure AddMenuItem  @name nvarchar(20), @category nvarchar(20) , @price float , @image varbinary(max) 
+as
+begin
+INSERT into MENUITEMS(INAME ,CATEGORY, PRICE,Picture) VALUES (@name ,@category,@price,@image);
+end
+
+
+go
+create PROCEDURE UpdatePass @AccNum int ,@UsrName nvarchar(20) ,@Pass nvarchar(20) ,@OldPass nvarchar(20)  
+as
+begin
+update ACCOUNT
+set USERNAME = @UsrName ,PASSWORD_ = @Pass
+where ACCOUNT.PASSWORD_ =@OldPass  and ACCOUNT.ACCID =@AccNum; 
+end
+go
+
+create procedure GetItemsInOrder @ordernum int
+as
+begin
+select * from MENUITEMS where MENUITEMS.ITMNUMBER  in  (select ORDER_MENUITEMS.ITEMNUMBER from ORDER_MENUITEMS where ORDER_MENUITEMS.ORDERID = @ordernum);
+end
+go 
+
+create procedure GetAllMenu
+as 
+begin
+select * from MENUITEMS;
+end
+go
+
+Create procedure GetAllClientOrders @ID int
+as
+begin
+select *from ORDER_ where ORDER_.CID = @ID;
+end
+go
+
 create proc spchecktable
 @TNUMBER int
 as 
@@ -223,8 +371,22 @@ insert into MENUITEMS(INAME , CATEGORY ,PRICE) values
 ('Sprite' ,'Juices' ,10),
 ('Extra Bread' ,'Extra' ,5),
 ('Extra Fries' ,'Extra' ,5);
+-- test clients
+insert into TABLE_(IsOCCUPIED)  values (1) ,(1) ,(1)  ,(1);
+--
+insert into Client (CNAME , TNUMBER) values ('Ahmed hassan' ,1) ,('Emad Hatem' ,2) ,('Captain maged' ,3) ,('Dont wanna say my name' ,4);
 
+-- test ordres
+insert into ORDER_(ORDER_.CID ,TNUMBER ,STATUS_ ,OTIME ) values (1,1,0,(CONVERT(time, GETDATE()))),
+(2,2,0,(CONVERT(time, GETDATE()))),
+(3,3,1,(CONVERT(time, GETDATE()))),
+(4,4,0,(CONVERT(time, GETDATE())));
 
+insert into CONTACTREQUEST(CID ,TNUMBER,STATUS_,CHECKOUT ,TIME_ ) values (1,1,0,0,(CONVERT(time, GETDATE()))),
+(2,2,0,0,(CONVERT(time, GETDATE()))),
+(3,3,0,1,(CONVERT(time, GETDATE()))),
+(4,4,2,0,(CONVERT(time, GETDATE())));
 
+insert into ORDER_MENUITEMS (ORDERID ,ITEMNUMBER) values (3,1),(3,2),(3,3),(3,4);
 
 --

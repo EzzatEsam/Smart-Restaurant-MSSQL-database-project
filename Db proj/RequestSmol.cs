@@ -19,7 +19,7 @@ namespace Db_proj
             label2.Text = "Table #" + current.TableNumber.ToString();
             //get customer name from db manager
 
-            label3.Text = "Name :" + "John Cena";
+            label3.Text = "Name :" + main.organiser.Controller.GetClientNameByNum(current.ClientID);
             label4.Text = current.ContactType.ToString();
             label5.Text = current.ContactTime.ToString();
         }
@@ -36,16 +36,16 @@ namespace Db_proj
                     if (current.ContactType == RequestType.CHECKOUT)
                     {
                         main.ExpandCheck(current);
-                        main.Taken();
+                        main.TakenContact(current);
                         return;
                     }
                     taken = true;
-                    main.Taken();
+                    main.TakenContact(current);
                     button1.Text = "Done";
                 }
                 else
                 {
-                    main.SetDone(current);
+                    main.SetContactDone(current);
                     main.UpdateList();
                 }
             }

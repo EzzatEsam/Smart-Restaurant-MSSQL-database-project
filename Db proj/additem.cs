@@ -8,6 +8,7 @@ namespace Db_proj
     public partial class additem : UserControl
     {
         bool NameError, CatError, PriceError;
+        string filename;
         AdminStart main;
         public additem(AdminStart main)
         {
@@ -19,6 +20,7 @@ namespace Db_proj
             Namelabel.Text = "";
             label5.Text = "";
             label6.Text = "";
+            button1.Enabled = false;
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -43,25 +45,26 @@ namespace Db_proj
 
             }
             Namelabel.Text = !NameError ? "" : "Error";
+            button1.Enabled = !(NameError || PriceError || CatError);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (NameError || CatError || PriceError)
-            {
-                ErrorLabel.Text = "Error";
-
-            }
-            else
-            {
+           
                 MenuItem it = new MenuItem(-1, textBox1.Text, textBox2.Text, float.Parse(textBox3.Text));
-                ErrorLabel.Text = main.AddToMenu(it) ? "" : "Error";
-            }
+                //it.Image = filename;
+                if (main.AddToMenu(it) )
+                {
+                MessageBox.Show("Done");
+                }
+                else
+                ErrorLabel.Text = "Error";
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            main.Goto(NextsAdmin.MENULIST);
+            main.GoToUsrContrl(NextsAdmin.MENULIST);
         }
 
         private void additem_Load(object sender, EventArgs e)
@@ -77,8 +80,10 @@ namespace Db_proj
             if (open.ShowDialog() == DialogResult.OK)
             {
                 // display image in picture box  
-                pictureBox1.Image = new Bitmap(open.FileName); 
-                
+                pictureBox1.Image = new Bitmap(open.FileName);
+                filename = open.FileName;
+
+
             }
         }
 
@@ -87,12 +92,14 @@ namespace Db_proj
             float test;
             PriceError = !float.TryParse(textBox3.Text, out test) || textBox3.Text == "" || test <= 0;
             label6.Text = !PriceError ? "" : "Error";
+            button1.Enabled = !(NameError || PriceError || CatError);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             CatError = !(textBox2.Text.All(char.IsLetter)) || textBox2.Text == "";
             label5.Text = !CatError ? "" : "Error";
+            button1.Enabled = !(NameError || PriceError || CatError);
         }
     }
 }

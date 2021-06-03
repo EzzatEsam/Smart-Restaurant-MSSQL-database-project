@@ -19,22 +19,19 @@ namespace Db_proj
             Namelabel.Text = "";
             label5.Text = "";
             label6.Text = "";
+            button1.Enabled = !(NameError || passError || usrError);
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (NameError || passError || usrError)
-            {
-                ErrorLabel.Text = "Error";
-
-            }
-            else
-            {
+            
                 Worker it = new Worker(-1, textBox1.Text, (Emp_type)comboBox1.SelectedItem, true, -1, Task.NONE);
-                ErrorLabel.Text = main.AddEmployee(it, textBox2.Text, textBox3.Text) ? "" : "Error";
-            }
+            if (main.organiser.Controller.AddEmp(it, textBox2.Text, textBox3.Text))
+                MessageBox.Show("Done");
+            else
+                MessageBox.Show("Error");
         }
 
         private void AddWorker_Load(object sender, EventArgs e)
@@ -64,6 +61,7 @@ namespace Db_proj
 
             }
             Namelabel.Text = !NameError ? "" : "Error";
+            button1.Enabled = !(NameError || passError || usrError);
 
         }
 
@@ -74,7 +72,7 @@ namespace Db_proj
 
         private void button2_Click(object sender, EventArgs e)
         {
-            main.Goto(NextsAdmin.WORKERSLIST);
+            main.GoToUsrContrl(NextsAdmin.WORKERSLIST);
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -121,12 +119,14 @@ namespace Db_proj
                 label5.Text = "Error";
                 usrError = true;
             }
+            button1.Enabled = !(NameError || passError || usrError);
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             label6.Text = textBox3.Text == "" ? "Error" : "";
             passError = textBox3.Text == "";
+            button1.Enabled = !(NameError || passError || usrError);
         }
     }
 }

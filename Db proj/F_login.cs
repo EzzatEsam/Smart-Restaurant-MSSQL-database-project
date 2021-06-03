@@ -85,6 +85,7 @@ namespace Db_proj
                 else
                     pass_check = false;
                 button1.Enabled = login_check && pass_check;
+                
 
             }
         }

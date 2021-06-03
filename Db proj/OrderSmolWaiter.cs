@@ -37,12 +37,12 @@ namespace Db_proj
                     return;
                 }
                 taken = true;
-                main.Taken();
+                main.TakenOrder(CurrentOrder);
                 button1.Text = "Done";
             }
             else
             {
-                main.SetDelivered(CurrentOrder);
+                main.SetOrderDelivered(CurrentOrder);
                 main.UpdateList();
             }
         }
