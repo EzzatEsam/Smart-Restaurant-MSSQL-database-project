@@ -10,7 +10,7 @@ namespace Client
 {
     public class DataManager
     {
-        string DB_Connection_String = DBStrings.ConnectionString;
+        string DB_Connection_String = DataBaseEssentials.ConnectionString;
         SqlConnection myConnection;
 
         public DataManager()
