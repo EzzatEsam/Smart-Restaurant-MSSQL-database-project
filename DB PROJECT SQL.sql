@@ -404,6 +404,16 @@ insert into ORDER_MENUITEMS
 values (@ORDERID, @ITEMNUMBER)
 end
 GO
+create proc spinsertRATE
+@ITEMNUMBER INT,
+@RATE float,
+@CID INT
+as
+begin
+insert into ITEM_RATING
+values (@ITEMNUMBER, @RATE, @CID)
+end
+GO
 -- Data samples
 
 INSERT into ACCOUNT(USERNAME ,PASSWORD_, TYPE_) VALUES ('admin' ,'admin',0)   -- the admin

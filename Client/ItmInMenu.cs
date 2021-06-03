@@ -17,6 +17,7 @@ namespace Client
             label2.Text = current.name;
             label3.Text = current.rating == -1 ? "UNRATED": current.rating.ToString() + "/5";
             label4.Text = current.price.ToString() + "LE";
+            label5.Text = current.category;
             pictureBox1.Image = current.Image;
 
 
@@ -32,6 +33,11 @@ namespace Client
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
