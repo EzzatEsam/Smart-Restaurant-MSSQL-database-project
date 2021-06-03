@@ -5,11 +5,11 @@ namespace Db_proj
 {
     public enum NextsAdmin
     {
-        ADMINENTER, WORKERSLIST, WORKERADD, MENULIST, MENUADD
+        ADMINENTER, WORKERSLIST, WORKERADD, MENULIST, MENUADD, MODIACCOUNT
     }
-    public partial class AdminStart : Form
+    public partial class AdminStart :  AccountUser
     {
-        public FormOrganiser main;
+        
         UserControl current;
         NextsAdmin currentstate;
         public AdminStart(FormOrganiser it)
@@ -20,7 +20,7 @@ namespace Db_proj
             currentstate = NextsAdmin.ADMINENTER;
             this.Controls.Add(current);
             current.Show();
-            main = it;
+            organiser = it;
         }
         public bool AddEmployee(Worker it, string Usr, string Pass)
         {
@@ -35,14 +35,14 @@ namespace Db_proj
         public bool AddToMenu(MenuItem it)
         {
             // here we add new item to db and check if it can be added
-            return false;
+            return organiser.Controller.AddItem(it);
         }
         public bool DeleteItem(int ID)
         {
             //delete an item with given ID from DB
             return false;
         }
-        public void Goto(NextsAdmin it)
+        public void GoToUsrContrl(NextsAdmin it)
         {
             UserControl temp;
             switch (it)
@@ -63,6 +63,9 @@ namespace Db_proj
                 case NextsAdmin.MENUADD:
                     temp = new additem(this);
                     break;
+                case NextsAdmin.MODIACCOUNT :
+                    temp = new ChangeLogins(this);
+                    break;
                 default:
                     temp = new pg_1(this);
                     break;
@@ -78,7 +81,15 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.GoTo(0);
+            organiser.GoTo(0);
+        }
+        public override void ReturnBack()
+        {
+            GoToUsrContrl(NextsAdmin.ADMINENTER);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GoToUsrContrl(NextsAdmin.MODIACCOUNT);
         }
     }
 }

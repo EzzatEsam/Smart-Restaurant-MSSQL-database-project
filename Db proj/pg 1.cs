@@ -20,13 +20,18 @@ namespace Db_proj
         private void button1_Click(object sender, EventArgs e)
         {
 
-            main.Goto(NextsAdmin.WORKERSLIST);
+            main.GoToUsrContrl(NextsAdmin.WORKERSLIST);
         }
 
         private void m_bttn_Click(object sender, EventArgs e)
         {
 
-            main.Goto(NextsAdmin.MENULIST);
+            main.GoToUsrContrl(NextsAdmin.MENULIST);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            main.GoToUsrContrl(NextsAdmin.MODIACCOUNT);
         }
     }
 }

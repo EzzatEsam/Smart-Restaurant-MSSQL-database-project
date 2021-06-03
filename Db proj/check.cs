@@ -15,6 +15,7 @@ namespace Db_proj
 
             label1.Text = "C#" + current.ContactNumber.ToString();
             label2.Text = "Table no :" + current.TableNumber;
+            label3.Text = "Name :" + main.organiser.Controller.GetClientNameByNum(current.ClientID);
             label4.Text = "Time :" + current.ContactTime.ToString();
             //next code needs part is getting the order using its number
             // needs db access
@@ -33,7 +34,7 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.SetDone(current);
+            main.SetContactDone(current);
             main.UpdateList();
         }
     }

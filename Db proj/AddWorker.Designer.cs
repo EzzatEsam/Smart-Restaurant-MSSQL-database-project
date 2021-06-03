@@ -107,7 +107,7 @@ namespace Db_proj
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(67, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Wokrer type";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -117,7 +117,7 @@ namespace Db_proj
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(67, 135);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 13);
+            this.label3.Size = new System.Drawing.Size(100, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Account UserName";
             this.label3.Click += new System.EventHandler(this.label3_Click);

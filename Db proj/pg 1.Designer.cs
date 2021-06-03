@@ -31,14 +31,15 @@ namespace Db_proj
         {
             this.Workersbtn = new System.Windows.Forms.Button();
             this.m_bttn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Workersbtn
             // 
             this.Workersbtn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.Workersbtn.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Workersbtn.Location = new System.Drawing.Point(222, 157);
-            this.Workersbtn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Workersbtn.Location = new System.Drawing.Point(222, 70);
+            this.Workersbtn.Margin = new System.Windows.Forms.Padding(5);
             this.Workersbtn.Name = "Workersbtn";
             this.Workersbtn.Size = new System.Drawing.Size(250, 88);
             this.Workersbtn.TabIndex = 0;
@@ -50,8 +51,8 @@ namespace Db_proj
             // 
             this.m_bttn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.m_bttn.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_bttn.Location = new System.Drawing.Point(222, 299);
-            this.m_bttn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.m_bttn.Location = new System.Drawing.Point(222, 205);
+            this.m_bttn.Margin = new System.Windows.Forms.Padding(5);
             this.m_bttn.Name = "m_bttn";
             this.m_bttn.Size = new System.Drawing.Size(250, 88);
             this.m_bttn.TabIndex = 1;
@@ -59,15 +60,29 @@ namespace Db_proj
             this.m_bttn.UseVisualStyleBackColor = false;
             this.m_bttn.Click += new System.EventHandler(this.m_bttn_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(254, 339);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(198, 50);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Change Logins";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // pg_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.m_bttn);
             this.Controls.Add(this.Workersbtn);
             this.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "pg_1";
             this.Size = new System.Drawing.Size(703, 515);
             this.ResumeLayout(false);
@@ -78,5 +93,6 @@ namespace Db_proj
 
         private System.Windows.Forms.Button Workersbtn;
         private System.Windows.Forms.Button m_bttn;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Data;
 namespace Db_proj
 {
     public enum Emp_type
@@ -28,7 +29,7 @@ namespace Db_proj
     public class MenuItem
     {
         public int number; public string name; public string category; public float price;
-        public Bitmap Image;
+        public Image Image;
         public MenuItem(int number, string name, string category, float price)
         {
             this.number = number;
@@ -49,10 +50,11 @@ namespace Db_proj
     {
         public int ContactNumber;
         public int TableNumber;
+        public int ClientID;
         public TimeSpan ContactTime;
         public RequestType ContactType;
         public RequestStatus ContactStatus;
-        public int OrderNumber = -1;
+        //public int OrderNumber = -1;
     }
     public class Worker
     {
@@ -72,5 +74,24 @@ namespace Db_proj
         public static string ConnectionString = @"Data Source=.;Initial Catalog=RESTDB;Integrated Security=True";
         public static string LoginCommand = "TryLogin";
         public static string GetAllEmpsCommand = "GetAllEmps";
+        public static string UpdateAccountCommand = "UpdatePass";
+        public static string GetAllMenuCommand = "GetAllMenu";
+        public static string AddEmpCommand = "AddEmployee";
+        public static string AddItemCommand = "AddMenuItem";
+        public static string GetAllOrdersCommand = "GetOrdersByState";
+        public static string GetAllReqsCommand = "GetRequestsByState";
+        public static string SetEmpStatsCommand = "EmpStatus";
+        public static string GetItemsInOrderCommand = "GetItemsInOrder";
+        public static string GetClientNameCommand = "GetClientName";
+        public static string GetWokerNameCommand = "GetWorkerNameByAccount";
+        public static string GetWorkerStatusCommand = "GetEmployeeStatus";
+        public static string SetOrderStatusCommand = "SetOrderStatus";
+        public static string SetRequestStatusCommand = "SetRequest";
+        public static MenuItem ConvertToMenuItemClass(DataRow it)
+        {
+
+            return new MenuItem(Convert.ToInt32( it["ITMNUMBER"]), Convert.ToString(it["INAME"]),Convert.ToString(it["CATEGORY"]),(float)Convert.ToDouble(it["PRICE"]));
+
+        }
     }
 }

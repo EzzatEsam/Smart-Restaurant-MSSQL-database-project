@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Db_proj
 {
-    public partial class ChefStart : Form
+    public partial class ChefStart : AccountUser
     {
         FormOrganiser main;
         List<Order> Orders = new List<Order>();
@@ -15,7 +15,7 @@ namespace Db_proj
             InitializeComponent();
             this.ControlBox = false;
             this.main = main;
-
+            label1.Text = "Hello " + main.Controller.GetEmpName(main.Controller.CurrentID);
             // temp test for data
             for (int i = 0; i < 20; i++)
             {
@@ -30,6 +30,7 @@ namespace Db_proj
                     temp.Items.Add(new MenuItem(j, "fish", "also fish", 25f * j / 2));
                 }
                 Orders.Add(temp);
+                organiser = main;
 
 
             }
@@ -100,6 +101,20 @@ namespace Db_proj
         private void ChefStart_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in panel1.Controls)
+            {
+                item.Dispose();
+            }
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new ChangeLogins(this));       
+        }
+        public override void ReturnBack()
+        {
+            UpdateList();
         }
     }
 }

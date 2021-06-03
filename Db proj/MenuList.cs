@@ -23,17 +23,15 @@ namespace Db_proj
         }
         public void UpdateList()
         {
-            // here we reload the employees db 
             dataGridView1.Rows.Clear();
-            foreach (MenuItem it in current)
-            {
-                dataGridView1.Rows.Add(it.number.ToString(), it.name, it.category, it.price);
-            }
+
+            // fix this shit later 
+            dataGridView1.DataSource = main.organiser.Controller.GetAllMenu();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.Goto(back);
+            main.GoToUsrContrl(back);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -45,7 +43,7 @@ namespace Db_proj
 
         private void button2_Click(object sender, EventArgs e)
         {
-            main.Goto(NextsAdmin.MENUADD);
+            main.GoToUsrContrl(NextsAdmin.MENUADD);
         }
     }
 }

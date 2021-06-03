@@ -22,11 +22,13 @@ namespace Db_proj
 
             this.main = main;
             UpdateList();
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.Goto(back);
+            main.GoToUsrContrl(back);
         }
         public void UpdateList()
         {
@@ -37,12 +39,12 @@ namespace Db_proj
             //{
             //    dataGridView1.Rows.Add(it.ssid.ToString(), it.name, it.type, it.IsFree, it.CurrentTask, it.cType);
             //}
-            dataGridView1.DataSource = main.main.Controller.GetAllEmployees();
+            dataGridView1.DataSource = main.organiser.Controller.GetAllEmployees();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            main.Goto(NextsAdmin.WORKERADD);
+            main.GoToUsrContrl(NextsAdmin.WORKERADD);
         }
 
         private void button3_Click(object sender, EventArgs e)

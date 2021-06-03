@@ -50,10 +50,10 @@ namespace Db_proj
             this.E_name,
             this.E_type,
             this.I_price});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 86);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(441, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(512, 267);
             this.dataGridView1.TabIndex = 1;
             // 
             // E_id
@@ -85,7 +85,7 @@ namespace Db_proj
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(15, 261);
+            this.button1.Location = new System.Drawing.Point(15, 291);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 40);
             this.button1.TabIndex = 2;
@@ -98,7 +98,7 @@ namespace Db_proj
             this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(164, 261);
+            this.button2.Location = new System.Drawing.Point(164, 291);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 40);
             this.button2.TabIndex = 3;
@@ -111,7 +111,7 @@ namespace Db_proj
             this.button3.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(305, 261);
+            this.button3.Location = new System.Drawing.Point(300, 291);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(122, 40);
             this.button3.TabIndex = 4;
@@ -128,7 +128,7 @@ namespace Db_proj
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MenuList";
-            this.Size = new System.Drawing.Size(548, 350);
+            this.Size = new System.Drawing.Size(641, 352);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
