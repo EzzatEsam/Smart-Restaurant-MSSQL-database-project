@@ -62,15 +62,16 @@ namespace Db_proj
     public class Worker
     {
         public int ssid; public string name; public Emp_type type; public bool IsFree; public int CurrentTask; public Task cType;
-        
-        public Worker(int ssid, string name, Emp_type type, bool IsFree, int current, Task tskTYpe)
+       
+        public Worker() { }
+        public Worker(int v1, string text, Emp_type selectedItem, bool v2, int v3, Task nONE)
         {
-            this.ssid = ssid;
-            this.name = name;
-            this.type = type;
-            this.IsFree = IsFree;
-            CurrentTask = current;
-            cType = tskTYpe;
+            this.ssid = v1;
+            this.name = text;
+            this.type = selectedItem;
+            this.IsFree = v2;
+            this.CurrentTask = v3;
+            this.cType = nONE;
         }
     }
     public static class DataBaseEssentials
@@ -106,7 +107,18 @@ namespace Db_proj
 
         public static Worker ConvertToWorkerClass(DataRow it)
         {
-
+            Worker output = new Worker();
+            output.name = it[1].ToString();
+            output.ssid = Convert.ToInt32(it[0]);
+            output.type = (Emp_type ) Convert.ToInt32(it[4]);
+            output.IsFree = Convert.ToBoolean(it[2]);
+         
+            if ((it[3]) !=  System.DBNull.Value)
+            {
+                output.CurrentTask = Convert.ToInt32(it[3]);
+                output.cType = (Task)Convert.ToInt32(it[5]);
+            }
+            return output;
         }
         public static Image BinaryToImage(byte[] binaryData)
         {

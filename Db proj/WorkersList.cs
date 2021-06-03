@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Data;
 namespace Db_proj
 {
     public partial class WorkersList : UserControl
@@ -24,8 +25,23 @@ namespace Db_proj
         }
         public void UpdateList()
         {
+            Workers.Clear();
+            panel1.Controls.Clear();
             // here we reload the employees db 
-            Workers = main.organiser.Controller.GetAllEmployees();
+            var temp = main.organiser.Controller.GetAllEmployees();
+            foreach (DataRow item in temp.Rows)
+            {
+                Workers.Add (DataBaseEssentials.ConvertToWorkerClass(item));
+            }
+
+            for (int i = 0; i < Workers.Count; i++)
+            {
+                Worker item = Workers[i];
+                WorkerSingle it = new WorkerSingle(main, item);
+                panel1.Controls.Add(it);
+                it.Location = new System.Drawing.Point(10, 10 + i * it.Height);
+            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -33,13 +49,7 @@ namespace Db_proj
             main.GoToUsrContrl(NextsAdmin.WORKERADD);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            int ssid = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-            main.DeleteEmplyee(ssid);
-            UpdateList();
-        }
-
+       
         private void WorkersList_Load(object sender, EventArgs e)
         {
 

@@ -149,10 +149,10 @@ go
 CREATE PROCEDURE GetAllEmps
 as
 begin
-select CHID ,CHNAME ,ISFREE ,C_SERVING from CHEF 
-union select WID ,WNAME ,ISFREE ,C_SERVING  from WAITER where C_SERVING is not null 
-union select WID ,WNAME ,ISFREE ,C_RESPONSE  from WAITER where C_RESPONSE is not null
-union select WID ,WNAME ,ISFREE ,C_RESPONSE  from WAITER 
+select CHID ,CHNAME ,ISFREE ,C_SERVING,'0' ,'0'         from CHEF 
+union select WID ,WNAME ,ISFREE ,C_SERVING ,'1' ,'0'    from WAITER where C_SERVING is not null 
+union select WID ,WNAME ,ISFREE ,C_RESPONSE ,'1' ,'1'   from WAITER where C_RESPONSE is not null
+union select WID ,WNAME ,ISFREE ,C_RESPONSE,'1'  , '-1'  from WAITER 
 ;
 end
 go
