@@ -233,6 +233,35 @@ namespace Db_proj
             manager.CloseConnection();
             return Requests;
         }
+
+        public List<MenuItem> GetClientWholeMenu(int id)
+        {
+            var WholeMenu = new List<MenuItem>();
+            DBManager manager = new DBManager();
+            var output = manager.ExecuteReader(DBStrings.GetAllOrderByClientCommand, new Dictionary<string, object>() { { "@ID",id} });
+            if (output == null)
+            {
+                manager.CloseConnection();
+                return WholeMenu;
+            }
+            foreach (DataRow item in output.Rows)
+            {
+                var test = item["ORDERID"];
+                DataTable Itms = manager.ExecuteReader(DBStrings.GetItemsInOrderCommand, new Dictionary<string, object>() { { "@ordernum", item["ORDERID"] } });
+
+                if (Itms != null)    // check if order has no items in it ... wont come true ... only for debugging
+                {
+                    foreach (DataRow itm in Itms.Rows)
+                    {
+                        WholeMenu.Add(DBStrings.ConvertToMenuItemClass(itm));
+                    }
+                }
+            }
+            
+
+            manager.CloseConnection();
+            return WholeMenu;
+        }
         public string GetClientNameByNum(int n)
         {
             DBManager manager = new DBManager();

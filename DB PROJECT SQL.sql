@@ -270,6 +270,14 @@ begin
 select * from MENUITEMS;
 end
 go
+
+Create procedure GetAllClientOrders @ID int
+as
+begin
+select *from ORDER_ where ORDER_.CID = @ID;
+end
+go
+
 create proc spchecktable
 @TNUMBER int
 as 
@@ -345,5 +353,7 @@ insert into CONTACTREQUEST(CID ,TNUMBER,STATUS_,CHECKOUT ,TIME_ ) values (1,1,0,
 (2,2,0,0,(CONVERT(time, GETDATE()))),
 (3,3,0,1,(CONVERT(time, GETDATE()))),
 (4,4,2,0,(CONVERT(time, GETDATE())));
+
+insert into ORDER_MENUITEMS (ORDERID ,ITEMNUMBER) values (3,1),(3,2),(3,3),(3,4);
 
 --

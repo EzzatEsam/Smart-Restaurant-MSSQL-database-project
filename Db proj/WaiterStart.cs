@@ -10,7 +10,7 @@ namespace Db_proj
         
         List<Order> Orders = new List<Order>();
         List<ContactRequest> Reqs = new List<ContactRequest>();
-        int VInterval = 40;
+        
         public WaiterStart(FormOrganiser main)
         {
             InitializeComponent();

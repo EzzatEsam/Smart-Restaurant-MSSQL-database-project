@@ -87,6 +87,7 @@ namespace Db_proj
         public static string GetWorkerStatusCommand = "GetEmployeeStatus";
         public static string SetOrderStatusCommand = "SetOrderStatus";
         public static string SetRequestStatusCommand = "SetRequest";
+        public static string GetAllOrderByClientCommand = "GetAllClientOrders";
         public static MenuItem ConvertToMenuItemClass(DataRow it)
         {
 
