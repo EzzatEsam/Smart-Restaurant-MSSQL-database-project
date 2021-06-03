@@ -10,6 +10,7 @@ namespace Client
         public Form_C2 back;
         List<ShoppingItm> Shopping = new List<ShoppingItm>();
         List<MenuItem> OurMenu ;
+        public int orderid;
         
         public Form_C5(Form_C2 back)
         {
@@ -25,14 +26,21 @@ namespace Client
             Shopping.Clear();
             UpdateList();
             AddToDrawnItems();
-            
-            
         }
         private void button3_Click(object sender, EventArgs e)
         {
             if (Shopping.Count == 0)
                 return;
-
+            string x = DateTime.Now.ToShortTimeString();
+            DateTime dateTime = DateTime.Parse(x);
+            orderid = back.back.c1.InsertOR(back.back.cid, 0, back.back.tablenumber, dateTime);
+            foreach (var item in Shopping )
+            {
+                for (int i = 0; i <item.n ; i++)
+                {
+                    back.back.c1.InsertORMI(orderid, item.current.number);
+                }
+            }
             Form_C4 confirm = new Form_C4(back.name, this);
             confirm.Show();
             this.Hide();

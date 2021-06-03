@@ -71,7 +71,7 @@ namespace Db_proj
     }
     public static class DBStrings
     {
-        public static string ConnectionString = @"Data Source=.;Initial Catalog=RESTDB;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=AMRO-LAPTOP\TEW_SQLEXPRESS;Initial Catalog=RESTDB;Integrated Security=True";
         public static string LoginCommand = "TryLogin";
         public static string GetAllEmpsCommand = "GetAllEmps";
         public static string UpdateAccountCommand = "UpdatePass";

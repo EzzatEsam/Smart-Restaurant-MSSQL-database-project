@@ -15,7 +15,7 @@ namespace Client
             this.current = current;
             label1.Text = "#" + current.number.ToString();
             label2.Text = current.name;
-            label3.Text = current.rating.ToString() + "/5";
+            label3.Text = current.rating == -1 ? "UNRATED": current.rating.ToString() + "/5";
             label4.Text = current.price.ToString() + "LE";
 
 
