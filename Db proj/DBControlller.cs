@@ -82,7 +82,14 @@ namespace Db_proj
             return output != 0;
         }
 
-
+        public bool SetTableNumbers(int it)
+        {
+            DBManager manager = new DBManager();
+            var dict = new Dictionary<string, object>() { { "@num", it } };
+            int output = manager.ExecuteNonQuery(DataBaseEssentials.ChangeNumberOfTablesCommand, dict);
+            manager.CloseConnection();
+            return output != 0;
+        }
         public bool ChangeLogo(Image it)
         {
 

@@ -12,7 +12,7 @@ namespace Db_proj
     }
     public enum Order_status
     {
-        PENDING, READY, DELIVERED
+        PENDING,ONIT ,READY, DELIVERED
     }
     public enum Task
     {
@@ -97,6 +97,7 @@ namespace Db_proj
         public static string GetLogoCommand = "GetLogo";
         public static string DeleteItemCommand = "DeleteMenueItem";
         public static string DeleteWorkerCommand = "DeleteFromEmployees";
+        public static string ChangeNumberOfTablesCommand = "SetTablesCount";
         public static MenuItem ConvertToMenuItemClass(DataRow it)
         {
             MenuItem output =new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]));

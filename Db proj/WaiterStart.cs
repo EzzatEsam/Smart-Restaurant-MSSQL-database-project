@@ -128,7 +128,7 @@ namespace Db_proj
             // update requests from db
             //
 
-            Orders = organiser.Controller.GetAllOrdersByStatus(Order_status.PENDING);
+            Orders = organiser.Controller.GetAllOrdersByStatus(Order_status.READY);
             Reqs = organiser.Controller.GetContactRequestsByStatus(RequestStatus.PENDING);
 
 

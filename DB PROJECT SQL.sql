@@ -65,7 +65,7 @@ CREATE TABLE ORDER_
 (
    ORDERID INT  IDENTITY(1,1),
    CID INT FOREIGN KEY REFERENCES CLIENT  ON DELETE CASCADE,
-   STATUS_ int,    -- 0 pending  1 ready   2  delivered
+   STATUS_ int,    -- 0 pending  1 on it   2  ready   3 delivered
    --CHECKOUT BIT NOT NULL,     
    TNUMBER INT FOREIGN KEY REFERENCES TABLE_ ,
    OTIME TIME,
@@ -166,6 +166,20 @@ else if @type = 1
 INSERT INTO WAITER(USERNAME,WNAME ) VALUES (@account ,@name);
 end
 
+go
+create procedure SetTablesCount @num tinyint
+as
+begin
+delete from [RESTDB].TABLE_ where TABLE_.TNUMBER > @num
+DECLARE @cnt INT = (select( count(*)) from TABLE_)
+
+WHILE @cnt < @num
+begin
+   insert into RESTDB.TABLE_ default values
+   SET @cnt = @cnt + 1
+end
+DBCC CHECKIDENT ('Emp', RESEED, 0)
+END
 
 go
 create procedure UpdateLogo @logo varbinary(max)
@@ -436,6 +450,7 @@ insert into CONTACTREQUEST(CID ,TNUMBER,STATUS_,CHECKOUT ,TIME_ ) values (1,1,0,
 (3,3,0,1,(CONVERT(time, GETDATE()))),
 (4,4,2,0,(CONVERT(time, GETDATE())));
 
-insert into ORDER_MENUITEMS (ORDERID ,ITEMNUMBER) values (3,1),(3,2),(3,3),(3,4);
+insert into ORDER_MENUITEMS (ORDERID ,ITEMNUMBER) values (3,1),(3,2),(3,3),(3,4)
+, (2,1),(2,2),(2,3),(2,4);
 
 --
