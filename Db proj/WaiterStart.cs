@@ -17,6 +17,7 @@ namespace Db_proj
             this.ControlBox = false;
             organiser = main;
             label1.Text = "Hello " + main.Controller.GetEmpName(main.Controller.CurrentID);
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(organiser.Controller.GetLogo());
             // temp test for data
             //for (int i = 0; i < 20; i++)
             //{

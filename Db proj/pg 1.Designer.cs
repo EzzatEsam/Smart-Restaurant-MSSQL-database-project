@@ -32,13 +32,14 @@ namespace Db_proj
             this.Workersbtn = new System.Windows.Forms.Button();
             this.m_bttn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Workersbtn
             // 
             this.Workersbtn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.Workersbtn.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Workersbtn.Location = new System.Drawing.Point(222, 70);
+            this.Workersbtn.Location = new System.Drawing.Point(222, 22);
             this.Workersbtn.Margin = new System.Windows.Forms.Padding(5);
             this.Workersbtn.Name = "Workersbtn";
             this.Workersbtn.Size = new System.Drawing.Size(250, 88);
@@ -51,7 +52,7 @@ namespace Db_proj
             // 
             this.m_bttn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.m_bttn.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_bttn.Location = new System.Drawing.Point(222, 205);
+            this.m_bttn.Location = new System.Drawing.Point(222, 137);
             this.m_bttn.Margin = new System.Windows.Forms.Padding(5);
             this.m_bttn.Name = "m_bttn";
             this.m_bttn.Size = new System.Drawing.Size(250, 88);
@@ -73,10 +74,24 @@ namespace Db_proj
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(222, 241);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(250, 88);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Change Logo";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // pg_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.m_bttn);
             this.Controls.Add(this.Workersbtn);
@@ -94,5 +109,6 @@ namespace Db_proj
         private System.Windows.Forms.Button Workersbtn;
         private System.Windows.Forms.Button m_bttn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

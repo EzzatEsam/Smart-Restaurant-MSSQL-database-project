@@ -5,7 +5,7 @@ namespace Db_proj
 {
     public enum NextsAdmin
     {
-        ADMINENTER, WORKERSLIST, WORKERADD, MENULIST, MENUADD, MODIACCOUNT
+        ADMINENTER, WORKERSLIST, WORKERADD, MENULIST, MENUADD, MODIACCOUNT ,CHANGELOGO
     }
     public partial class AdminStart :  AccountUser
     {
@@ -18,9 +18,10 @@ namespace Db_proj
             this.ControlBox = false;
             current = new pg_1(this);
             currentstate = NextsAdmin.ADMINENTER;
-            this.Controls.Add(current);
+            panel1.Controls.Add(current);
             current.Show();
             organiser = it;
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(organiser.Controller.GetLogo());
         }
         public bool AddEmployee(Worker it, string Usr, string Pass)
         {
@@ -39,8 +40,7 @@ namespace Db_proj
         }
         public bool DeleteItem(int ID)
         {
-            //delete an item with given ID from DB
-            return false;
+            return organiser.Controller.DeleteItem(ID);
         }
         public void GoToUsrContrl(NextsAdmin it)
         {
@@ -66,18 +66,25 @@ namespace Db_proj
                 case NextsAdmin.MODIACCOUNT :
                     temp = new ChangeLogins(this);
                     break;
+                case NextsAdmin.CHANGELOGO:
+                    temp = new ChangeLogo(this);
+                    break;
                 default:
                     temp = new pg_1(this);
                     break;
             }
 
-            this.Controls.Remove(current);
+            panel1.Controls.Remove(current);
             current.Dispose();
             current = temp;
             currentstate = it;
-            this.Controls.Add(current);
-        }
+            panel1.Controls.Add(current);
 
+        }
+        public void TestUpdate()
+        {
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(organiser.Controller.GetLogo());
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -90,6 +97,11 @@ namespace Db_proj
         private void button2_Click(object sender, EventArgs e)
         {
             GoToUsrContrl(NextsAdmin.MODIACCOUNT);
+        }
+
+        private void AdminStart_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

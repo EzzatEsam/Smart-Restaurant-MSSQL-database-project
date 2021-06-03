@@ -10,7 +10,7 @@ namespace Db_proj
 {
     public class DBManager
     {
-        string DB_Connection_String = DBStrings.ConnectionString;
+        string DB_Connection_String = DataBaseEssentials.ConnectionString;
         SqlConnection myConnection;
 
         public DBManager()
