@@ -40,7 +40,7 @@ namespace Db_proj
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(655, 24);
+            this.button1.Location = new System.Drawing.Point(655, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 45);
             this.button1.TabIndex = 0;
@@ -61,14 +61,14 @@ namespace Db_proj
             // 
             this.panel1.Location = new System.Drawing.Point(12, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(738, 373);
+            this.panel1.Size = new System.Drawing.Size(766, 415);
             this.panel1.TabIndex = 2;
             // 
             // AdminStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 474);
+            this.ClientSize = new System.Drawing.Size(790, 502);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);

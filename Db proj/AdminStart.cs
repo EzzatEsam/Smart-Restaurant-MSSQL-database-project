@@ -28,10 +28,11 @@ namespace Db_proj
             // here we add new employee to db and check if it can be added
             return false;
         }
-        public bool DeleteEmplyee(int ID)
+        public bool DeleteEmplyee(int ID ,Emp_type type)
         {
-            //delete an employee with given ID from DB
-            return false;
+            bool test = organiser.Controller.DeleteWorker(ID, type);
+            this.GoToUsrContrl(NextsAdmin.WORKERSLIST);
+            return test;
         }
         public bool AddToMenu(MenuItem it)
         {
@@ -40,7 +41,9 @@ namespace Db_proj
         }
         public bool DeleteItem(int ID)
         {
-            return organiser.Controller.DeleteItem(ID);
+            bool test =  organiser.Controller.DeleteItem(ID);
+            this.GoToUsrContrl(NextsAdmin.MENULIST);
+            return test;
         }
         public void GoToUsrContrl(NextsAdmin it)
         {

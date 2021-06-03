@@ -7,34 +7,35 @@ namespace Db_proj
 {
     public partial class ChefStart : AccountUser
     {
-        FormOrganiser main;
+        
         List<Order> Orders = new List<Order>();
         int VInterval = 40;
         public ChefStart(FormOrganiser main)
         {
             InitializeComponent();
             this.ControlBox = false;
-            this.main = main;
+            
+            organiser = main;
             label1.Text = "Hello " + main.Controller.GetEmpName(main.Controller.CurrentID);
-            pictureBox1.Image = DataBaseEssentials.BinaryToImage(organiser.Controller.GetLogo());
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(main.Controller.GetLogo());
             // temp test for data
-            for (int i = 0; i < 20; i++)
-            {
-                Order temp = new Order();
-                temp.OrderID = i;
-                temp.TableNo = 14;
-                temp.ClientID = 15;
-                temp.Status = Order_status.PENDING;
-                temp.OrderTime = new TimeSpan(20, 15, 0);
-                for (int j = 0; j < 3; j++)
-                {
-                    temp.Items.Add(new MenuItem(j, "fish", "also fish", 25f * j / 2));
-                }
-                Orders.Add(temp);
-                organiser = main;
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    Order temp = new Order();
+            //    temp.OrderID = i;
+            //    temp.TableNo = 14;
+            //    temp.ClientID = 15;
+            //    temp.Status = Order_status.PENDING;
+            //    temp.OrderTime = new TimeSpan(20, 15, 0);
+            //    for (int j = 0; j < 3; j++)
+            //    {
+            //        temp.Items.Add(new MenuItem(j, "fish", "also fish", 25f * j / 2));
+            //    }
+            //    Orders.Add(temp);
+            //    
 
 
-            }
+            //}
             UpdateList();
 
 
@@ -42,7 +43,7 @@ namespace Db_proj
         public void UpdateList()
         {
             // update orders from db
-
+            Orders = organiser.Controller.GetAllOrdersByStatus(Order_status.PENDING);
             //
             foreach (Control item in panel1.Controls)
             {
@@ -59,6 +60,12 @@ namespace Db_proj
                 it.Location = new Point(20, 20 + i * VInterval);
             }
         }
+
+        public void CancelTaken(Order currentOrder)
+        {
+            organiser.Controller.SetEmpStatus(organiser.Controller.CurrentID, Emp_type.CHEF, organiser.Controller.SetOrderStatus(currentOrder.OrderID, Order_status.PENDING));
+        }
+
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
 
@@ -71,7 +78,7 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.GoTo(0);
+            organiser.GoTo(0);
         }
         public void Expand(Order it)
         {
@@ -87,11 +94,15 @@ namespace Db_proj
         }
         public void SetTakn(Order it)
         {
-
+            if (organiser.Controller.SetOrderStatus(it.OrderID, Order_status.ONIT))
+            {
+                organiser.Controller.SetEmpStatus(organiser.Controller.CurrentID, Emp_type.CHEF, false);
+            }
         }
         public void SetReady(Order it)
         {
-
+            
+            organiser.Controller.SetEmpStatus(organiser.Controller.CurrentID, Emp_type.CHEF, organiser.Controller.SetOrderStatus(it.OrderID, Order_status.READY));
         }
 
         private void panel1_Paint_1(object sender, PaintEventArgs e)

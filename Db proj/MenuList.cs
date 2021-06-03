@@ -20,6 +20,10 @@ namespace Db_proj
         {
             Menu.Clear();
             var temp = main.organiser.Controller.GetAllMenu();
+            if (temp == null)
+            {
+                return;
+            }
             foreach (DataRow item in temp.Rows)
             {
                 Menu.Add(DataBaseEssentials.ConvertToMenuItemClass(item));

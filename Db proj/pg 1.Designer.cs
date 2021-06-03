@@ -33,6 +33,8 @@ namespace Db_proj
             this.m_bttn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Workersbtn
@@ -42,7 +44,7 @@ namespace Db_proj
             this.Workersbtn.Location = new System.Drawing.Point(222, 22);
             this.Workersbtn.Margin = new System.Windows.Forms.Padding(5);
             this.Workersbtn.Name = "Workersbtn";
-            this.Workersbtn.Size = new System.Drawing.Size(250, 88);
+            this.Workersbtn.Size = new System.Drawing.Size(250, 63);
             this.Workersbtn.TabIndex = 0;
             this.Workersbtn.Text = "View workers list";
             this.Workersbtn.UseVisualStyleBackColor = false;
@@ -52,10 +54,10 @@ namespace Db_proj
             // 
             this.m_bttn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.m_bttn.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_bttn.Location = new System.Drawing.Point(222, 137);
+            this.m_bttn.Location = new System.Drawing.Point(222, 109);
             this.m_bttn.Margin = new System.Windows.Forms.Padding(5);
             this.m_bttn.Name = "m_bttn";
-            this.m_bttn.Size = new System.Drawing.Size(250, 88);
+            this.m_bttn.Size = new System.Drawing.Size(250, 57);
             this.m_bttn.TabIndex = 1;
             this.m_bttn.Text = "View menu";
             this.m_bttn.UseVisualStyleBackColor = false;
@@ -65,7 +67,7 @@ namespace Db_proj
             // 
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(254, 339);
+            this.button1.Location = new System.Drawing.Point(500, 22);
             this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(198, 50);
@@ -78,19 +80,42 @@ namespace Db_proj
             // 
             this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button2.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(222, 241);
+            this.button2.Location = new System.Drawing.Point(222, 185);
             this.button2.Margin = new System.Windows.Forms.Padding(5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(250, 88);
+            this.button2.Size = new System.Drawing.Size(250, 54);
             this.button2.TabIndex = 3;
             this.button2.Text = "Change Logo";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(222, 361);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(250, 54);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Set number of tables";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(291, 305);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 30);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // pg_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.m_bttn);
@@ -101,6 +126,7 @@ namespace Db_proj
             this.Name = "pg_1";
             this.Size = new System.Drawing.Size(703, 515);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -110,5 +136,7 @@ namespace Db_proj
         private System.Windows.Forms.Button m_bttn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

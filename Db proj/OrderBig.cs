@@ -15,6 +15,7 @@ namespace Db_proj
             InitializeComponent();
             this.main = main;
             this.CurrentOrder = CurrentOrder;
+            
             UpdateList();
 
         }
@@ -35,6 +36,7 @@ namespace Db_proj
             {
                 item.Dispose();
             }
+            panel1.Controls.Clear();
             for (int i = 0; i < CurrentOrder.Items.Count; i++)
             {
                 MenuItem item = CurrentOrder.Items[i];
@@ -56,6 +58,7 @@ namespace Db_proj
 
         private void button2_Click(object sender, EventArgs e)
         {
+            main.CancelTaken(CurrentOrder);
             main.UpdateList();
         }
 
