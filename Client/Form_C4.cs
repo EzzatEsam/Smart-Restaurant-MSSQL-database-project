@@ -55,7 +55,7 @@ namespace Client
         {
             string x = DateTime.Now.ToShortTimeString();
             DateTime dateTime = DateTime.Parse(x);
-            make.back.back.c1.InsertCR(make.back.back.cid, make.back.back.tablenumber, dateTime, "Contact");
+            make.back.back.c1.InsertCR(make.back.back.cid, make.back.back.tablenumber, dateTime, false);
             button2.Text = "Pending";
             button2.BackColor = System.Drawing.Color.Red;
         }

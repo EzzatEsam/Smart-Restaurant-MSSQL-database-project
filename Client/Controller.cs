@@ -40,10 +40,10 @@ namespace Client
             string query = "updatetablestatus";
             dm.ExecuteScalar(query, dict);
         }
-        public bool InsertCR(int CID, int tablenum, DateTime time, string type)
+        public bool InsertCR(int CID, int tablenum, DateTime time, bool check)
         {
             
-            var dict = new Dictionary<string, object>() { { "@CID", CID }, { "@TNUMBER", tablenum }, { "@TIME", time }, { "@TYPE", type } };
+            var dict = new Dictionary<string, object>() { { "@CID", CID }, { "@TNUMBER", tablenum }, { "@TIME", time }, { "@CHECK", check } };
             string query = "spinsertCR";
             dm.ExecuteNonQuery(query, dict);
             bool flag = true;
@@ -58,11 +58,27 @@ namespace Client
             List<MenuItem> lmi = new List<MenuItem>();
             foreach (DataRow DR in output2.Rows)
             {
-                MenuItem mi = new MenuItem(Convert.ToInt32(DR[0]), Convert.ToString(DR[1]), Convert.ToString(DR[4]),(float) Convert.ToDouble(DR[3]), (float)Convert.ToDouble(DR[2]));
+                MenuItem mi = new MenuItem(Convert.ToInt32(DR[0]), Convert.ToString(DR[1]), Convert.ToString(DR[4]),(float) Convert.ToDouble(DR[3]), ((DR[2]) == System.DBNull.Value) ? -1 : (float)Convert.ToDouble(DR[2]));
                 lmi.Add(mi);
                 
             }
             return lmi;
+        }
+        public int InsertOR(int CID,int status, int tablenum, DateTime time)
+        {
+
+            var dict = new Dictionary<string, object>() { { "@CID", CID }, { "@STATUS", status}, { "@TNUMBER", tablenum }, { "@TIME", time } };
+            string query = "spinsertORDER";
+            var output1 = dm.ExecuteScalar(query, dict);
+            return (int)output1;
+        }
+        public bool InsertORMI(int orderid, int itemnumber)
+        {
+            
+                var dict = new Dictionary<string, object>() { { "@ORDERID", orderid }, { "@ITEMNUMBER", itemnumber } };
+                string query = "spinsertORMI";
+                var x= dm.ExecuteNonQuery(query, dict);
+                return true;
         }
     }
 }

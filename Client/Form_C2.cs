@@ -37,7 +37,7 @@ namespace Client
         {
             string x = DateTime.Now.ToShortTimeString();
             DateTime dateTime = DateTime.Parse(x);
-            back.c1.InsertCR(back.cid, back.tablenumber, dateTime, "Contact");
+            back.c1.InsertCR(back.cid, back.tablenumber, dateTime, false);
             flagCR = true;
             button2.Text = "Pending";
             button2.BackColor = System.Drawing.Color.Red;
