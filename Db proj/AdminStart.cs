@@ -16,11 +16,12 @@ namespace Db_proj
         {
             InitializeComponent();
             this.ControlBox = false;
+           organiser = it;
             current = new pg_1(this);
             currentstate = NextsAdmin.ADMINENTER;
             panel1.Controls.Add(current);
             current.Show();
-            organiser = it;
+            
             pictureBox1.Image = DataBaseEssentials.BinaryToImage(organiser.Controller.GetLogo());
         }
         public bool AddEmployee(Worker it, string Usr, string Pass)

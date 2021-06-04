@@ -13,12 +13,18 @@ namespace Client
             InitializeComponent();
             this.ControlBox = false;
             back = newback;
+            var output = back.make.back.back.c1.GetClientWholeMenu(back.make.back.back.cid); ;
             label1.Text = "Nice to have you " + name;
+            
+            float sum = 0;
+            foreach (var item in output)
+            {
+                sum +=item.price;
+                this.dataGridView1.Rows.Add(item.name, item.price);
+            }
+            textBox2.Text = sum.ToString();
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -53,6 +59,11 @@ namespace Client
         {
             back.Show();
             this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

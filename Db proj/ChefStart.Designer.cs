@@ -64,7 +64,7 @@ namespace Db_proj
             this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(12, 85);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(744, 314);
+            this.panel1.Size = new System.Drawing.Size(812, 334);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -85,7 +85,8 @@ namespace Db_proj
             // 
             this.pictureBox1.Location = new System.Drawing.Point(12, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(230, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(261, 77);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -93,7 +94,7 @@ namespace Db_proj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 411);
+            this.ClientSize = new System.Drawing.Size(836, 431);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);

@@ -6,7 +6,7 @@ namespace Client
     public partial class Form_C4 : Form
     {
         string name;
-        Form_C5 make;
+        public Form_C5 make;
         public Form_C4(string newname, Form_C5 newmake)
         {
             name = newname;

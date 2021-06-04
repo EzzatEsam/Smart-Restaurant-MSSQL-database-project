@@ -76,7 +76,7 @@ namespace Db_proj
     }
     public static class DataBaseEssentials
     {
-        public static string ConnectionString = @"Data Source=AMRO-LAPTOP\TEW_SQLEXPRESS;Initial Catalog=RESTDB;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=.;Initial Catalog=RESTDB;Integrated Security=True";
         public static string LoginCommand = "TryLogin";
         public static string GetAllEmpsCommand = "GetAllEmps";
         public static string UpdateAccountCommand = "UpdatePass";
@@ -98,10 +98,15 @@ namespace Db_proj
         public static string DeleteItemCommand = "DeleteMenueItem";
         public static string DeleteWorkerCommand = "DeleteFromEmployees";
         public static string ChangeNumberOfTablesCommand = "SetTablesCount";
+        public static string GetTablesCommand = "GetTables";
         public static MenuItem ConvertToMenuItemClass(DataRow it)
         {
             MenuItem output =new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]));
-
+            if (it["Picture"] == System.DBNull.Value)
+            {
+                return output;
+            }
+            output.Image = BinaryToImage((byte[])it["Picture"]);
             return output;
 
         }
@@ -128,17 +133,10 @@ namespace Db_proj
                 return null;
             }
             MemoryStream ms = new MemoryStream(binaryData);
-            
             Image img = Image.FromStream(ms);
             return img;
 
-            //Image rImage = null;
-
-            //using (MemoryStream ms = new MemoryStream(binaryData))
-            //{
-            //    rImage = Image.FromStream(ms);
-            //}
-            //return rImage;
+            
         }
     }
 }

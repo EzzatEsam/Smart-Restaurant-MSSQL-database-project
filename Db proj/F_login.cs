@@ -18,6 +18,8 @@ namespace Db_proj
             textBox1.ForeColor = Color.Gray;
             button1.Enabled = false;
             this.main = main;
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(main.Controller.GetLogo());
+
         }
         public void Reset()
         {

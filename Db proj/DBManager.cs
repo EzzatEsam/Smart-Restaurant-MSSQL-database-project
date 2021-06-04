@@ -27,7 +27,32 @@ namespace Db_proj
                 Console.WriteLine(e.ToString());
             }
         }
+        public int ExecuteWithReturn(string storedProcedureName, Dictionary<string, object> parameters)
+        {
+            try
+            {
+                SqlCommand myCommand = new SqlCommand(storedProcedureName, myConnection);
 
+                myCommand.CommandType = CommandType.StoredProcedure;
+
+                foreach (KeyValuePair<string, object> Param in parameters)
+                {
+                    myCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
+                }
+                SqlParameter retval = new SqlParameter("@ReturnValue", System.Data.SqlDbType.Int);
+                retval.Direction = System.Data.ParameterDirection.ReturnValue;
+                myCommand.Parameters.Add(retval);
+                myCommand.ExecuteNonQuery();
+
+                return (int)retval.Value;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
+        }
         public int ExecuteNonQuery(string storedProcedureName, Dictionary<string, object> parameters)
         {
             try

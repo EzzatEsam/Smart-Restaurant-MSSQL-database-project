@@ -29,6 +29,10 @@ namespace Db_proj
             panel1.Controls.Clear();
             // here we reload the employees db 
             var temp = main.organiser.Controller.GetAllEmployees();
+            if (temp == null)
+            {
+                return;
+            }
             foreach (DataRow item in temp.Rows)
             {
                 Workers.Add (DataBaseEssentials.ConvertToWorkerClass(item));
@@ -51,6 +55,16 @@ namespace Db_proj
 
        
         private void WorkersList_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

@@ -76,12 +76,20 @@ namespace Db_proj
         public bool DeleteWorker(int it ,Emp_type type)
         {
             DBManager manager = new DBManager();
-            var dict = new Dictionary<string, object>() { { "@num", it },{ "@type" ,(int) type } };
+      
+            var dict = new Dictionary<string, object>() { { "@num", it },{ "@type" ,(int) type +1 } };
             int output = manager.ExecuteNonQuery(DataBaseEssentials.DeleteWorkerCommand, dict);
             manager.CloseConnection();
             return output != 0;
         }
+        public DataTable GetTables()
+        {
+            DBManager manager = new DBManager();
 
+            var output = manager.ExecuteReader(DataBaseEssentials.GetTablesCommand, null);
+            manager.CloseConnection();
+            return output;
+        }
         public bool SetTableNumbers(int it)
         {
             DBManager manager = new DBManager();
@@ -116,9 +124,9 @@ namespace Db_proj
         {
             DBManager manager = new DBManager();
             var dict = new Dictionary<string, object>() { { "@type",( it.type == Emp_type.CHEF )? 1 :2 }, { "@name", it.name }, { "pass", pass }, { "@account", account } };
-            int output = manager.ExecuteNonQuery(DataBaseEssentials.AddEmpCommand, dict);
+            int output = manager.ExecuteWithReturn(DataBaseEssentials.AddEmpCommand, dict);
             manager.CloseConnection();
-            return output != 0;
+            return output == 1;
         }
 
         public bool SetEmpStatus(int ID , Emp_type type , bool isfree)

@@ -61,7 +61,7 @@ namespace Db_proj
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(25, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Contents";
             // 
@@ -70,7 +70,7 @@ namespace Db_proj
             this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(28, 93);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(427, 149);
+            this.panel1.Size = new System.Drawing.Size(511, 207);
             this.panel1.TabIndex = 3;
             // 
             // button1
@@ -78,7 +78,7 @@ namespace Db_proj
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(149, 266);
+            this.button1.Location = new System.Drawing.Point(224, 306);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 34);
             this.button1.TabIndex = 4;
@@ -91,7 +91,7 @@ namespace Db_proj
             this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(28, 266);
+            this.button2.Location = new System.Drawing.Point(28, 306);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 34);
             this.button2.TabIndex = 5;
@@ -110,7 +110,7 @@ namespace Db_proj
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "OrderBig";
-            this.Size = new System.Drawing.Size(489, 313);
+            this.Size = new System.Drawing.Size(569, 356);
             this.Load += new System.EventHandler(this.OrderBig_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

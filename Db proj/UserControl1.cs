@@ -23,8 +23,8 @@ namespace Db_proj
             label2.Text = current.name;
             label3.Text = current.type.ToString();
             label4.Text = current.IsFree ? "Free" : "Busy";
-            label5.Text = current.CurrentTask.ToString();
-            label6.Text = current.cType.ToString();
+            label5.Text = (current.CurrentTask == 0)? "None": current.CurrentTask.ToString();
+            label6.Text = (current.CurrentTask == 0) ? "None" : current.cType.ToString();
 
         }
 

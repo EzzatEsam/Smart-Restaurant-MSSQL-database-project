@@ -39,7 +39,7 @@ namespace Db_proj
             // 
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(372, 3);
+            this.button1.Location = new System.Drawing.Point(494, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -62,14 +62,14 @@ namespace Db_proj
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(87, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Contents :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(272, 13);
+            this.label3.Location = new System.Drawing.Point(409, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 3;
@@ -86,7 +86,7 @@ namespace Db_proj
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "OrderSmol";
-            this.Size = new System.Drawing.Size(465, 33);
+            this.Size = new System.Drawing.Size(618, 33);
             this.Load += new System.EventHandler(this.OrderSmol_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

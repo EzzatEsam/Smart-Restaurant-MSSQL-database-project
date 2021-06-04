@@ -13,7 +13,7 @@ namespace Db_proj
             InitializeComponent();
             this.main = f;
             textBox1.Enabled = false;
-            textBox1.Hide();
+            textBox1.Text = f.organiser.Controller.GetTables().Rows.Count.ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace Db_proj
             {
                 stt = true;
                 textBox1.Enabled = true;
-                textBox1.Show();
+                
                 button3.Enabled = false;
                 return;
             }
@@ -57,7 +57,7 @@ namespace Db_proj
             {
                 n =Convert.ToInt32( textBox1.Text);
                 textBox1.Enabled = false;
-                textBox1.Hide();
+                textBox1.Text = main.organiser.Controller.GetTables().Rows.Count.ToString();
                 MessageBox.Show((main.organiser.Controller.SetTableNumbers(n)) ? "Done " : "Error");
             }
         }

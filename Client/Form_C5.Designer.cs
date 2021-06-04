@@ -57,7 +57,7 @@ namespace Client
             this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(31, 406);
+            this.button2.Location = new System.Drawing.Point(12, 417);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 32);
             this.button2.TabIndex = 1;
@@ -70,7 +70,7 @@ namespace Client
             this.button3.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(629, 406);
+            this.button3.Location = new System.Drawing.Point(629, 417);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 32);
             this.button3.TabIndex = 2;
@@ -111,7 +111,7 @@ namespace Client
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(31, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(631, 313);
+            this.panel1.Size = new System.Drawing.Size(727, 313);
             this.panel1.TabIndex = 6;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -123,7 +123,7 @@ namespace Client
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.panel2.Location = new System.Drawing.Point(31, 331);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(548, 78);
+            this.panel2.Size = new System.Drawing.Size(548, 86);
             this.panel2.TabIndex = 7;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 

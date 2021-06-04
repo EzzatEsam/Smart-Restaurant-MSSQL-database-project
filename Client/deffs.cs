@@ -29,13 +29,14 @@ namespace Client
         public static string DeleteItemCommand = "DeleteMenueItem";
         public static string DeleteWorkerCommand = "DeleteFromEmployees";
         public static string ChangeNumberOfTablesCommand = "SetTablesCount";
-        //public static MenuItem ConvertToMenuItemClass(DataRow it)
-        //{
-        //    MenuItem output = new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]),);
+        public static MenuItem ConvertToMenuItemClass(DataRow it)
+        {
+            MenuItem output = new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]),-1);
+            output.Image = BinaryToImage((byte[])it["Picture"]);
 
-        //    return output;
-
-        //}
+            //var output= new MenuItem(Convert.ToInt32(it[0]), Convert.ToString(it[1]), Convert.ToString(it[4]), (float)Convert.ToDouble(it[3]), ((it[2]) == System.DBNull.Value) ? -1 : (float)Convert.ToDouble(it[2]));
+            return output;
+        }
 
         
         public static Image BinaryToImage(byte[] binaryData)
@@ -79,7 +80,8 @@ namespace Client
     public class MenuItem
     {
         public int number; public string name; public string category; public float price; public float rating;
-        public Bitmap Image;
+        public Image Image;
+        public MenuItem() { }
         public MenuItem(int number, string name, string category, float price, float rating)
         {
             this.number = number;
@@ -107,18 +109,6 @@ namespace Client
         public RequestStatus ContactStatus;
         public int OrderNumber = -1;
     }
-    public class Worker
-    {
-        public int ssid; public string name; public Emp_type type; public bool IsFree; public int CurrentTask; public Task cType;
-        public Worker(int ssid, string name, Emp_type type, bool IsFree, int current, Task tskTYpe)
-        {
-            this.ssid = ssid;
-            this.name = name;
-            this.type = type;
-            this.IsFree = IsFree;
-            CurrentTask = current;
-            cType = tskTYpe;
-        }
-    }
+   
 
 }

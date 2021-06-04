@@ -33,8 +33,9 @@ CREATE TABLE MENUITEMS
 ITMNUMBER INT PRIMARY KEY IDENTITY(1,1) ,
 INAME VARCHAR(100) NOT NULL UNIQUE,
 PRICE FLOAT NOT NULL ,
-Picture  varbinary(max) ,
+
 CATEGORY VARCHAR(100) NOT NULL,
+Picture  varbinary(max) ,
 );
 CREATE TABLE TABLE_
 (
@@ -121,6 +122,7 @@ for UPDATE , INSERT
 AS
 IF (SELECT COUNT(*) FROM ACCOUNT where ACCOUNT.TYPE_ =0) > 1
 begin
+print 'Admin already exists'
 ROLLBACK TRANSACTION
 END
 
@@ -135,6 +137,7 @@ as
 
     if @tableCount > 1
     begin
+        print 'Logo already exists'
         rollback
     end
 go
@@ -159,26 +162,29 @@ go
 create procedure AddEmployee @type int , @name nvarchar(20), @account nvarchar(20) , @pass nvarchar(20) 
 as
 begin
+if exists (select * from ACCOUNT where ACCOUNT.USERNAME = @account)
+return -1;
 INSERT into ACCOUNT(USERNAME ,PASSWORD_, TYPE_) VALUES (@account ,@pass,@type);
 if @type = 1
 INSERT INTO CHEF(USERNAME,CHname ) VALUES (@account ,@name);
 else if @type = 1
 INSERT INTO WAITER(USERNAME,WNAME ) VALUES (@account ,@name);
+return 1;
 end
 
 go
 create procedure SetTablesCount @num tinyint
 as
 begin
-delete from [RESTDB].TABLE_ where TABLE_.TNUMBER > @num
+delete from TABLE_ where TABLE_.TNUMBER > @num
 DECLARE @cnt INT = (select( count(*)) from TABLE_)
-
+DBCC CHECKIDENT ('Emp', RESEED, @cnt)
 WHILE @cnt < @num
 begin
    insert into RESTDB.TABLE_ default values
    SET @cnt = @cnt + 1
 end
-DBCC CHECKIDENT ('Emp', RESEED, 0)
+
 END
 
 go
@@ -303,10 +309,17 @@ go
 create procedure DeleteFromEmployees @num int , @type tinyint
 as
 begin
+declare @usr varchar(50);
 if @type =1
+begin
+set @usr = (select CHEF.USERNAME from CHEF where CHEF.CHID = @num)
 delete from CHEF where CHEF.CHID = @num;
+end
 else if @type = 2
+begin
+set @usr = (select WAITER.USERNAME from WAITER where WAITER.WID = @num)
 delete from WAITER  where WAITER.WID = @num;
+end
 end
 
 
@@ -331,6 +344,13 @@ create procedure GetAllMenu
 as 
 begin
 select * from MENUITEMS;
+end
+go
+
+create procedure GetTables
+as
+begin
+select *from TABLE_;
 end
 go
 
@@ -382,16 +402,16 @@ create proc spinsertCR
 @TYPE varchar(50)
 as
 begin
-insert into CONTACTREQUEST
+insert into CONTACTREQUEST (CID ,TNUMBER ,TIME_ ,STATUS_)
 values (@CID, @TNUMBER, @TIME, @TYPE)
 end
 go
-create proc spmenuuser
+create procedure GetMenuWIthRating
 as
 begin
 select MENUITEMS.ITMNUMBER, MENUITEMS.INAME, AVG(ITEM_RATING.RATE) as AvgRate, MENUITEMS.PRICE, MENUITEMS.CATEGORY
 from MENUITEMS
-join ITEM_RATING
+left join ITEM_RATING
 ON MENUITEMS.ITMNUMBER= ITEM_RATING.ITMNUMBER
 group by MENUITEMS.ITMNUMBER, MENUITEMS.INAME, MENUITEMS.PRICE, MENUITEMS.CATEGORY
 ORDER BY MENUITEMS.CATEGORY ASC
@@ -483,5 +503,17 @@ insert into CONTACTREQUEST(CID ,TNUMBER,STATUS_,CHECKOUT ,TIME_ ) values (1,1,0,
 
 insert into ORDER_MENUITEMS (ORDERID ,ITEMNUMBER) values (3,1),(3,2),(3,3),(3,4)
 , (2,1),(2,2),(2,3),(2,4);
+insert into ITEM_RATING values
+(20,3,1),
+(20,4,2);
 
 --
+--create some tables
+go
+declare @tables int = 1;
+while @tables < 10
+begin
+insert into TABLE_ default values;
+set @tables = @tables +1;
+end
+go
