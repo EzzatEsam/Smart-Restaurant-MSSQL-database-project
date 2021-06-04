@@ -18,45 +18,8 @@ namespace Db_proj
             organiser = main;
             label1.Text = "Hello " + main.Controller.GetEmpName(main.Controller.CurrentID);
             pictureBox1.Image = DataBaseEssentials.BinaryToImage(organiser.Controller.GetLogo());
-            // temp test for data
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    ContactRequest temp = new ContactRequest();
-            //    temp.ContactNumber = i;
-            //    temp.TableNumber = 14;
-
-            //    temp.ContactStatus = RequestStatus.PENDING;
-            //    temp.ContactTime = new TimeSpan(20, 15, 0);
-
-            //    Reqs.Add(temp);
-            //}
-            //
-
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    Order temp = new Order();
-            //    temp.OrderID = i;
-            //    temp.TableNo = 14;
-            //    temp.ClientID = 15;
-            //    temp.Status = Order_status.PENDING;
-            //    temp.OrderTime = new TimeSpan(20, 15, 0);
-            //    for (int j = 0; j < 3; j++)
-            //    {
-            //        temp.Items.Add(new MenuItem(j, "fish", "also fish", 25f * j / 2));
-            //    }
-            //    Orders.Add(temp);
-
-            //    //
-            //    ContactRequest temp2 = new ContactRequest();
-            //    temp2.ContactNumber = i;
-            //    temp2.ContactTime = new TimeSpan(20, 15, 0);
-            //    temp2.ContactType = ((float)i % 2f == 0) ? RequestType.CHECKOUT : RequestType.INQUIRY;
-            //    temp2.TableNumber = 14;
-            //    temp2.ContactStatus = RequestStatus.PENDING;
-            //    Reqs.Add(temp2);
-
-
-            //}
+          
+           
             UpdateList();
         }
 

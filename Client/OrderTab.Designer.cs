@@ -78,8 +78,8 @@ namespace Client
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Location = new System.Drawing.Point(485, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -92,6 +92,7 @@ namespace Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);

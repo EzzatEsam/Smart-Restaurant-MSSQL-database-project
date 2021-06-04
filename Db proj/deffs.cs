@@ -102,11 +102,10 @@ namespace Db_proj
         public static MenuItem ConvertToMenuItemClass(DataRow it)
         {
             MenuItem output =new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]));
-            if (it["Picture"] == System.DBNull.Value)
+            if (it["Picture"] != System.DBNull.Value)
             {
-                return output;
+                output.Image = BinaryToImage((byte[])it["Picture"]);
             }
-            output.Image = BinaryToImage((byte[])it["Picture"]);
             return output;
 
         }
@@ -132,11 +131,17 @@ namespace Db_proj
             {
                 return null;
             }
-            MemoryStream ms = new MemoryStream(binaryData);
-            Image img = Image.FromStream(ms);
-            return img;
-
-            
+            try
+            {
+                MemoryStream ms = new MemoryStream(binaryData);
+                Image img = Image.FromStream(ms);
+                return img;
+            }
+            catch (Exception e)
+            {
+                return null;
+                
+            }   
         }
     }
 }

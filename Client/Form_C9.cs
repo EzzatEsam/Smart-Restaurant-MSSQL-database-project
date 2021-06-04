@@ -5,6 +5,7 @@ namespace Client
 {
     public partial class Form_C9 : Form
     {
+        bool conf = false;
         string name;
         Form_C4 back;
         public Form_C9(string newname, Form_C4 newback)
@@ -13,7 +14,7 @@ namespace Client
             InitializeComponent();
             this.ControlBox = false;
             back = newback;
-            var output = back.make.back.back.c1.GetClientWholeMenu(back.make.back.back.cid); ;
+            var output = DataBaseEssentials.c1.GetClientWholeMenu(DataBaseEssentials.cid); ;
             label1.Text = "Nice to have you " + name;
             
             float sum = 0;
@@ -63,7 +64,21 @@ namespace Client
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if (conf)
+            {
+                this.Hide();
+                DataBaseEssentials.c1.updatetablestatus(DataBaseEssentials.tablenumber, false);
+                DataBaseEssentials.Main.Show();
+                DataBaseEssentials.Main.RefreshAgain();
+            }
+            string x = DateTime.Now.ToShortTimeString();
+            DateTime dateTime = DateTime.Parse(x);
+            DataBaseEssentials.c1.InsertCR(DataBaseEssentials.cid, DataBaseEssentials.tablenumber, dateTime, false);
+            button1.Enabled = false;
+            button1.Hide();
+            button2.Text = "Leave";
+            conf = true;
+            label1.Text = "Please wait for a waiter to come by";
         }
     }
 }

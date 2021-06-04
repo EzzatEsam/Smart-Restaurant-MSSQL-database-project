@@ -52,6 +52,7 @@ namespace Db_proj
         {
            
                 MenuItem it = new MenuItem(-1, textBox1.Text, textBox2.Text, float.Parse(textBox3.Text));
+                it.Image = pictureBox1.Image;
                 //it.Image = filename;
                 if (main.AddToMenu(it) )
                 {

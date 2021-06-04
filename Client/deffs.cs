@@ -29,16 +29,24 @@ namespace Client
         public static string DeleteItemCommand = "DeleteMenueItem";
         public static string DeleteWorkerCommand = "DeleteFromEmployees";
         public static string ChangeNumberOfTablesCommand = "SetTablesCount";
+        public static string CheckLastReqCommand = "CheckLastRequestStats";
         public static MenuItem ConvertToMenuItemClass(DataRow it)
         {
             MenuItem output = new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]),-1);
-            output.Image = BinaryToImage((byte[])it["Picture"]);
+            if (it["Picture"] != System.DBNull.Value)
+            {
+                output.Image = BinaryToImage((byte[])it["Picture"]);
+            }
+            
 
-            //var output= new MenuItem(Convert.ToInt32(it[0]), Convert.ToString(it[1]), Convert.ToString(it[4]), (float)Convert.ToDouble(it[3]), ((it[2]) == System.DBNull.Value) ? -1 : (float)Convert.ToDouble(it[2]));
             return output;
         }
-
-        
+        public static Form_C1 Main;
+        public static int cid;
+        public static string ClientName;
+        public static bool flagCR;
+        public static int tablenumber;
+        public static Controller c1;
         public static Image BinaryToImage(byte[] binaryData)
         {
             if (binaryData == null)
@@ -49,8 +57,6 @@ namespace Client
 
             Image img = Image.FromStream(ms);
             return img;
-
-            
         }
     }
 

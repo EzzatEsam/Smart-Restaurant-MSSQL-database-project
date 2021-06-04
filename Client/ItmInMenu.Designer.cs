@@ -70,7 +70,7 @@ namespace Client
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(349, 20);
+            this.label4.Location = new System.Drawing.Point(367, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 15);
             this.label4.TabIndex = 3;
@@ -80,9 +80,9 @@ namespace Client
             // 
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(547, 16);
+            this.button1.Location = new System.Drawing.Point(609, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 23);
+            this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = false;
@@ -100,7 +100,7 @@ namespace Client
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(438, 20);
+            this.label5.Location = new System.Drawing.Point(479, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 15);
             this.label5.TabIndex = 6;
@@ -111,6 +111,7 @@ namespace Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
@@ -120,7 +121,7 @@ namespace Client
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ItmInMenu";
-            this.Size = new System.Drawing.Size(629, 62);
+            this.Size = new System.Drawing.Size(691, 62);
             this.Load += new System.EventHandler(this.ItmInMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

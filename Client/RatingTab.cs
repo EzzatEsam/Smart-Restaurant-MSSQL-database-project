@@ -8,13 +8,18 @@ namespace Client
         Form_C6 main;
         MenuItem current;
         public RatingTab(Form_C6 main,
-        MenuItem current)
+        MenuItem current,bool taken)
         {
             InitializeComponent();
             this.main = main;
             this.current = current;
             label1.Text = current.name;
             label2.Text = current.price.ToString() + "LE";
+            if (taken)
+            {
+                StarRatingControl star = new StarRatingControl();
+                panel1.Controls.Add(star);
+            }
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)

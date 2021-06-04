@@ -8,6 +8,7 @@ namespace Client
         public string name;
         public Form_C1 back;
         public bool flagCR;
+        Form_C5 order;
         public Form_C2(string newname, Form_C1 newback)
         {
             name = newname;
@@ -15,6 +16,8 @@ namespace Client
             this.ControlBox = false;
             label1.Text = "Hello " + name + ", Ready to order.";
             back = newback;
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(DataBaseEssentials.c1.GetLogo());
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,7 +48,10 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form_C5 order = new Form_C5(this);
+            if (order == null)
+            {
+                order = new Form_C5(this);
+            } 
             order.Show();
             this.Hide();
         }

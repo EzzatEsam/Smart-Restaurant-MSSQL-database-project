@@ -1,14 +1,14 @@
 ﻿
 namespace Client
 {
-    partial class ShoppingItm
+    partial class ErrorForm
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,10 +21,10 @@ namespace Client
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -36,32 +36,33 @@ namespace Client
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(107, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.Size = new System.Drawing.Size(232, 40);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "Connection Error";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(123, 5);
+            this.button1.Location = new System.Drawing.Point(137, 124);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 23);
+            this.button1.Size = new System.Drawing.Size(162, 31);
             this.button1.TabIndex = 1;
-            this.button1.Text = "X";
+            this.button1.Text = "Terminate apllocation";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ShoppingItm
+            // ErrorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(443, 197);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Name = "ShoppingItm";
-            this.Size = new System.Drawing.Size(161, 35);
-            this.Load += new System.EventHandler(this.ShoppingItm_Load);
+            this.Name = "ErrorForm";
+            this.Text = "ErrorForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -117,12 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label2.Text" xml:space="preserve">
-    <value>('admin' ,'admin',0)   -- the admin
-,('Ahmed' ,'password1',1)  --chef
-,('Hazem4' ,'12345678',1)  --chef
-,('Marwan' ,'145678',1) --chef
-,('Abdo14' ,'password',2)  --waiter
-,('OmarGamal' ,'valar morghulis',2)--waiter</value>
-  </data>
 </root>

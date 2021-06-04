@@ -29,7 +29,6 @@ namespace Db_proj
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_login));
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -85,9 +84,11 @@ namespace Db_proj
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(486, 150);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 78);
+            this.label2.Size = new System.Drawing.Size(175, 91);
             this.label2.TabIndex = 4;
-            this.label2.Text = resources.GetString("label2.Text");
+            this.label2.Text = "Debug only --to be removed later\r\nadmin ,admin-- the admin\r\nAhmed ,password1  --c" +
+    "hef\r\nHazem4 ,12345678  --chef\r\nMarwan ,145678 --chef\r\nAbdo14 ,password  --waiter" +
+    "\r\nOmarGamal ,valar morghulis --waiter";
             // 
             // pictureBox1
             // 
@@ -102,6 +103,7 @@ namespace Db_proj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(746, 389);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);

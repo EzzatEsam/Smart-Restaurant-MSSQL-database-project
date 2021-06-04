@@ -7,18 +7,22 @@ namespace Client
     {
         string name;
         public Form_C5 make;
-        public Form_C4(string newname, Form_C5 newmake)
+        Form_C6 Orders;
+        Form_C9 chechout;
+        public Form_C4( Form_C5 newmake)
         {
-            name = newname;
+            name = DataBaseEssentials.ClientName;
             make = newmake;
             this.ControlBox = false;
             InitializeComponent();
             label1.Text = "Hello " + name + ", Make another order?";
-            if (newmake.back.flagCR)
+            if (DataBaseEssentials.flagCR)
             {
                 button2.Text = "Pending";
                 button2.BackColor = System.Drawing.Color.Red;
             }
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(DataBaseEssentials.c1.GetLogo());
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -55,9 +59,10 @@ namespace Client
         {
             string x = DateTime.Now.ToShortTimeString();
             DateTime dateTime = DateTime.Parse(x);
-            make.back.back.c1.InsertCR(make.back.back.cid, make.back.back.tablenumber, dateTime, false);
+            DataBaseEssentials.c1.InsertCR(DataBaseEssentials.cid, DataBaseEssentials.tablenumber, dateTime, false);
             button2.Text = "Pending";
             button2.BackColor = System.Drawing.Color.Red;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,19 +70,28 @@ namespace Client
             make.Show();
             this.Hide();
             make.Reset();
+            make.PrevForm = this;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form_C9 chechout = new Form_C9(name, this);
+            if (chechout == null)
+            {
+                chechout = new Form_C9(name, this); 
+            }
+             
             chechout.Show();
             this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form_C6 chechout = new Form_C6(this);
-            chechout.Show();
+            if (Orders == null)
+            {
+                Orders = new Form_C6(this);
+            }
+            
+            Orders.Show();
             this.Hide();
         }
     }

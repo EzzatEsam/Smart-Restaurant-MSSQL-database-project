@@ -18,24 +18,7 @@ namespace Db_proj
             organiser = main;
             label1.Text = "Hello " + main.Controller.GetEmpName(main.Controller.CurrentID);
             pictureBox1.Image = DataBaseEssentials.BinaryToImage(main.Controller.GetLogo());
-            // temp test for data
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    Order temp = new Order();
-            //    temp.OrderID = i;
-            //    temp.TableNo = 14;
-            //    temp.ClientID = 15;
-            //    temp.Status = Order_status.PENDING;
-            //    temp.OrderTime = new TimeSpan(20, 15, 0);
-            //    for (int j = 0; j < 3; j++)
-            //    {
-            //        temp.Items.Add(new MenuItem(j, "fish", "also fish", 25f * j / 2));
-            //    }
-            //    Orders.Add(temp);
-            //    
-
-
-            //}
+          
             UpdateList();
 
 

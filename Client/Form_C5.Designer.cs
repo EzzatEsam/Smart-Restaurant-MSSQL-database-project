@@ -37,6 +37,8 @@ namespace Client
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -44,7 +46,7 @@ namespace Client
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(697, 341);
+            this.button1.Location = new System.Drawing.Point(712, 355);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 42);
             this.button1.TabIndex = 0;
@@ -57,7 +59,7 @@ namespace Client
             this.button2.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(12, 417);
+            this.button2.Location = new System.Drawing.Point(12, 433);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 32);
             this.button2.TabIndex = 1;
@@ -70,7 +72,7 @@ namespace Client
             this.button3.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(629, 417);
+            this.button3.Location = new System.Drawing.Point(629, 433);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 32);
             this.button3.TabIndex = 2;
@@ -81,7 +83,7 @@ namespace Client
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(585, 359);
+            this.label1.Location = new System.Drawing.Point(585, 374);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 15);
             this.label1.TabIndex = 3;
@@ -90,7 +92,7 @@ namespace Client
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(664, 359);
+            this.label2.Location = new System.Drawing.Point(668, 370);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 15);
             this.label2.TabIndex = 4;
@@ -99,7 +101,7 @@ namespace Client
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(629, 355);
+            this.textBox1.Location = new System.Drawing.Point(629, 367);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(33, 23);
@@ -109,30 +111,40 @@ namespace Client
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(31, 12);
+            this.panel1.Location = new System.Drawing.Point(31, 85);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(727, 313);
+            this.panel1.Size = new System.Drawing.Size(756, 250);
             this.panel1.TabIndex = 6;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
-            this.panel2.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.panel2.Location = new System.Drawing.Point(31, 331);
+            this.panel2.Location = new System.Drawing.Point(31, 341);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(548, 86);
             this.panel2.TabIndex = 7;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(31, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(320, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form_C5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(791, 450);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(827, 477);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
@@ -147,6 +159,7 @@ namespace Client
             this.Name = "Form_C5";
             this.Text = "Total";
             this.Load += new System.EventHandler(this.Form_C5_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +175,6 @@ namespace Client
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

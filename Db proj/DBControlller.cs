@@ -175,21 +175,9 @@ namespace Db_proj
         public List<Order> GetAllOrdersByStatus(Order_status state)
         {
             DBManager manager = new DBManager();
-            int StateInt =-1;
-            switch (state)
-            {
-                case Order_status.PENDING: StateInt = 0;
-                    break;
-                case Order_status.READY:
-                    StateInt = 1;
-                    break;
-                case Order_status.DELIVERED:
-                    StateInt = 2;
-                    break;
-                default:
-                    break;
-            }
-            var dict = new Dictionary<string, object>() { { "@state", StateInt }  };
+            
+            
+            var dict = new Dictionary<string, object>() { { "@state", (int) state }  };
             var output = manager.ExecuteReader(DataBaseEssentials.GetAllOrdersCommand, dict);
             
 
@@ -204,19 +192,8 @@ namespace Db_proj
                 Order NewOrder = new Order();
                 NewOrder.OrderID = Convert.ToInt16(output.Rows[i][0]);
                 NewOrder.ClientID = Convert.ToInt16( output.Rows[i][1]);
-                switch (Convert.ToInt16(output.Rows[i][2]))
-                {
-                    case 0: NewOrder.Status = Order_status.PENDING;
-                        break;
-                    case 2:
-                        NewOrder.Status = Order_status.READY;
-                        break;
-                    case 3:
-                        NewOrder.Status = Order_status.DELIVERED;
-                        break;
-                    default:
-                        break;
-                }
+                NewOrder.Status = (Order_status)(Convert.ToInt16(output.Rows[i][2]));
+               
                 NewOrder.TableNo = Convert.ToInt16( output.Rows[i][3]);
                 NewOrder.OrderTime = TimeSpan.Parse( output.Rows[i][4].ToString());
                 DataTable Itms = manager.ExecuteReader(DataBaseEssentials.GetItemsInOrderCommand, new Dictionary<string, object>() { { "@ordernum", NewOrder.OrderID } }); 

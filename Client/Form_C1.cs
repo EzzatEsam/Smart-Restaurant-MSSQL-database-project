@@ -6,13 +6,37 @@ namespace Client
 {
     public partial class Form_C1 : Form
     {
-       public Controller c1;
+        public Controller c1;
         public int cid;
         public int tablenumber;
+        Form_C2 start;
         public Form_C1()
         {
             InitializeComponent();
             c1 = new Controller();
+            DataBaseEssentials.c1 = c1;
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(c1.GetLogo());
+            DataBaseEssentials.Main = this;
+            UpdateTables();
+
+        }
+        void UpdateTables()
+        {
+            var tables= c1.GetEmptyTableNums();
+            if (tables == null)
+            {
+                
+                button1.Enabled = false;
+                label3.Text = "No empty tables at the moment";
+                return;
+            }
+            label3.Text = "";
+            button1.Enabled = true;
+            foreach (var item in tables)
+            {
+                comboBox1.Items.Add(item.ToString());
+            }
+
         }
         private void Form_C1_Load (object sender, EventArgs e)
         {
@@ -23,7 +47,11 @@ namespace Client
         {
 
         }
-
+        public void RefreshAgain()
+        {
+            UpdateTables();
+            textBox1.Text = "";
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             bool containL = false;
@@ -58,24 +86,32 @@ namespace Client
                 MessageBox.Show("Error, Please enter a valid name.");
             }
             
-            else if (textBox2.Text == string.Empty || !textBox2.Text.All(C=> char.IsDigit(C)) || StartS || spaces)
+            else if (comboBox1.Text == string.Empty || !comboBox1.Text.All(C=> char.IsDigit(C)) || StartS || spaces)
             {
                 MessageBox.Show("Error, Please enter a valid table number.");
             }
-            else  if (c1.checktablenumber(int.Parse(textBox2.Text)) == 0)
+            else  if (c1.checktablenumber(int.Parse(comboBox1.Text)) == 0)
             {
                 MessageBox.Show("Error, Please re-check your table number.");
             }
-            else if (c1.checktablestatus(int.Parse(textBox2.Text)) == 0)
+            else if (c1.checktablestatus(int.Parse(comboBox1.Text)) == 0)
             {
                 MessageBox.Show("Error, this table should be occupied.");
+                UpdateTables();
             }
             else
             {
-                cid = c1.insertclient(textBox1.Text, int.Parse(textBox2.Text));
-                tablenumber = int.Parse(textBox2.Text);
-                c1.updatetablestatus(int.Parse(textBox2.Text), true);
-                Form_C2 start = new Form_C2(textBox1.Text, this);
+                cid = c1.insertclient(textBox1.Text, int.Parse(comboBox1.Text));
+                DataBaseEssentials.cid = cid;
+                tablenumber = int.Parse(comboBox1.Text);
+                DataBaseEssentials.tablenumber = tablenumber;
+                c1.updatetablestatus(int.Parse(comboBox1.Text), true);
+                if (start != null)
+                {
+                    start.Dispose();
+                }
+                start = new Form_C2(textBox1.Text, this);
+                DataBaseEssentials.ClientName = textBox1.Text;
                 start.Show();
                 this.Hide();
 

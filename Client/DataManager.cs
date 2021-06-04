@@ -19,12 +19,12 @@ namespace Client
             try
             {
                 myConnection.Open();
-                Console.WriteLine("The DB connection is opened successfully");
+                //Console.WriteLine("The DB connection is opened successfully");
             }
             catch (Exception e)
             {
-                Console.WriteLine("The DB connection is failed");
-                Console.WriteLine(e.ToString());
+                ErrorForm f = new ErrorForm();
+                f.Show();
             }
         }
 

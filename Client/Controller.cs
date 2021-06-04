@@ -18,6 +18,31 @@ namespace Client
   
         }
 
+        public DataTable GetTables()
+        {
+            
+            return  dm.ExecuteReader("GetTables", null);
+
+        }
+        public byte[] GetLogo()
+        {
+            return (byte[]) dm.ExecuteScalar(DataBaseEssentials.GetLogoCommand, null);
+        }
+
+        public List<int> GetEmptyTableNums()
+        {
+            var output = dm.ExecuteReader("GetEmptyTablesNums", null);
+            List<int> Out_ = new List<int>();
+            if (output == null)
+            {
+                return null;
+            }
+            foreach (DataRow item in output.Rows)
+            {
+                Out_.Add((int)item[0]);
+            }
+            return Out_;
+        }
         public int checktablenumber(int tablenumber)
         {
             var dict = new Dictionary<string, object>() { { "@TNUMBER", tablenumber } };
@@ -45,20 +70,21 @@ namespace Client
             
             var dict = new Dictionary<string, object>() { { "@CID", CID }, { "@TNUMBER", tablenum }, { "@TIME", time }, { "@CHECK", check } };
             string query = "spinsertCR";
-            dm.ExecuteNonQuery(query, dict);
+            var output = dm.ExecuteNonQuery(query, dict);
             bool flag = true;
             return flag;
         }
         public List<MenuItem> getmenuitems()
         {
 
-            string query = "GetMenuWIthRating";
-            var output2 = dm.ExecuteReader(query, null);
-            //return output2;
+            var output = dm.ExecuteReader(DataBaseEssentials.GetAllMenuCommand, null);
+
             List<MenuItem> lmi = new List<MenuItem>();
-            foreach (DataRow DR in output2.Rows)
+            var it = (DataTable)output;
+            foreach (DataRow DR in it.Rows)
             {
-                MenuItem mi = new MenuItem(Convert.ToInt32(DR[0]), Convert.ToString(DR[1]), Convert.ToString(DR[4]),(float) Convert.ToDouble(DR[3]), ((DR[2]) == System.DBNull.Value) ? -1 : (float)Convert.ToDouble(DR[2]));
+                MenuItem mi = DataBaseEssentials.ConvertToMenuItemClass(DR);
+                
                 lmi.Add(mi);
                 
             }
@@ -99,16 +125,13 @@ namespace Client
             var dict = new Dictionary<string, object>() { { "@CID", CID }, { "@STATUS", status}, { "@TNUMBER", tablenum }, { "@TIME", time } };
             string query = "spinsertORDER";
             var output1 = dm.ExecuteScalar(query, dict);
-            return (int)output1;
+            return Convert.ToInt16( output1);
         }
         public List<Order> GetAllOrdersByClientID(int ID)
         {
-            
-            
+
             var dict = new Dictionary<string, object>() { { "@ID", ID } };
             var output = dm.ExecuteReader(DataBaseEssentials.GetAllOrderByClientCommand, dict);
-
-
             List<Order> Orders = new List<Order>();
             if (output == null)
             {

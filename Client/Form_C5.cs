@@ -7,7 +7,9 @@ namespace Client
 {
     public partial class Form_C5 : Form
     {
-        public Form_C2 back;
+        public Form back;
+        public Form PrevForm;
+        Form_C4 Confirm;
         List<ShoppingItm> Shopping = new List<ShoppingItm>();
         List<MenuItem> OurMenu ;
         public int orderid;
@@ -19,7 +21,9 @@ namespace Client
             this.back = back;
             // temporary data
             OurMenu = back.back.c1.getmenuitems();
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(DataBaseEssentials.c1.GetLogo());
             UpdateList();
+            PrevForm = back;
         }
         public void Reset()
         {
@@ -33,16 +37,19 @@ namespace Client
                 return;
             string x = DateTime.Now.ToShortTimeString();
             DateTime dateTime = DateTime.Parse(x);
-            orderid = back.back.c1.InsertOR(back.back.cid, 0, back.back.tablenumber, dateTime);
+            orderid = DataBaseEssentials.c1.InsertOR(DataBaseEssentials.cid, 0, DataBaseEssentials.tablenumber, dateTime);
             foreach (var item in Shopping )
             {
                 for (int i = 0; i <item.n ; i++)
                 {
-                    back.back.c1.InsertORMI(orderid, item.current.number);
+                    DataBaseEssentials.c1.InsertORMI(orderid, item.current.number);
                 }
             }
-            Form_C4 confirm = new Form_C4(back.name, this);
-            confirm.Show();
+            if (Confirm == null)
+            {
+                Confirm = new Form_C4( this);
+            }
+            Confirm.Show();
             this.Hide();
 
         }
@@ -59,7 +66,7 @@ namespace Client
                 MenuItem item = OurMenu[i];
                 ItmInMenu temp = new ItmInMenu(this, item);
                 panel1.Controls.Add(temp);
-                temp.Location = new Point(20, 20 + 45 * i);
+                temp.Location = new Point(20, 20 + temp.Height * i);
 
 
             }

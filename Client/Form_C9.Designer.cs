@@ -47,9 +47,8 @@ namespace Client
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 37);
+            this.label1.Size = new System.Drawing.Size(0, 37);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Nice to have you";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -115,20 +114,22 @@ namespace Client
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 59);
+            this.dataGridView1.Location = new System.Drawing.Point(51, 59);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(437, 201);
+            this.dataGridView1.Size = new System.Drawing.Size(342, 201);
             this.dataGridView1.TabIndex = 18;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Name";
             this.Column1.Name = "Column1";
+            this.Column1.Width = 200;
             // 
             // Column2
             // 

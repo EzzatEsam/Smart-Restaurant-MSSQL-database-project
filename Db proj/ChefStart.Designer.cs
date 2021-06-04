@@ -94,6 +94,7 @@ namespace Db_proj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(836, 431);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);

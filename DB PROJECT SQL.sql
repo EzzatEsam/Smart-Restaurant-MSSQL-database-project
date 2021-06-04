@@ -56,9 +56,9 @@ CREATE TABLE CONTACTREQUEST
 NUMBER INT  IDENTITY(1,1),
 CID INT NOT NULL FOREIGN KEY REFERENCES Client    ON DELETE CASCADE,
 TNUMBER INT NOT NULL FOREIGN KEY REFERENCES TABLE_ ,
-TIME_ TIME,
-CHECKOUT bit,
-STATUS_ tinyint not null,  
+TIME_ TIME(2),
+CHECKOUT bit default 0,
+STATUS_ tinyint default 0 not null,  
 PRIMARY KEY(NUMBER),
 );
 
@@ -216,6 +216,7 @@ update WAITER set ISFREE =@free where WID = @ID;
 end
 go
 
+
 create procedure GetClientName @num tinyint
 as
 begin
@@ -354,6 +355,22 @@ select *from TABLE_;
 end
 go
 
+create procedure GetEmptyTablesNums
+as
+begin
+select TABLE_.TNUMBER from TABLE_ where IsOCCUPIED = 0;
+end
+go
+
+create procedure CheckLastRequestStats @cid int
+as
+begin
+declare @out tinyint =-1
+set @out = (select CONTACTREQUEST.STATUS_ from CONTACTREQUEST where CONTACTREQUEST.CID =@cid)
+return @out
+end
+go
+
 Create procedure GetAllClientOrders @ID int
 as
 begin
@@ -399,11 +416,11 @@ create proc spinsertCR
 @CID INT,
 @TNUMBER INT,
 @TIME time,
-@TYPE varchar(50)
+@CHECK bit
 as
 begin
-insert into CONTACTREQUEST (CID ,TNUMBER ,TIME_ ,STATUS_)
-values (@CID, @TNUMBER, @TIME, @TYPE)
+insert into CONTACTREQUEST (CID ,TNUMBER ,TIME_ ,CHECKOUT)
+values (@CID, @TNUMBER, @TIME, @CHECK)
 end
 go
 create procedure GetMenuWIthRating
@@ -426,7 +443,7 @@ as
 begin
 insert into ORDER_ 
 values (@CID, @STATUS,@TNUMBER, @TIME)
-SELECT count(*) from  Client
+SELECT  @@IDENTITY
 end
 GO
 create proc spinsertORMI
@@ -493,7 +510,7 @@ insert into Client (CNAME , TNUMBER) values ('Ahmed hassan' ,1) ,('Emad Hatem' ,
 -- test ordres
 insert into ORDER_(ORDER_.CID ,TNUMBER ,STATUS_ ,OTIME ) values (1,1,0,(CONVERT(time, GETDATE()))),
 (2,2,0,(CONVERT(time, GETDATE()))),
-(3,3,1,(CONVERT(time, GETDATE()))),
+(3,3,2,(CONVERT(time, GETDATE()))),
 (4,4,0,(CONVERT(time, GETDATE())));
 
 insert into CONTACTREQUEST(CID ,TNUMBER,STATUS_,CHECKOUT ,TIME_ ) values (1,1,0,0,(CONVERT(time, GETDATE()))),
@@ -506,6 +523,7 @@ insert into ORDER_MENUITEMS (ORDERID ,ITEMNUMBER) values (3,1),(3,2),(3,3),(3,4)
 insert into ITEM_RATING values
 (20,3,1),
 (20,4,2);
+
 
 --
 --create some tables

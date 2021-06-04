@@ -77,9 +77,10 @@ namespace Client
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(28, 69);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(420, 161);
+            this.panel1.Size = new System.Drawing.Size(450, 166);
             this.panel1.TabIndex = 4;
             // 
             // label4
@@ -95,6 +96,7 @@ namespace Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
