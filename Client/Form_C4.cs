@@ -92,6 +92,7 @@ namespace Client
             }
             
             Orders.Show();
+            Orders.UpdateList();
             this.Hide();
         }
     }

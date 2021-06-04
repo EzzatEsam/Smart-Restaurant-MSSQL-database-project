@@ -91,7 +91,7 @@ namespace Client
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            back.Show();
+            PrevForm.Show();
             this.Hide();
         }
 

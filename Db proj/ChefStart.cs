@@ -18,7 +18,7 @@ namespace Db_proj
             organiser = main;
             label1.Text = "Hello " + main.Controller.GetEmpName(main.Controller.CurrentID);
             pictureBox1.Image = DataBaseEssentials.BinaryToImage(main.Controller.GetLogo());
-          
+            button3.Enabled = false;
             UpdateList();
 
 
@@ -42,6 +42,8 @@ namespace Db_proj
                 panel1.Controls.Add(it);
                 it.Location = new Point(20, 20 + i * VInterval);
             }
+            button3.Enabled = true;
+
         }
 
         public void CancelTaken(Order currentOrder)
@@ -61,6 +63,11 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (AmIBusy())
+            {
+                MessageBox.Show("You still have unfinished tasks");
+                return;
+            }
             organiser.GoTo(0);
         }
         public void Expand(Order it)
@@ -73,6 +80,7 @@ namespace Db_proj
 
             OrderBig ord = new OrderBig(this, it);
             panel1.Controls.Add(ord);
+            button3.Enabled = false;
 
         }
         public void SetTakn(Order it)
@@ -100,15 +108,34 @@ namespace Db_proj
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (AmIBusy())
+            {
+                MessageBox.Show("You still have unfinished tasks");
+                return;
+            }
             foreach (Control item in panel1.Controls)
             {
                 item.Dispose();
             }
             panel1.Controls.Clear();
-            panel1.Controls.Add(new ChangeLogins(this));       
+            panel1.Controls.Add(new ChangeLogins(this));
+            button3.Enabled = false;
         }
         public override void ReturnBack()
         {
+            UpdateList();
+        }
+        public bool AmIBusy()
+        {
+            return !organiser.Controller.IsEmpFree(organiser.Controller.CurrentID);
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (AmIBusy())
+            {
+                MessageBox.Show("You still have unfinished tasks");
+                return;
+            }
             UpdateList();
         }
     }

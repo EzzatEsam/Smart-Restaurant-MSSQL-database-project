@@ -17,9 +17,13 @@ namespace Client
             label2.Text = current.price.ToString() + "LE";
             if (taken)
             {
-                StarRatingControl star = new StarRatingControl();
+                StarRatingControl star = new StarRatingControl(this);
                 panel1.Controls.Add(star);
             }
+        }
+        public void RateIt(int stars)
+        {
+            DataBaseEssentials.c1.InsertRate(DataBaseEssentials.cid, current.number, stars);
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)

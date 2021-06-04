@@ -58,6 +58,10 @@ namespace Client
             Image img = Image.FromStream(ms);
             return img;
         }
+        public static void CloseConnection()
+        {
+            c1.End();
+        }
     }
 
     

@@ -74,6 +74,16 @@ namespace Client
             bool flag = true;
             return flag;
         }
+        public void End()
+        {
+            dm.CloseConnection();
+        }
+
+        public bool InsertRate(int cid , int itmNum,int rate)
+        {
+            var dict = new Dictionary<string, object>() { { "@ITEMNUMBER", itmNum }, { "@RATE", rate }, { "@CID", cid } };
+            return (int)dm.ExecuteNonQuery("spinsertRATE", dict) ==1;
+        }
         public List<MenuItem> getmenuitems()
         {
 

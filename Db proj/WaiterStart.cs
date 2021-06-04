@@ -18,7 +18,7 @@ namespace Db_proj
             organiser = main;
             label1.Text = "Hello " + main.Controller.GetEmpName(main.Controller.CurrentID);
             pictureBox1.Image = DataBaseEssentials.BinaryToImage(organiser.Controller.GetLogo());
-          
+            button3.Enabled = false;
            
             UpdateList();
         }
@@ -27,6 +27,11 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (AmIBusy())
+            {
+                MessageBox.Show("You still have unfinished tasks");
+                return;
+            }
             organiser.GoTo(0);
         }
         public bool SetOrderDelivered(Order it)
@@ -83,6 +88,7 @@ namespace Db_proj
             panel3.BringToFront();
             check temp = new check(it, this);
             panel3.Controls.Add(temp);
+            button3.Enabled = false;
         }
         public void UpdateList()
         {
@@ -126,6 +132,7 @@ namespace Db_proj
                 panel2.Controls.Add(it);
                 it.Location = new Point(5, 20 + i * it.Height);
             }
+            button3.Enabled = true;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -140,6 +147,12 @@ namespace Db_proj
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (AmIBusy())
+            {
+                MessageBox.Show("You still have unfinished tasks");
+                return;
+            }
+            
             panel1.Controls.Clear();
             panel2.Controls.Clear();
             panel3.Controls.Add(new ChangeLogins(this));
@@ -147,6 +160,16 @@ namespace Db_proj
         }
         public override void ReturnBack()
         {
+            UpdateList();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (AmIBusy())
+            {
+                MessageBox.Show("You still have unfinished tasks");
+                return;
+            }
             UpdateList();
         }
     }

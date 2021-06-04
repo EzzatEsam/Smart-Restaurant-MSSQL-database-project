@@ -185,6 +185,9 @@
     <Compile Include="WaiterStart.Designer.cs">
       <DependentUpon>WaiterStart.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccountUser.resx">
+      <DependentUpon>AccountUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additem.resx">
       <DependentUpon>additem.cs</DependentUpon>
     </EmbeddedResource>

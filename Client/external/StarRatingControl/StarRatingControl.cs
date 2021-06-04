@@ -8,14 +8,14 @@ namespace Client
 	public class StarRatingControl : System.Windows.Forms.Control
 	{
 
-		
-		public StarRatingControl()
+		RatingTab main;
+		public StarRatingControl(RatingTab main)
 		{
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 			SetStyle(ControlStyles.UserPaint, true);
 			SetStyle(ControlStyles.DoubleBuffer, true);
 			SetStyle(ControlStyles.ResizeRedraw, true);
-	
+			this.main = main;
 			Width = 120;
 			Height = 18;
 
@@ -301,6 +301,8 @@ namespace Client
 				{
 					m_hoverStar = i + 1;
 					Invalidate();
+					//
+
 					break;
 				}
 			}
@@ -318,6 +320,7 @@ namespace Client
 				{
 					m_hoverStar = i + 1;
 					m_selectedStar = i + 1;
+					main.RateIt(m_selectedStar);
 					Invalidate();
 					break;
 				}

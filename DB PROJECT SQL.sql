@@ -209,10 +209,14 @@ go
 create procedure EmpStatus @type smallint , @ID smallint , @free bit
 as
 begin
+declare  @Name as varchar(60)
+select  @Name = ACCOUNT.USERNAME from ACCOUNT where ACCOUNT.ACCID = @ID
+print @type;
+print @name;
 if @type =1
-UPDATE CHEF set ISFREE = @free where CHID = @ID;
+UPDATE CHEF set ISFREE = @free where CHEF.USERNAME = @Name;
 else if @type = 2
-update WAITER set ISFREE =@free where WID = @ID;
+update WAITER set ISFREE =@free where USERNAME = @Name;
 end
 go
 
@@ -337,7 +341,10 @@ go
 create procedure GetItemsInOrder @ordernum int
 as
 begin
-select * from MENUITEMS where MENUITEMS.ITMNUMBER  in  (select ORDER_MENUITEMS.ITEMNUMBER from ORDER_MENUITEMS where ORDER_MENUITEMS.ORDERID = @ordernum);
+select * from MENUITEMS B
+inner join
+(select * from ORDER_MENUITEMS where ORDER_MENUITEMS.ORDERID = @ordernum) A
+On B.ITMNUMBER = A.ITEMNUMBER
 end
 go 
 
@@ -461,6 +468,11 @@ create proc spinsertRATE
 @CID INT
 as
 begin
+if exists (select * from ITEM_RATING where ITEM_RATING.ITMNUMBER = @ITEMNUMBER and ITEM_RATING.CID = @CID)
+begin
+update ITEM_RATING set item_rating.RATE = @RATE where ITMNUMBER = @ITEMNUMBER ;
+return;
+end
 insert into ITEM_RATING
 values (@ITEMNUMBER, @RATE, @CID)
 end

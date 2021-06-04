@@ -14,7 +14,7 @@ namespace Client
             InitializeComponent();
             this.ControlBox = false;
             back = newback;
-            Orders= DataBaseEssentials.c1.GetAllOrdersByClientID(DataBaseEssentials.cid);
+            
             pictureBox1.Image = DataBaseEssentials.BinaryToImage(DataBaseEssentials.c1.GetLogo());
             UpdateList();
         }
@@ -26,7 +26,7 @@ namespace Client
             }
             panel1.Controls.Clear();
 
-
+            Orders = DataBaseEssentials.c1.GetAllOrdersByClientID(DataBaseEssentials.cid);
             for (int i = 0; i < Orders.Count; i++)
             {
                 Order item = Orders[i];

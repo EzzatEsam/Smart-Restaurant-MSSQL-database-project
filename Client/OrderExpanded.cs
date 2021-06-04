@@ -16,6 +16,7 @@ namespace Client
             this.current = current;
             label1.Text = "Order#" + current.OrderID.ToString();
             label2.Text = "Order Time:" + current.OrderTime.ToString();
+            label3.Text = "Status :" + current.Status.ToString();
             float sum = 0f;
             for (int i = 0; i < current.Items.Count; i++)
             {
