@@ -32,6 +32,7 @@ namespace Client
             }
             label3.Text = "";
             button1.Enabled = true;
+            comboBox1.Items.Clear();
             foreach (var item in tables)
             {
                 comboBox1.Items.Add(item.ToString());

@@ -73,7 +73,7 @@ namespace Client
             }
             string x = DateTime.Now.ToShortTimeString();
             DateTime dateTime = DateTime.Parse(x);
-            DataBaseEssentials.c1.InsertCR(DataBaseEssentials.cid, DataBaseEssentials.tablenumber, dateTime, false);
+            DataBaseEssentials.c1.InsertCR(DataBaseEssentials.cid, DataBaseEssentials.tablenumber, dateTime, true);
             button1.Enabled = false;
             button1.Hide();
             button2.Text = "Leave";

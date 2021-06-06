@@ -69,7 +69,7 @@ CREATE TABLE ORDER_
    STATUS_ int,    -- 0 pending  1 on it   2  ready   3 delivered
    --CHECKOUT BIT NOT NULL,     
    TNUMBER INT FOREIGN KEY REFERENCES TABLE_ ,
-   OTIME TIME,
+   OTIME TIME(2),
    PRIMARY KEY(ORDERID),
 );
 
@@ -167,7 +167,7 @@ return -1;
 INSERT into ACCOUNT(USERNAME ,PASSWORD_, TYPE_) VALUES (@account ,@pass,@type);
 if @type = 1
 INSERT INTO CHEF(USERNAME,CHname ) VALUES (@account ,@name);
-else if @type = 1
+else if @type = 2
 INSERT INTO WAITER(USERNAME,WNAME ) VALUES (@account ,@name);
 return 1;
 end
