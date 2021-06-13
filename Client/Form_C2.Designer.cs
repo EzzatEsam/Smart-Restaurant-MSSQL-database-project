@@ -110,7 +110,6 @@ namespace Client
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_C2";
-            this.Text = "Need Help? Ask for contact.";
             this.Load += new System.EventHandler(this.Form_C2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

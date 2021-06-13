@@ -81,6 +81,8 @@ namespace Staff
         public void ExpandCheck(ContactRequest it)
         {
             Refreshing = false;
+            label3.Hide();
+            label2.Hide();
             panel1.Controls.Clear();
             panel2.Controls.Clear();
             foreach (Control item in panel1.Controls)
@@ -103,6 +105,8 @@ namespace Staff
             if (!Refreshing)
             {
                 Refreshing = true;
+                label3.Show();
+                label2.Show();
                 goto here;
             }
             panel3.SendToBack();
@@ -208,6 +212,8 @@ namespace Staff
             panel1.Controls.Clear();
             panel2.Controls.Clear();
             Refreshing = false;
+            label3.Hide();
+            label2.Hide();
             panel3.Controls.Add(new ChangeLogins(this));
             panel3.BringToFront();
         }

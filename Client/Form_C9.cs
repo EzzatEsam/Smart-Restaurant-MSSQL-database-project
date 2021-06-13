@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using System.Collections.Generic;
 namespace Client
 {
     public partial class Form_C9 : Form
     {
         bool conf = false;
         string name;
+        List<MenuItem> menuItems = new List<MenuItem>();
+        //List<int> Doubles = new List<int>();
         Form_C4 back;
         public Form_C9(string newname, Form_C4 newback)
         {
@@ -20,9 +22,31 @@ namespace Client
             float sum = 0;
             foreach (var item in output)
             {
+                int index = 0;
+                int n = 1;
+                for (int i = 0; i < menuItems.Count; i++)
+                {
+                    MenuItem itm = menuItems[i];
+                    if (item.name == itm.name)
+                    {
+                        n+=Convert.ToInt32( dataGridView1[0, i].Value);
+                        index = i;
+                    }
+                }
                 sum += item.price;
-                this.dataGridView1.Rows.Add(item.name, item.price);
+                if (n==1)
+                {
+                    menuItems.Add(item);
+                    this.dataGridView1.Rows.Add(n, item.name, item.price);
+                }
+                else
+                {
+                    dataGridView1[0,index].Value = n;
+                    dataGridView1[2, index].Value = n*item.price;
+                }
+                
             }
+            
             textBox2.Text = sum.ToString();
         }
 
@@ -42,14 +66,7 @@ namespace Client
 
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            int sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-            {
-                sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
-            }
-        }
+       
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -66,10 +83,11 @@ namespace Client
         {
             if (conf)
             {
-                this.Hide();
+                
                 DataBaseEssentials.c1.updatetablestatus(DataBaseEssentials.tablenumber, false);
                 DataBaseEssentials.Main.Show();
                 DataBaseEssentials.Main.RefreshAgain();
+                this.Dispose();
             }
             string x = DateTime.Now.ToShortTimeString();
             DateTime dateTime = DateTime.Parse(x);

@@ -75,11 +75,7 @@ namespace Client
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (chechout == null)
-            {
-                chechout = new Form_C9(name, this);
-            }
-
+            chechout = new Form_C9(name, this);
             chechout.Show();
             this.Hide();
         }

@@ -144,7 +144,6 @@ namespace Client
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_C4";
-            this.Text = "Form_C4";
             this.Load += new System.EventHandler(this.Form_C4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
