@@ -7,6 +7,7 @@ namespace Client
     {
         Form_C6 main;
         MenuItem current;
+        int n = 1;
         public RatingTab(Form_C6 main,
         MenuItem current, bool taken)
         {
@@ -20,6 +21,13 @@ namespace Client
                 StarRatingControl star = new StarRatingControl(this);
                 panel1.Controls.Add(star);
             }
+            label3.Text = n.ToString() + "X ";
+        }
+        public void Increment()
+        {
+            n++;
+            label3.Text = n.ToString() + "X ";
+            label2.Text = (n * current.price).ToString() + "LE";
         }
         public void RateIt(int stars)
         {
