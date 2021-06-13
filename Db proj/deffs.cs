@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.IO;
 
-namespace Db_proj
+namespace Staff
 {
     public enum Emp_type
     {
@@ -12,9 +12,9 @@ namespace Db_proj
     }
     public enum Order_status
     {
-        PENDING,ONIT ,READY, DELIVERED
+        PENDING, ONIT, READY, OMW, DELIVERED
     }
-    public enum Task
+    public enum TaskType
     {
         ORDER,
         CLIENTCONTACT,
@@ -61,10 +61,10 @@ namespace Db_proj
     }
     public class Worker
     {
-        public int ssid; public string name; public Emp_type type; public bool IsFree; public int CurrentTask; public Task cType;
-       
+        public int ssid; public string name; public Emp_type type; public bool IsFree; public int CurrentTask; public TaskType cType;
+
         public Worker() { }
-        public Worker(int v1, string text, Emp_type selectedItem, bool v2, int v3, Task nONE)
+        public Worker(int v1, string text, Emp_type selectedItem, bool v2, int v3, TaskType nONE)
         {
             this.ssid = v1;
             this.name = text;
@@ -81,11 +81,13 @@ namespace Db_proj
         public static string GetAllEmpsCommand = "GetAllEmps";
         public static string UpdateAccountCommand = "UpdatePass";
         public static string GetAllMenuCommand = "GetAllMenu";
+        public static string GetAllCaregoriesCommand = "GetAllCats";
         public static string AddEmpCommand = "AddEmployee";
         public static string AddItemCommand = "AddMenuItem";
         public static string GetAllOrdersCommand = "GetOrdersByState";
         public static string GetAllReqsCommand = "GetRequestsByState";
-        public static string SetEmpStatsCommand = "EmpStatus";
+        public static string AddEmpJopCommand = "EmpAddJop";
+        public static string SetEmpFreeCommand = "SetEmpFree";
         public static string GetItemsInOrderCommand = "GetItemsInOrder";
         public static string GetClientNameCommand = "GetClientName";
         public static string GetWokerNameCommand = "GetWorkerNameByAccount";
@@ -99,13 +101,26 @@ namespace Db_proj
         public static string DeleteWorkerCommand = "DeleteFromEmployees";
         public static string ChangeNumberOfTablesCommand = "SetTablesCount";
         public static string GetTablesCommand = "GetTables";
+
+
+        //
+        public static int RefreshRateMS = 500;
+        //
         public static MenuItem ConvertToMenuItemClass(DataRow it)
         {
-            MenuItem output =new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]));
+            MenuItem output = new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]));
             if (it["Picture"] != System.DBNull.Value)
             {
                 output.Image = BinaryToImage((byte[])it["Picture"]);
             }
+            if (it.Table.Columns.Contains("Rating"))
+            {
+                if (it["Rating"] != System.DBNull.Value)
+                {
+                    output.rating = (float)Convert.ToDouble(it["Rating"]);
+                }
+            }
+
             return output;
 
         }
@@ -115,13 +130,13 @@ namespace Db_proj
             Worker output = new Worker();
             output.name = it[1].ToString();
             output.ssid = Convert.ToInt32(it[0]);
-            output.type = (Emp_type ) Convert.ToInt32(it[4]);
+            output.type = (Emp_type)Convert.ToInt32(it[4]);
             output.IsFree = Convert.ToBoolean(it[2]);
-         
-            if ((it[3]) !=  System.DBNull.Value)
+
+            if ((it[3]) != System.DBNull.Value)
             {
                 output.CurrentTask = Convert.ToInt32(it[3]);
-                output.cType = (Task)Convert.ToInt32(it[5]);
+                output.cType = (TaskType)Convert.ToInt32(it[5]);
             }
             return output;
         }
@@ -140,8 +155,8 @@ namespace Db_proj
             catch (Exception e)
             {
                 return null;
-                
-            }   
+
+            }
         }
     }
 }

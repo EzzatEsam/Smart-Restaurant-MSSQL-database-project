@@ -51,7 +51,7 @@ namespace Client
             if (order == null)
             {
                 order = new Form_C5(this);
-            } 
+            }
             order.Show();
             this.Hide();
         }

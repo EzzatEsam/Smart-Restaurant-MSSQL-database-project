@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using System.Drawing.Imaging;
-namespace Db_proj
+namespace Staff
 {
     public partial class ChangeLogo : UserControl
     {
@@ -41,7 +33,7 @@ namespace Db_proj
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             if (main.organiser.Controller.ChangeLogo(pictureBox1.Image))
             {
                 MessageBox.Show("Done");

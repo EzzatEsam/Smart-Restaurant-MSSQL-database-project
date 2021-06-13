@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public partial class ChangeLogins : UserControl
     {
@@ -20,6 +14,7 @@ namespace Db_proj
         public ChangeLogins(AccountUser Main)
         {
             InitializeComponent();
+
             textBox2.Text = "New Password";
             textBox3.Text = "Confirm Password";
             textBox4.Text = "Old Password";
@@ -73,7 +68,7 @@ namespace Db_proj
         }
 
 
-        
+
 
         private void textBox2_Enter(object sender, EventArgs e)
         {
@@ -167,7 +162,7 @@ namespace Db_proj
                 MessageBox.Show("Done");
             }
             label3.Text = "Check old Password";
-            
+
         }
     }
 }

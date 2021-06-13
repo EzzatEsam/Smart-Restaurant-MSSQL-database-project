@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Data;
-namespace Db_proj
+using System.Windows.Forms;
+namespace Staff
 {
     public partial class MenuList : UserControl
     {
         AdminStart main;
         NextsAdmin back = NextsAdmin.ADMINENTER;
-        List<MenuItem> Menu = new   List<MenuItem>();
+        List<MenuItem> Menu = new List<MenuItem>();
         public MenuList(AdminStart main)
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace Db_proj
             {
                 Menu.Add(DataBaseEssentials.ConvertToMenuItemClass(item));
             }
-            
+
             panel1.Controls.Clear();
             for (int i = 0; i < Menu.Count; i++)
             {

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace Db_proj
+namespace Staff
 {
     public class DBManager
     {

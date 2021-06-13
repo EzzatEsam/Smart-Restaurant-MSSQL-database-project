@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-namespace Db_proj
+﻿using System.Windows.Forms;
+namespace Staff
 {
     public class AccountUser : Form
     {
-        public FormOrganiser organiser= null;
+        public FormOrganiser organiser = null;
         public virtual void ReturnBack() { }
-
+        public bool Refreshing = true;
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountUser));

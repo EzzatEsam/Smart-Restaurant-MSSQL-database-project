@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public partial class pg_1 : UserControl
     {
@@ -35,7 +35,7 @@ namespace Db_proj
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            main.GoToUsrContrl(NextsAdmin.MODIACCOUNT);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -49,16 +49,17 @@ namespace Db_proj
             {
                 stt = true;
                 textBox1.Enabled = true;
-                
+                textBox1.Text = "";
                 button3.Enabled = false;
                 return;
             }
             else
             {
-                n =Convert.ToInt32( textBox1.Text);
+                n = Convert.ToInt32(textBox1.Text);
                 textBox1.Enabled = false;
-                textBox1.Text = main.organiser.Controller.GetTables().Rows.Count.ToString();
                 MessageBox.Show((main.organiser.Controller.SetTableNumbers(n)) ? "Done " : "Error");
+                textBox1.Text = main.organiser.Controller.GetTables().Rows.Count.ToString();
+                stt = false;
             }
         }
 

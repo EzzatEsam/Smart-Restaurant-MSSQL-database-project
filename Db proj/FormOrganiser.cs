@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-namespace Db_proj
+﻿using System.Windows.Forms;
+namespace Staff
 {
     public class FormOrganiser
     {
@@ -23,9 +18,9 @@ namespace Db_proj
             {
                 case 0:
                     {
-                        
-                        if(Current !=null)
-                        Current.Dispose();
+
+                        if (Current != null)
+                            Current.Dispose();
                         Start.Reset();
                         Start.Show();
                         break;
@@ -34,7 +29,7 @@ namespace Db_proj
                     {
                         Start.Reset();
                         Start.Hide();
-                        
+
                         Form newform = new AdminStart(this);
                         newform.Show();
                         if (Current != null)
@@ -73,9 +68,9 @@ namespace Db_proj
                         Start.Show();
                         break;
                     }
-            
+
             }
         }
-        
+
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Data;
-namespace Db_proj
+using System.Windows.Forms;
+using System.Threading.Tasks;
+namespace Staff
 {
     public partial class WorkersList : UserControl
     {
@@ -15,8 +16,8 @@ namespace Db_proj
 
             this.main = main;
             UpdateList();
-            
-            
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,18 +26,36 @@ namespace Db_proj
         }
         public void UpdateList()
         {
-            Workers.Clear();
-            panel1.Controls.Clear();
-            // here we reload the employees db 
             var temp = main.organiser.Controller.GetAllEmployees();
             if (temp == null)
             {
                 return;
             }
+            List<Worker> tempworkers = new List<Worker>();
             foreach (DataRow item in temp.Rows)
             {
-                Workers.Add (DataBaseEssentials.ConvertToWorkerClass(item));
+                tempworkers.Add(DataBaseEssentials.ConvertToWorkerClass(item));
             }
+            if (Workers.Count != tempworkers.Count)
+            {
+                goto here;
+            }
+            for (int i = 0; i < tempworkers.Count; i++)
+            {
+                if (Workers[i].CurrentTask != tempworkers[i].CurrentTask)
+                {
+                    goto here;
+                }
+                
+            }
+            return;
+        here:
+            Workers.Clear();
+            Workers = tempworkers;
+            panel1.Controls.Clear();
+            
+            
+            
 
             for (int i = 0; i < Workers.Count; i++)
             {
@@ -45,7 +64,7 @@ namespace Db_proj
                 panel1.Controls.Add(it);
                 it.Location = new System.Drawing.Point(10, 10 + i * it.Height);
             }
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -53,10 +72,25 @@ namespace Db_proj
             main.GoToUsrContrl(NextsAdmin.WORKERADD);
         }
 
-       
+        void AsyncUpdate()
+        {
+            //MessageBox.Show("done");
+            if (!IsHandleCreated)
+            {
+                return;
+            }
+            
+                this.BeginInvoke(new MethodInvoker(delegate ()
+                {
+                    UpdateList();
+                    
+                }));
+            
+            Task.Delay(new TimeSpan(0, 0, 0, 0, 500)).ContinueWith(o => { AsyncUpdate(); });
+        }
         private void WorkersList_Load(object sender, EventArgs e)
         {
-
+            AsyncUpdate();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

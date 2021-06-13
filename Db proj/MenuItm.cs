@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public partial class MenuItm : UserControl
     {
@@ -25,7 +18,7 @@ namespace Db_proj
             label4.Text = itm.price.ToString();
             label5.Text = itm.rating.ToString();
             pictureBox1.Image = itm.Image;
-        
+
         }
 
         private void button1_Click(object sender, EventArgs e)

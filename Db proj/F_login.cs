@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
 
     public partial class F_login : Form
@@ -87,10 +87,21 @@ namespace Db_proj
                 else
                     pass_check = false;
                 button1.Enabled = login_check && pass_check;
-                
+
 
             }
         }
+
+        private void F_login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void F_login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Environment.Exit(1);
+        }
+
         private void textBox1_Leave(object sender, EventArgs e)
         {
             if (textBox1.Text.Length == 0)

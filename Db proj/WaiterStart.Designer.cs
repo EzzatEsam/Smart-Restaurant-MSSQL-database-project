@@ -1,5 +1,5 @@
 ﻿
-namespace Db_proj
+namespace Staff
 {
     partial class WaiterStart
     {
@@ -37,7 +37,6 @@ namespace Db_proj
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +45,7 @@ namespace Db_proj
             this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(8, 89);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(492, 245);
+            this.panel1.Size = new System.Drawing.Size(492, 297);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -74,7 +73,7 @@ namespace Db_proj
             this.panel2.AutoScroll = true;
             this.panel2.Location = new System.Drawing.Point(506, 89);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(310, 245);
+            this.panel2.Size = new System.Drawing.Size(310, 297);
             this.panel2.TabIndex = 8;
             // 
             // panel3
@@ -104,29 +103,18 @@ namespace Db_proj
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(370, 397);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // WaiterStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 432);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WaiterStart";
@@ -147,6 +135,5 @@ namespace Db_proj
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button3;
     }
 }

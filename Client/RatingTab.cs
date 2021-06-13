@@ -8,7 +8,7 @@ namespace Client
         Form_C6 main;
         MenuItem current;
         public RatingTab(Form_C6 main,
-        MenuItem current,bool taken)
+        MenuItem current, bool taken)
         {
             InitializeComponent();
             this.main = main;

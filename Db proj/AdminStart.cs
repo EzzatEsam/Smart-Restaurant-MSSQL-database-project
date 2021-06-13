@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public enum NextsAdmin
     {
-        ADMINENTER, WORKERSLIST, WORKERADD, MENULIST, MENUADD, MODIACCOUNT ,CHANGELOGO
+        ADMINENTER, WORKERSLIST, WORKERADD, MENULIST, MENUADD, MODIACCOUNT, CHANGELOGO
     }
-    public partial class AdminStart :  AccountUser
+    public partial class AdminStart : AccountUser
     {
-        
+
         UserControl current;
         NextsAdmin currentstate;
         public AdminStart(FormOrganiser it)
         {
             InitializeComponent();
             this.ControlBox = false;
-           organiser = it;
+            organiser = it;
             current = new pg_1(this);
             currentstate = NextsAdmin.ADMINENTER;
             panel1.Controls.Add(current);
             current.Show();
-            
+
             pictureBox1.Image = DataBaseEssentials.BinaryToImage(organiser.Controller.GetLogo());
         }
         public bool AddEmployee(Worker it, string Usr, string Pass)
@@ -29,7 +29,7 @@ namespace Db_proj
             // here we add new employee to db and check if it can be added
             return false;
         }
-        public bool DeleteEmplyee(int ID ,Emp_type type)
+        public bool DeleteEmplyee(int ID, Emp_type type)
         {
             bool test = organiser.Controller.DeleteWorker(ID, type);
             this.GoToUsrContrl(NextsAdmin.WORKERSLIST);
@@ -42,7 +42,7 @@ namespace Db_proj
         }
         public bool DeleteItem(int ID)
         {
-            bool test =  organiser.Controller.DeleteItem(ID);
+            bool test = organiser.Controller.DeleteItem(ID);
             this.GoToUsrContrl(NextsAdmin.MENULIST);
             return test;
         }
@@ -67,7 +67,7 @@ namespace Db_proj
                 case NextsAdmin.MENUADD:
                     temp = new additem(this);
                     break;
-                case NextsAdmin.MODIACCOUNT :
+                case NextsAdmin.MODIACCOUNT:
                     temp = new ChangeLogins(this);
                     break;
                 case NextsAdmin.CHANGELOGO:
@@ -106,6 +106,11 @@ namespace Db_proj
         private void AdminStart_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            GoToUsrContrl(NextsAdmin.MODIACCOUNT);
         }
     }
 }

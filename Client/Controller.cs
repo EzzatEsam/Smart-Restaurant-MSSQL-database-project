@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data;
 
 namespace Client
@@ -8,25 +7,25 @@ namespace Client
     public class Controller
     {
         DataManager dm = new DataManager();
-        public int insertclient(string name, int tablenumber)
+        public int Insertclient(string name, int tablenumber)
         {
-        
-            var dict = new Dictionary<string, object>() { { "@TNUMBER", tablenumber}, { "@Cname", name} };
+
+            var dict = new Dictionary<string, object>() { { "@TNUMBER", tablenumber }, { "@Cname", name } };
             string query = "spinsertClient";
             var output1 = dm.ExecuteScalar(query, dict);
             return (int)output1;
-  
+
         }
 
         public DataTable GetTables()
         {
-            
-            return  dm.ExecuteReader("GetTables", null);
+
+            return dm.ExecuteReader("GetTables", null);
 
         }
         public byte[] GetLogo()
         {
-            return (byte[]) dm.ExecuteScalar(DataBaseEssentials.GetLogoCommand, null);
+            return (byte[])dm.ExecuteScalar(DataBaseEssentials.GetLogoCommand, null);
         }
 
         public List<int> GetEmptyTableNums()
@@ -49,7 +48,7 @@ namespace Client
             string query = "spchecktable";
             var output1 = dm.ExecuteScalar(query, dict);
             return (int)output1;
-          
+
         }
         public int checktablestatus(int tablenumber)
         {
@@ -67,7 +66,7 @@ namespace Client
         }
         public bool InsertCR(int CID, int tablenum, DateTime time, bool check)
         {
-            
+
             var dict = new Dictionary<string, object>() { { "@CID", CID }, { "@TNUMBER", tablenum }, { "@TIME", time }, { "@CHECK", check } };
             string query = "spinsertCR";
             var output = dm.ExecuteNonQuery(query, dict);
@@ -79,12 +78,12 @@ namespace Client
             dm.CloseConnection();
         }
 
-        public bool InsertRate(int cid , int itmNum,int rate)
+        public bool InsertRate(int cid, int itmNum, int rate)
         {
             var dict = new Dictionary<string, object>() { { "@ITEMNUMBER", itmNum }, { "@RATE", rate }, { "@CID", cid } };
-            return (int)dm.ExecuteNonQuery("spinsertRATE", dict) ==1;
+            return (int)dm.ExecuteNonQuery("spinsertRATE", dict) == 1;
         }
-        public List<MenuItem> getmenuitems()
+        public List<MenuItem> Getmenuitems()
         {
 
             var output = dm.ExecuteReader(DataBaseEssentials.GetAllMenuCommand, null);
@@ -94,9 +93,9 @@ namespace Client
             foreach (DataRow DR in it.Rows)
             {
                 MenuItem mi = DataBaseEssentials.ConvertToMenuItemClass(DR);
-                
+
                 lmi.Add(mi);
-                
+
             }
             return lmi;
         }
@@ -104,11 +103,10 @@ namespace Client
         public List<MenuItem> GetClientWholeMenu(int id)
         {
             var WholeMenu = new List<MenuItem>();
-            
+
             var output = dm.ExecuteReader(DataBaseEssentials.GetAllOrderByClientCommand, new Dictionary<string, object>() { { "@ID", id } });
             if (output == null)
             {
-              
                 return WholeMenu;
             }
             foreach (DataRow item in output.Rows)
@@ -126,16 +124,16 @@ namespace Client
             }
 
 
-            
+
             return WholeMenu;
         }
-        public int InsertOR(int CID,int status, int tablenum, DateTime time)
+        public int InsertOR(int CID, int status, int tablenum, DateTime time)
         {
 
-            var dict = new Dictionary<string, object>() { { "@CID", CID }, { "@STATUS", status}, { "@TNUMBER", tablenum }, { "@TIME", time } };
+            var dict = new Dictionary<string, object>() { { "@CID", CID }, { "@STATUS", status }, { "@TNUMBER", tablenum }, { "@TIME", time } };
             string query = "spinsertORDER";
             var output1 = dm.ExecuteScalar(query, dict);
-            return Convert.ToInt16( output1);
+            return Convert.ToInt16(output1);
         }
         public List<Order> GetAllOrdersByClientID(int ID)
         {
@@ -153,20 +151,7 @@ namespace Client
                 Order NewOrder = new Order();
                 NewOrder.OrderID = Convert.ToInt16(output.Rows[i][0]);
                 NewOrder.ClientID = Convert.ToInt16(output.Rows[i][1]);
-                switch (Convert.ToInt16(output.Rows[i][2]))
-                {
-                    case 0:
-                        NewOrder.Status = Order_status.PENDING;
-                        break;
-                    case 2:
-                        NewOrder.Status = Order_status.READY;
-                        break;
-                    case 3:
-                        NewOrder.Status = Order_status.DELIVERED;
-                        break;
-                    default:
-                        break;
-                }
+                NewOrder.Status = (Order_status)Convert.ToInt16(output.Rows[i][2]);
                 NewOrder.TableNo = Convert.ToInt16(output.Rows[i][3]);
                 NewOrder.OrderTime = TimeSpan.Parse(output.Rows[i][4].ToString());
                 DataTable Itms = dm.ExecuteReader(DataBaseEssentials.GetItemsInOrderCommand, new Dictionary<string, object>() { { "@ordernum", NewOrder.OrderID } });
@@ -180,16 +165,16 @@ namespace Client
                 }
                 Orders.Add(NewOrder);
             }
-            
+
             return Orders;
         }
         public bool InsertORMI(int orderid, int itemnumber)
         {
-            
-                var dict = new Dictionary<string, object>() { { "@ORDERID", orderid }, { "@ITEMNUMBER", itemnumber } };
-                string query = "spinsertORMI";
-                var x= dm.ExecuteNonQuery(query, dict);
-                return true;
+
+            var dict = new Dictionary<string, object>() { { "@ORDERID", orderid }, { "@ITEMNUMBER", itemnumber } };
+            string query = "spinsertORMI";
+            var x = dm.ExecuteNonQuery(query, dict);
+            return true;
         }
     }
 }

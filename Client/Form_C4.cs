@@ -9,7 +9,7 @@ namespace Client
         public Form_C5 make;
         Form_C6 Orders;
         Form_C9 chechout;
-        public Form_C4( Form_C5 newmake)
+        public Form_C4(Form_C5 newmake)
         {
             name = DataBaseEssentials.ClientName;
             make = newmake;
@@ -77,9 +77,9 @@ namespace Client
         {
             if (chechout == null)
             {
-                chechout = new Form_C9(name, this); 
+                chechout = new Form_C9(name, this);
             }
-             
+
             chechout.Show();
             this.Hide();
         }
@@ -90,7 +90,7 @@ namespace Client
             {
                 Orders = new Form_C6(this);
             }
-            
+
             Orders.Show();
             Orders.UpdateList();
             this.Hide();

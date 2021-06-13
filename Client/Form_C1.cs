@@ -22,10 +22,10 @@ namespace Client
         }
         void UpdateTables()
         {
-            var tables= c1.GetEmptyTableNums();
+            var tables = c1.GetEmptyTableNums();
             if (tables == null)
             {
-                
+
                 button1.Enabled = false;
                 label3.Text = "No empty tables at the moment";
                 return;
@@ -39,9 +39,9 @@ namespace Client
             }
 
         }
-        private void Form_C1_Load (object sender, EventArgs e)
+        private void Form_C1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -86,12 +86,12 @@ namespace Client
             {
                 MessageBox.Show("Error, Please enter a valid name.");
             }
-            
-            else if (comboBox1.Text == string.Empty || !comboBox1.Text.All(C=> char.IsDigit(C)) || StartS || spaces)
+
+            else if (comboBox1.Text == string.Empty || !comboBox1.Text.All(C => char.IsDigit(C)) || StartS || spaces)
             {
                 MessageBox.Show("Error, Please enter a valid table number.");
             }
-            else  if (c1.checktablenumber(int.Parse(comboBox1.Text)) == 0)
+            else if (c1.checktablenumber(int.Parse(comboBox1.Text)) == 0)
             {
                 MessageBox.Show("Error, Please re-check your table number.");
             }
@@ -102,7 +102,7 @@ namespace Client
             }
             else
             {
-                cid = c1.insertclient(textBox1.Text, int.Parse(comboBox1.Text));
+                cid = c1.Insertclient(textBox1.Text, int.Parse(comboBox1.Text));
                 DataBaseEssentials.cid = cid;
                 tablenumber = int.Parse(comboBox1.Text);
                 DataBaseEssentials.tablenumber = tablenumber;
@@ -122,7 +122,7 @@ namespace Client
                 //Console.WriteLine("The specified date is valid: " + dateTime);
             }
         }
-        
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -136,6 +136,11 @@ namespace Client
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form_C1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Environment.Exit(1);
         }
     }
 }

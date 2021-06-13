@@ -1,5 +1,5 @@
 ﻿
-namespace Db_proj
+namespace Staff
 {
     partial class F_login
     {
@@ -116,6 +116,8 @@ namespace Db_proj
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "F_login";
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.F_login_FormClosed);
+            this.Load += new System.EventHandler(this.F_login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

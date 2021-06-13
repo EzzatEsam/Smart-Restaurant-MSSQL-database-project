@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.IO;
-using System.Drawing;
-namespace Db_proj
+namespace Staff
 {
     public partial class additem : UserControl
     {
         bool NameError, CatError, PriceError;
-        string filename;
+
         AdminStart main;
         public additem(AdminStart main)
         {
@@ -21,8 +20,17 @@ namespace Db_proj
             label5.Text = "";
             label6.Text = "";
             button1.Enabled = false;
+            UpdateCombo();
         }
+        public void UpdateCombo()
+        {
+            var it = main.organiser.Controller.GetAllCats();
+            foreach (var item in it)
+            {
+                comboBox1.Items.Add(item);
+            }
 
+        }
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -50,17 +58,18 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-                MenuItem it = new MenuItem(-1, textBox1.Text, textBox2.Text, float.Parse(textBox3.Text));
-                it.Image = pictureBox1.Image;
-                //it.Image = filename;
-                if (main.AddToMenu(it) )
-                {
+
+            MenuItem it = new MenuItem(-1, textBox1.Text, comboBox1.Text, float.Parse(textBox3.Text));
+            it.Image = pictureBox1.Image;
+            //it.Image = filename;
+            if (main.AddToMenu(it))
+            {
                 MessageBox.Show("Done");
-                }
-                else
+                UpdateCombo();
+            }
+            else
                 ErrorLabel.Text = "Error";
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -88,6 +97,20 @@ namespace Db_proj
             }
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CatError = !(comboBox1.Text.All(char.IsLetter)) || comboBox1.Text == "";
+            label5.Text = !CatError ? "" : "Error";
+            button1.Enabled = !(NameError || PriceError || CatError);
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            CatError = !(comboBox1.Text.All(char.IsLetter)) || comboBox1.Text == "";
+            label5.Text = !CatError ? "" : "Error";
+            button1.Enabled = !(NameError || PriceError || CatError);
+        }
+
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             float test;
@@ -98,9 +121,7 @@ namespace Db_proj
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            CatError = !(textBox2.Text.All(char.IsLetter)) || textBox2.Text == "";
-            label5.Text = !CatError ? "" : "Error";
-            button1.Enabled = !(NameError || PriceError || CatError);
+
         }
     }
 }

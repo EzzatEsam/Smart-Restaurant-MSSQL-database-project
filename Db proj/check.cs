@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public partial class check : UserControl
     {
@@ -34,10 +34,10 @@ namespace Db_proj
                 panel1.Controls.Add(label2);
                 label2.Width = 200;
                 label2.Location = new System.Drawing.Point(label7.Location.X, 20 + i * label2.Height);
-                
+
                 sum += item.price;
             }
-            label5.Text = "Total :" +sum.ToString()+ "Egp";
+            label5.Text = "Total :" + sum.ToString() + "Egp";
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

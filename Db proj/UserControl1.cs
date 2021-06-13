@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public partial class WorkerSingle : UserControl
     {
         AdminStart main;
         Worker current;
-        public WorkerSingle(AdminStart main , Worker it)
+        public WorkerSingle(AdminStart main, Worker it)
         {
             InitializeComponent();
             this.main = main;
@@ -23,7 +16,7 @@ namespace Db_proj
             label2.Text = current.name;
             label3.Text = current.type.ToString();
             label4.Text = current.IsFree ? "Free" : "Busy";
-            label5.Text = (current.CurrentTask == 0)? "None": current.CurrentTask.ToString();
+            label5.Text = (current.CurrentTask == 0) ? "None" : current.CurrentTask.ToString();
             label6.Text = (current.CurrentTask == 0) ? "None" : current.cType.ToString();
 
         }
@@ -35,7 +28,7 @@ namespace Db_proj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            main.DeleteEmplyee(current.ssid,current.type);
+            main.DeleteEmplyee(current.ssid, current.type);
         }
     }
 }

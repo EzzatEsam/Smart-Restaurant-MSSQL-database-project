@@ -1,5 +1,5 @@
 ﻿
-namespace Db_proj
+namespace Staff
 {
     partial class MenuItm
     {

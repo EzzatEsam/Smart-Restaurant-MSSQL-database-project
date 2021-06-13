@@ -11,16 +11,16 @@ namespace Client
         public Form PrevForm;
         Form_C4 Confirm;
         List<ShoppingItm> Shopping = new List<ShoppingItm>();
-        List<MenuItem> OurMenu ;
+        List<MenuItem> OurMenu;
         public int orderid;
-        
+
         public Form_C5(Form_C2 back)
         {
             InitializeComponent();
             this.ControlBox = false;
             this.back = back;
             // temporary data
-            OurMenu = back.back.c1.getmenuitems();
+            OurMenu = back.back.c1.Getmenuitems();
             pictureBox1.Image = DataBaseEssentials.BinaryToImage(DataBaseEssentials.c1.GetLogo());
             UpdateList();
             PrevForm = back;
@@ -38,16 +38,16 @@ namespace Client
             string x = DateTime.Now.ToShortTimeString();
             DateTime dateTime = DateTime.Parse(x);
             orderid = DataBaseEssentials.c1.InsertOR(DataBaseEssentials.cid, 0, DataBaseEssentials.tablenumber, dateTime);
-            foreach (var item in Shopping )
+            foreach (var item in Shopping)
             {
-                for (int i = 0; i <item.n ; i++)
+                for (int i = 0; i < item.n; i++)
                 {
                     DataBaseEssentials.c1.InsertORMI(orderid, item.current.number);
                 }
             }
             if (Confirm == null)
             {
-                Confirm = new Form_C4( this);
+                Confirm = new Form_C4(this);
             }
             Confirm.Show();
             this.Hide();
@@ -60,7 +60,7 @@ namespace Client
                 item.Dispose();
             }
             panel1.Controls.Clear();
-
+            OurMenu = DataBaseEssentials.c1.Getmenuitems();
             for (int i = 0; i < OurMenu.Count; i++)
             {
                 MenuItem item = OurMenu[i];
@@ -70,21 +70,14 @@ namespace Client
 
 
             }
-            //for (int i = 0; i < Shopping.Count; i++)
-            //{
-            //    MenuItem item = Shopping[i];
-            //    ShoppingItm temp = new ShoppingItm(this, item);
-            //    panel2.Controls.Add(temp);
-            //    temp.Location = new Point(10 + temp.Width * i, 20);
-            //}
         }
         void AddToDrawnItems()
         {
-            
+
             panel2.Controls.Clear();
             for (int i = 0; i < Shopping.Count; i++)
             {
-                ShoppingItm temp = Shopping[i]; 
+                ShoppingItm temp = Shopping[i];
                 panel2.Controls.Add(temp);
                 temp.Location = new Point(10 + temp.Width * i, 20);
             }

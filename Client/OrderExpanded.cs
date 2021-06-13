@@ -22,7 +22,7 @@ namespace Client
             {
                 MenuItem item = current.Items[i];
                 sum += item.price;
-                RatingTab temp = new RatingTab(main, item,current.Status == Order_status.DELIVERED);
+                RatingTab temp = new RatingTab(main, item, current.Status == Order_status.DELIVERED);
                 panel1.Controls.Add(temp);
                 temp.Location = new Point(10, 20 + i * (temp.Height));
 

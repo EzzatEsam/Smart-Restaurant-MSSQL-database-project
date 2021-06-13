@@ -16,16 +16,16 @@ namespace Client
             back = newback;
             var output = DataBaseEssentials.c1.GetClientWholeMenu(DataBaseEssentials.cid); ;
             label1.Text = "Nice to have you " + name;
-            
+
             float sum = 0;
             foreach (var item in output)
             {
-                sum +=item.price;
+                sum += item.price;
                 this.dataGridView1.Rows.Add(item.name, item.price);
             }
             textBox2.Text = sum.ToString();
         }
-        
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

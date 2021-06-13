@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.IO;
 namespace Client
 {
@@ -32,12 +32,19 @@ namespace Client
         public static string CheckLastReqCommand = "CheckLastRequestStats";
         public static MenuItem ConvertToMenuItemClass(DataRow it)
         {
-            MenuItem output = new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]),-1);
+            MenuItem output = new MenuItem(Convert.ToInt32(it["ITMNUMBER"]), Convert.ToString(it["INAME"]), Convert.ToString(it["CATEGORY"]), (float)Convert.ToDouble(it["PRICE"]), -1);
             if (it["Picture"] != System.DBNull.Value)
             {
                 output.Image = BinaryToImage((byte[])it["Picture"]);
             }
-            
+            if (it.Table.Columns.Contains("Rating"))
+            {
+                if (it["Rating"] != System.DBNull.Value)
+                {
+                    output.rating = (float)Convert.ToDouble(it["Rating"]);
+                }
+            }
+
 
             return output;
         }
@@ -64,16 +71,16 @@ namespace Client
         }
     }
 
-    
+
     public enum Emp_type
     {
         CHEF, WAITER
     }
     public enum Order_status
     {
-        PENDING, READY, DELIVERED
+        PENDING, ONIT, READY, OMW, DELIVERED
     }
-    public enum Task
+    public enum TaskType
     {
         ORDER,
         CLIENTCONTACT,
@@ -99,7 +106,6 @@ namespace Client
             this.category = category;
             this.price = price;
             this.rating = rating;
-            
         }
     }
     public class Order
@@ -119,6 +125,6 @@ namespace Client
         public RequestStatus ContactStatus;
         public int OrderNumber = -1;
     }
-   
+
 
 }

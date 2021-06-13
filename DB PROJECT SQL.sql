@@ -33,7 +33,6 @@ CREATE TABLE MENUITEMS
 ITMNUMBER INT PRIMARY KEY IDENTITY(1,1) ,
 INAME VARCHAR(100) NOT NULL UNIQUE,
 PRICE FLOAT NOT NULL ,
-
 CATEGORY VARCHAR(100) NOT NULL,
 Picture  varbinary(max) ,
 );
@@ -66,14 +65,14 @@ CREATE TABLE ORDER_
 (
    ORDERID INT  IDENTITY(1,1),
    CID INT FOREIGN KEY REFERENCES CLIENT  ON DELETE CASCADE,
-   STATUS_ int,    -- 0 pending  1 on it   2  ready   3 delivered
+   STATUS_ int,    -- 0 pending  1 on it   2  ready   3 OnWay  4delivered
    --CHECKOUT BIT NOT NULL,     
    TNUMBER INT FOREIGN KEY REFERENCES TABLE_ ,
    OTIME TIME(2),
    PRIMARY KEY(ORDERID),
 );
 
-CREATE TABLE CHEF
+create  TABLE CHEF
 (
 CHID INT unique IDENTITY(1,1),
 CHNAME VARCHAR(200) NOT NULL,
@@ -82,7 +81,9 @@ ISFREE BIT not NULL DEFAULT 1,
 PRIMARY KEY (CHID , USERNAME),
 FOREIGN KEY(USERNAME) REFERENCES ACCOUNT ON DELETE CASCADE,
 C_SERVING INT FOREIGN KEY REFERENCES ORDER_ ON DELETE SET NULL,
+
 );
+
 
 
 CREATE TABLE WAITER
@@ -125,8 +126,36 @@ begin
 print 'Admin already exists'
 ROLLBACK TRANSACTION
 END
+go
+
+create trigger ChefTaks on chef
+for update ,insert
+as
+begin
+update CHEF
+set ISFREE =0
+where C_SERVING is not null;
+update chef
+set ISFREE =1
+where C_SERVING is  null;
+end
+go
+
+create trigger WaiterTasks on waiter 
+for update , insert
+as
+begin
+
+update WAITER
+set ISFREE =0
+where C_SERVING is not null and C_RESPONSE is not null;
+update chef
+set ISFREE =1
+where C_SERVING is  null and C_SERVING is null;
+end
 
 go
+
 create trigger OnlyOneLogo
 on LOGO
 after insert
@@ -159,6 +188,15 @@ union select WID ,WNAME ,ISFREE ,C_RESPONSE,'1'  , '-1'  from WAITER
 ;
 end
 go
+
+create procedure GetAllCats
+as
+begin
+select distinct MENUITEMS.CATEGORY from MENUITEMS;
+end
+go
+
+go
 create procedure AddEmployee @type int , @name nvarchar(20), @account nvarchar(20) , @pass nvarchar(20) 
 as
 begin
@@ -176,12 +214,12 @@ go
 create procedure SetTablesCount @num tinyint
 as
 begin
-delete from TABLE_ where TABLE_.TNUMBER > @num
-DECLARE @cnt INT = (select( count(*)) from TABLE_)
-DBCC CHECKIDENT ('Emp', RESEED, @cnt)
+delete from TABLE_ where TABLE_.TNUMBER > @num;
+DECLARE @cnt INT = (select( count(*)) from TABLE_);
+DBCC CHECKIDENT ('TABLE_', RESEED, @cnt);
 WHILE @cnt < @num
 begin
-   insert into RESTDB.TABLE_ default values
+   insert into TABLE_ default values
    SET @cnt = @cnt + 1
 end
 
@@ -206,7 +244,7 @@ end
 
 go
 
-create procedure EmpStatus @type smallint , @ID smallint , @free bit
+create procedure EmpAddJop @type smallint , @ID smallint , @taskType bit ,@task int
 as
 begin
 declare  @Name as varchar(60)
@@ -214,12 +252,28 @@ select  @Name = ACCOUNT.USERNAME from ACCOUNT where ACCOUNT.ACCID = @ID
 print @type;
 print @name;
 if @type =1
-UPDATE CHEF set ISFREE = @free where CHEF.USERNAME = @Name;
+UPDATE CHEF set C_SERVING = @task where CHEF.USERNAME = @Name;
 else if @type = 2
-update WAITER set ISFREE =@free where USERNAME = @Name;
+begin
+if @taskType = 0
+update WAITER set C_SERVING =@task where USERNAME = @Name;
+else
+update WAITER set C_RESPONSE = @task where USERNAME = @Name;
+end
 end
 go
 
+create procedure SetEmpFree @type smallint , @ID smallint
+as
+begin
+declare  @Name as varchar(60);
+select  @Name = ACCOUNT.USERNAME from ACCOUNT where ACCOUNT.ACCID = @ID;
+if @type =1
+UPDATE CHEF set C_SERVING= null where USERNAME = @Name;
+else if @type = 2
+UPDATE WAITER set C_SERVING = null ,C_RESPONSE = null where USERNAME = @Name;
+end
+go
 
 create procedure GetClientName @num tinyint
 as
@@ -348,10 +402,12 @@ On B.ITMNUMBER = A.ITEMNUMBER
 end
 go 
 
-create procedure GetAllMenu
+create  procedure GetAllMenu
 as 
 begin
-select * from MENUITEMS;
+select MENUITEMS.* ,AVG (CAST( ITEM_RATING.RATE as float)) as Rating from MENUITEMS 
+left join ITEM_RATING on MENUITEMS.ITMNUMBER = ITEM_RATING.ITMNUMBER 
+group by MENUITEMS.INAME ,MENUITEMS.ITMNUMBER ,MENUITEMS.CATEGORY , MENUITEMS.Picture , MENUITEMS.PRICE;
 end
 go
 

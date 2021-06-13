@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public partial class OrderBig : UserControl
     {
@@ -15,7 +15,7 @@ namespace Db_proj
             InitializeComponent();
             this.main = main;
             this.CurrentOrder = CurrentOrder;
-            
+
             UpdateList();
 
         }

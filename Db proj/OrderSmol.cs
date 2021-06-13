@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public partial class OrderSmol : UserControl
     {

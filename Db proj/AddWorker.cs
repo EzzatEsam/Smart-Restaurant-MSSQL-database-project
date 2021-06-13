@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Db_proj
+namespace Staff
 {
     public partial class AddWorker : UserControl
     {
@@ -26,8 +26,8 @@ namespace Db_proj
         private void button1_Click(object sender, EventArgs e)
         {
 
-            
-                Worker it = new Worker(-1, textBox1.Text, (Emp_type)comboBox1.SelectedItem, true, -1, Task.NONE);
+
+            Worker it = new Worker(-1, textBox1.Text, (Emp_type)comboBox1.SelectedItem, true, -1, TaskType.NONE);
             if (main.organiser.Controller.AddEmp(it, textBox2.Text, textBox3.Text))
                 MessageBox.Show("Done");
             else

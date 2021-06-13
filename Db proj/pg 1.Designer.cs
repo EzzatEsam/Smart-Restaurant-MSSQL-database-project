@@ -1,5 +1,5 @@
 ﻿
-namespace Db_proj
+namespace Staff
 {
     partial class pg_1
     {
@@ -31,7 +31,6 @@ namespace Db_proj
         {
             this.Workersbtn = new System.Windows.Forms.Button();
             this.m_bttn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -63,19 +62,6 @@ namespace Db_proj
             this.m_bttn.Text = "View menu";
             this.m_bttn.UseVisualStyleBackColor = false;
             this.m_bttn.Click += new System.EventHandler(this.m_bttn_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(500, 22);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 50);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Change Logins";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
@@ -131,7 +117,6 @@ namespace Db_proj
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.m_bttn);
             this.Controls.Add(this.Workersbtn);
             this.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -148,7 +133,6 @@ namespace Db_proj
 
         private System.Windows.Forms.Button Workersbtn;
         private System.Windows.Forms.Button m_bttn;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;

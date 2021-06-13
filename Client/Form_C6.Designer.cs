@@ -90,6 +90,7 @@ namespace Client
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_C6";
             this.Text = "Form_C6";
+            this.Load += new System.EventHandler(this.Form_C6_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
