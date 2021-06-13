@@ -88,6 +88,7 @@ namespace Client
                 DataBaseEssentials.Main.Show();
                 DataBaseEssentials.Main.RefreshAgain();
                 this.Dispose();
+                return;
             }
             string x = DateTime.Now.ToShortTimeString();
             DateTime dateTime = DateTime.Parse(x);

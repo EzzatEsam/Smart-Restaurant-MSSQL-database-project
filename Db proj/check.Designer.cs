@@ -42,9 +42,10 @@ namespace Staff
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(30, 107);
+            this.panel1.AutoScroll = true;
+            this.panel1.Location = new System.Drawing.Point(22, 107);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(461, 121);
+            this.panel1.Size = new System.Drawing.Size(467, 138);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 

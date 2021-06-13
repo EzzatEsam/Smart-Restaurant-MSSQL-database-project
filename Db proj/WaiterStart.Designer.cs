@@ -66,7 +66,7 @@ namespace Staff
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(410, 17);
+            this.label1.Location = new System.Drawing.Point(334, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 5;
@@ -121,7 +121,7 @@ namespace Staff
             // 
             this.pictureBox1.Location = new System.Drawing.Point(14, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(366, 74);
+            this.pictureBox1.Size = new System.Drawing.Size(299, 74);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;

@@ -184,7 +184,7 @@ namespace Client
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(597, 86);
+            this.label7.Location = new System.Drawing.Point(571, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 15);
             this.label7.TabIndex = 13;

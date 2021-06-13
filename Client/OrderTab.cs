@@ -7,7 +7,7 @@ namespace Client
     {
         Order current;
         Form_C6 main;
-        int max = 40;
+        int max = 25;
         public OrderTab(Order current,
         Form_C6 main)
         {

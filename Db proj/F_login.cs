@@ -23,6 +23,7 @@ namespace Staff
         }
         public void Reset()
         {
+            pictureBox1.Image = DataBaseEssentials.BinaryToImage(main.Controller.GetLogo());
             textBox2.Text = "Password";
             textBox1.Text = "";
             label1.Text = "";
